@@ -1,0 +1,187 @@
+= Friends (好友)
+
+访问 Steam 好友接口
+
+== 获取当前用户名称
+
+[source,rust]
+----
+pub fn name(&self) -> String
+----
+
+返回当前用户的（显示）名称。
+
+== 获取好友列表
+
+[source,rust]
+----
+pub fn get_friends(&self, flags: FriendFlags) -> Vec<Friend<Manager>>
+----
+
+根据好友标识位获取好友列表
+
+*FriendFlags*: 好友标识位。
+
+* `None`: (0.无)
+* `Blocked`: (1.当前用户已经忽略的用户)
+* `FriendshipRequested`: (2.已经向当前用户发送好友申请的用户)
+* `Immediate`: (4.当前用户的"常规"好友)
+* `ClanMember`: (8.与当前用户同属于一个Steam小组的用户)
+* `OnGameServer`: (16.与当前用户在同一个游戏服务器上的好友;通过 设置和谁一起玩过 设置)
+* `RequestingFriendship`: (128.当前用户已经向其发送好友申请的用户)
+* `RequestingInfo`: (256.在调用 请求用户信息 后正在发送自己额外信息的用户)
+* `Ignored`: (512.当前用户已经屏蔽与他们联系的用户)
+* `IgnoredFriend`: (1024.屏蔽当前用户的用户;但是当前用户仍然知道他们)
+* `ChatMember`: (4096.在同一个聊天中的用户)
+* `All`: (65535.返回所有好友的标识位)
+
+== 获取最近一起游玩的玩家
+
+[source,rust]
+----
+pub fn get_coplay_friends(&self) -> Vec<Friend<Manager>>
+----
+
+返回最近一起游玩的玩家列表。
+
+== 获取好友详情
+
+[source,rust]
+----
+pub fn get_friend(&self, friend: SteamId) -> Friend<Manager>
+----
+
+获取好友详情，包括SteamId、名称、当前正玩的游戏等。
+
+== 请求用户信息
+
+[source,rust]
+----
+pub fn request_user_information(&self, user: SteamId, name_only: bool) -> bool
+----
+
+请求指定用户的昵称及头像（可选）。
+
+注意： 下载头像相当缓慢，并且会改动本地缓存，所以如果不需要头像，请勿发出请求。
+
+*返回：* bool
+
+触发一个 PersonaStateChange_t 回调。
+
+* `true`: 表示已请求数据，收到数据时将会发布 PersonaStateChange_t 回调。
+* `false`: 表示已经有了该用户的详细数据，需要这些信息的函数可立即使用。
+
+== 激活游戏叠加界面
+
+[source,rust]
+----
+pub fn activate_game_overlay(&self, dialog: &str)
+----
+
+激活 Steam 叠加界面，打开指定的对话框。
+
+== 激活游戏叠加界面web页面
+
+[source,rust]
+----
+pub fn activate_game_overlay_to_web_page(&self, url: &str)
+----
+
+激活 Steam 叠加界面网页浏览器，直接前往指定的 URL。
+
+== 激活游戏叠加界面商店页面
+
+[source,rust]
+----
+pub fn activate_game_overlay_to_store(
+    &self,
+    app_id: AppId,
+    overlay_to_store_flag: OverlayToStoreFlag
+)
+----
+
+激活 Steam 叠加界面，打开所提供应用的 Steam 商店页面。
+
+*参数*
+
+* `None`:	0 无。
+* `AddToCart`:	1 已弃用，现在与 k_eOverlayTostoreflag_addToCartandShow 的工作原理相同。
+* `AddToCartAndShow`:	2 将指定的 AppID 加入用户的购物车并显示商店页面。
+
+== 激活游戏叠加界面用户对话框
+
+[source,rust]
+----
+pub fn activate_game_overlay_to_user(&self, dialog: &str, user: SteamId)
+----
+
+激活 Steam 叠加界面，打开指定的对话框。
+
+*dialog:*
+
+* `steamid`: - 打开界面网页浏览器，前往指定的用户或组资料。
+* `chat`: - 打开与指定用户的聊天窗口，或加入组聊天。
+* `jointrade`: - 打开以 ISteamEconomy/StartTrade Web API 开始的 Steam 交易会话窗口。
+* `stats`: - 打开界面网页浏览器，前往指定用户的统计。
+* `achievements`: - 打开界面网页浏览器，前往指定用户的成就。
+* `friendadd`: - 以最小模式打开界面，提示用户将目标用户加为好友。
+* `friendremove`: - 以最小模式打开界面，提示用户移除目标好友。
+* `friendrequestaccept`: - 以最小模式打开界面，提示用户接受传入的好友邀请。
+* `friendrequestignore`: - 以最小模式打开界面，提示用户忽略传入的好友邀请。
+
+== 激活匹配大厅邀请对话框
+
+[source,rust]
+----
+pub fn activate_invite_dialog(&self, lobby: LobbyId)
+----
+
+为指定的匹配大厅打开邀请对话框。
+
+== 设置当前用户的富状态键/值
+
+[source,rust]
+----
+pub fn set_rich_presence(&self, key: &str, value: Option<&str>) -> bool
+----
+
+设置用户的富状态。如果值为 None 或为空，则取消设置富状态。参见 link:https://partner.steamgames.com/doc/api/ISteamFriends#SetRichPresence[Steam API]。
+
+对于查看/加入游戏，有两个特殊键：
+
+* `status`：UTF-8 字符串，将在 Steam 好友列表中“查看游戏信息”对话框显示。
+* `connect`：UTF-8 字符串，包含好友如何能连接至游戏的命令行。 这将启用“查看游戏信息”对话框中的“加入游戏”按钮，在右键点击 Steam 好友列表出现的菜单以及玩家的 Steam 社区个人资料中。 确保您的应用实现了 ISteamApps::GetLaunchCommandLine ，以便您可以在通过命令行启动时禁用弹出警告。
+
+新 Steam 聊天另有三个特殊键：
+
+* `steam_display`：命名一个丰富状态本地化标记，该标记将在 Steam 客户端 UI 中以用户选定的语言显示。 参见 Rich Presence Localization 了解更多信息，包括测试此丰富状态数据的页面链接。 如果 steam_display 未设置为有效本地化标签，则丰富状态将不会显示在 Steam 客户端中。
+* `steam_player_group`：设置时，对 Steam 客户端指明玩家为特定组成员。 属于同一组的玩家可以在 Steam UI 各处组织在一起。 此字符串能识别队伍、服务器或与您游戏相关的其他群组。 字符串本身不显示给用户。
+* `steam_player_group_size`：设置时，指明在 steam_player_group 中的玩家总人数。 若并非一个组的所有成员都在用户的好友列表中，，Steam 客户端可以使用此数字显示关于该组的附加信息 （例如，“鲍勃、彼特及其他 4 人”）
+
+== 清除当前用户的富状态键/值
+
+[source,rust]
+----
+pub fn clear_rich_presence(&self)
+----
+
+清除当前用户所有的丰富状态（Rich Presence）键/值。
+
+== 获取用户封禁状态
+
+[source,rust]
+----
+pub fn get_user_restrictions(&self) -> UserRestriction
+----
+
+检查当前用户是否被禁止聊天。
+
+如果被禁止，则无法发送或接收任何文字/语音聊天消息，也无法看到自定义的头像。
+被禁止聊天的用户无法添加好友或加入任何组。
+被禁止的用户依然可以在线，并发送/接收游戏邀请。
+
+== 参考
+
+https://docs.rs/steamworks/0.11.0/steamworks/struct.Friends.html
+
+https://partner.steamgames.com/doc/api/ISteamFriends

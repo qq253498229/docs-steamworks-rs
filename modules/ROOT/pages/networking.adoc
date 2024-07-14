@@ -76,3 +76,9 @@ pub fn read_p2p_packet(&self, buf: &mut [u8]) -> Option<(SteamId, usize)>
 尝试将排队的数据包读取到缓冲区中（如果有的话）。
 
 返回发送者的 Steam ID 和数据包的大小。
+
+== 参考
+
+https://docs.rs/steamworks/0.11.0/steamworks/struct.Networking.html
+
+https://partner.steamgames.com/doc/api/ISteamNetworking

@@ -363,3 +363,9 @@ fn main() {
     });
 }
 ----
+
+== 参考
+
+https://docs.rs/steamworks/0.11.0/steamworks/struct.Matchmaking.html
+
+https://partner.steamgames.com/doc/api/ISteamMatchmaking

@@ -120,7 +120,7 @@ pub fn networking(&self) -> Networking<Manager>
 pub fn friends(&self) -> Friends<Manager>
 ----
 
-返回一个访问 Steam 好友接口的访问器。
+返回一个访问 Steam xref:friends.adoc[好友接口] 的访问器。
 
 == 获取输入接口
 
@@ -202,3 +202,9 @@ pub fn networking_utils(&self) -> NetworkingUtils<Manager>
 ----
 
 访问 Steam 网络工具接口。
+
+== 参考
+
+https://docs.rs/steamworks/0.11.0/steamworks/struct.Client.html
+
+https://partner.steamgames.com/doc/api/ISteamClient
