@@ -1,0 +1,149 @@
+= Input (输入)
+
+Steam 输入 API 是一个基于操作的灵活 API，支持所有主要控制器类型——Xbox、PlayStation、Nintendo Switch Pro 和 Steam 控制器。
+
+== 初始化输入接口
+
+[source,rust]
+----
+pub fn init(&self, explicitly_call_run_frame: bool)
+----
+
+在开始使用此接口时必须调用 `Init`。
+如果调用了 `explicitly_call_run_frame`，则需要在每一帧手动调用 `RunFrame`，
+否则在调用 `SteamAPI_RunCallbacks()` 时会更新 Steam Input。
+
+== 刷新当前帧
+
+[source,rust]
+----
+pub fn run_frame(&self)
+----
+
+将 API 状态与可用的最新 Steam 控制器输入同步。
+
+由 SteamAPI_RunCallbacks 自动执行，但是您可以在读取控制器状态之前直接调用此函数，以获得可能的最低延迟。
+
+注意：必须在调用 `GetConnectedControllers` 以返回任何句柄之前调用此方法。
+
+== 获取已连接的控制器
+
+[source,rust]
+----
+pub fn get_connected_controllers(&self) -> Vec<InputHandle_t>
+----
+
+返回当前连接的控制器列表。
+
+== 获取已连接的控制器分片
+
+[source,rust]
+----
+pub fn get_connected_controllers_slice(
+    &self,
+    controllers: impl AsMut<[InputHandle_t]>
+) -> usize
+----
+
+返回当前连接的控制器列表及其数量，无需分配。
+
+== 查找操作集句柄
+
+[source,rust]
+----
+pub fn get_action_set_handle(
+    &self,
+    action_set_name: &str
+) -> InputActionSetHandle_t
+----
+
+返回指定控制器的关联 ControllerActionSet 句柄。
+
+查找操作集句柄。 最好在启动时调用一次，并存储句柄供所有未来 API 调用使用。
+
+== 激活操作集句柄
+
+[source,rust]
+----
+pub fn activate_action_set_handle(
+    &self,
+    input_handle: InputHandle_t,
+    action_set_handle: InputActionSetHandle_t
+)
+----
+
+将控制器重新配置为使用指定的动作集。此操作开销低，可以安全地反复调用。
+
+== 获取数字操作句柄
+
+[source,rust]
+----
+pub fn get_digital_action_handle(
+    &self,
+    action_name: &str
+) -> InputDigitalActionHandle_t
+----
+
+获取指定的数字操作的句柄。
+
+== 获取模拟操作句柄
+
+[source,rust]
+----
+pub fn get_analog_action_handle(
+    &self,
+    action_name: &str
+) -> InputAnalogActionHandle_t
+----
+
+获得指定的模拟操作的句柄。
+
+== 获取数字操作数据
+
+[source,rust]
+----
+pub fn get_digital_action_data(
+    &self,
+    input_handle: InputHandle_t,
+    action_handle: InputDigitalActionHandle_t
+) -> InputDigitalActionData_t
+----
+
+返回所提供的数字游戏操作的当前状态。
+
+== 获取模拟操作数据
+
+[source,rust]
+----
+pub fn get_analog_action_data(
+    &self,
+    input_handle: InputHandle_t,
+    action_handle: InputAnalogActionHandle_t
+) -> InputAnalogActionData_t
+----
+
+返回所提供的模拟游戏操作的当前状态。
+
+== 获取移动数据
+
+[source,rust]
+----
+pub fn get_motion_data(&self, input_handle: InputHandle_t) -> InputMotionData_t
+----
+
+返回指定控制器的原始运动数据。
+
+== 关闭输入
+
+[source,rust]
+----
+pub fn shutdown(&self)
+----
+
+在结束使用此接口时必须调用 `Shutdown`。
+
+== 参考
+
+https://docs.rs/steamworks/0.11.0/steamworks/struct.Input.html
+
+https://partner.steamgames.com/doc/api/isteaminput

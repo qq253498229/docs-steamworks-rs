@@ -129,7 +129,7 @@ pub fn friends(&self) -> Friends<Manager>
 pub fn input(&self) -> Input<Manager>
 ----
 
-返回一个访问 Steam 输入接口的访问器。
+返回一个访问 Steam xref:input.adoc[输入接口] 的访问器。
 
 == 获取用户接口
 
@@ -138,7 +138,7 @@ pub fn input(&self) -> Input<Manager>
 pub fn user(&self) -> User<Manager>
 ----
 
-返回一个访问 Steam 用户接口的访问器。
+返回一个访问 Steam xref:user.adoc[用户接口] 的访问器。
 
 == 获取用户统计接口
 
@@ -147,7 +147,7 @@ pub fn user(&self) -> User<Manager>
 pub fn user_stats(&self) -> UserStats<Manager>
 ----
 
-返回一个访问 Steam 用户统计接口的访问器。
+返回一个访问 Steam xref:user-stats.adoc[用户统计接口] 的访问器。
 
 == 获取远程畅玩接口
 
@@ -156,7 +156,7 @@ pub fn user_stats(&self) -> UserStats<Manager>
 pub fn remote_play(&self) -> RemotePlay<Manager>
 ----
 
-返回一个访问 Steam 远程畅玩接口的访问器。
+返回一个访问 Steam xref:remote-play.adoc[远程畅玩接口] 的访问器。
 
 == 获取远程存储接口
 
@@ -165,7 +165,7 @@ pub fn remote_play(&self) -> RemotePlay<Manager>
 pub fn remote_storage(&self) -> RemoteStorage<Manager>
 ----
 
-返回一个访问 Steam 远程存储接口的访问器。
+返回一个访问 Steam xref:remote-storage.adoc[远程存储接口] 的访问器。
 
 == 获取创意工坊接口
 
@@ -174,7 +174,7 @@ pub fn remote_storage(&self) -> RemoteStorage<Manager>
 pub fn ugc(&self) -> UGC<Manager>
 ----
 
-返回一个访问 Steam UGC（Steam 创意工坊）接口的访问器。
+返回一个访问 Steam xref:ugc.adoc[UGC（Steam 创意工坊）接口] 的访问器。
 
 == 获取网络消息接口
 
@@ -183,7 +183,7 @@ pub fn ugc(&self) -> UGC<Manager>
 pub fn networking_messages(&self) -> NetworkingMessages<Manager>
 ----
 
-访问 Steam 网络消息接口。
+访问 Steam xref:networking-message.adoc[网络消息接口]。
 
 == 获取网络sockets接口
 
@@ -192,7 +192,7 @@ pub fn networking_messages(&self) -> NetworkingMessages<Manager>
 pub fn networking_sockets(&self) -> NetworkingSockets<Manager>
 ----
 
-访问 Steam 网络sockets接口。
+访问 Steam xref:networking-sockets.adoc[网络sockets接口]。
 
 == 获取网络工具接口
 
@@ -201,7 +201,7 @@ pub fn networking_sockets(&self) -> NetworkingSockets<Manager>
 pub fn networking_utils(&self) -> NetworkingUtils<Manager>
 ----
 
-访问 Steam 网络工具接口。
+访问 Steam xref:networking-utils.adoc[网络工具接口]。
 
 == 参考
 
