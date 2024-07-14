@@ -34,14 +34,14 @@ pub fn init() -> SIResult<(Client<ClientManager>, SingleClient<ClientManager>)>
 
 这些情况可能会发生异常:
 
-* Steam客户端未运行
-* 无法确定游戏的app ID。
+* Steam 客户端未运行。 需要有运行的 Steam 客户端才能提供各种 Steamworks 接口的实现。
+* Steam 客户端无法判定游戏的 App ID。
 如果游戏没有通过steam运行，可以通过在当前工作目录中放置带有ID的 `steam_appid.txt` 来提供。或者，您可以使用 `Client::init_app(<app_id>)` 强制指定应用ID。
-* 游戏未在与 Steam 客户端相同的用户/级别上运行
-* 用户未拥有该游戏
-* 应用ID未完全设置完成
+* 您的应用程序运行的 OS 用户上下文，与 Steam 客户端并不相同，比如用户或管理员访问权限级别不同。
+* 确定您在当前活跃的 Steam 帐户中拥有该 App ID 的许可。 您的游戏必须显示在您的 Steam 库中。
+* 您的 AppID 未完全设置，如 发行状态：不可用，或缺失默认程序包。
 
-== 初始化应用
+== 指定AppId初始化应用
 
 [source,rust]
 ----
@@ -58,10 +58,10 @@ pub fn init_app<ID: Into<AppId>>(
 
 这些情况可能会发生异常:
 
-- Steam客户端未运行
-- 游戏未在与 Steam 客户端相同的用户/级别上运行
-- 用户未拥有该游戏
-- 应用ID未完全设置完成
+* Steam 客户端未运行。 需要有运行的 Steam 客户端才能提供各种 Steamworks 接口的实现。
+* 您的应用程序运行的 OS 用户上下文，与 Steam 客户端并不相同，比如用户或管理员访问权限级别不同。
+* 确定您在当前活跃的 Steam 帐户中拥有该 App ID 的许可。 您的游戏必须显示在您的 Steam 库中。
+* 您的 AppID 未完全设置，如 发行状态：不可用，或缺失默认程序包。
 
 == 注册回调
 
