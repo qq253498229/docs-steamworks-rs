@@ -1,0 +1,78 @@
+= Networking (网络)
+
+访问 Steam 网络相关接口
+
+== 接受P2P会话
+
+[source,rust]
+----
+pub fn accept_p2p_session(&self, user: SteamId)
+----
+
+这允许游戏指定是否接受传入的数据包。
+需要在与远程主机建立真正的连接之前调用，让游戏有机会决定是否允许远程用户访问。
+
+**注意，**此函数只应在响应 P2PSessionRequest 回调时才能调用！
+
+*参数*
+
+* `user`: 向我们发送了初始数据包的用户的 Steam ID。
+
+== 关闭P2P会话
+
+[source,rust]
+----
+pub fn close_p2p_session(&self, user: SteamId)
+----
+
+关闭与指定用户之间的 P2P 连接。
+
+应在结束与用户通信后调用此函数，可以释放后台所有分配给连接的资源。
+
+== 发送P2P数据包
+
+[source,rust]
+----
+pub fn send_p2p_packet(
+    &self,
+    remote: SteamId,
+    send_type: SendType,
+    data: &[u8]
+) -> bool
+----
+
+如果连接尚未启动，则向起始用户发送一个数据包以启动连接。
+
+*SendType:*
+
+* `Unreliable`: 0基础 UDP 发送。 数据包不能大于 1200 字节（MTU 的通常大小）。 可能会丢失，或顺序错乱（罕见）。
+发送 API 确实对基础连接有一定了解，因此如果没有完成 NAT 遍历或在连接时发生已识别的调整，数据包将会被批处理，直至连接再次打开。
+* `UnreliableNoDelay`: 1同上，但如果基础 P2P 连接仍未建立，数据包会被丢弃。 这如果用于发送给远程主机的第一个数据包上，几乎可以肯定数据包会丢失。
+这只对不应缓冲的数据类型有用，即语音有效负载数据包。
+* `Reliable`: 2可靠的消息发送。 每条消息可发送高达 1MB 的数据。
+可在后台对消息进行碎片化或重组，以及用滑动窗口高效发送大型数据区块。
+* `ReliableWithBuffering`: 3同上，但使用 Nagle 算法发送，发送内容将累积，直至达到当前 MTU 大小（通常约 1200 字节，但可能会变化），或已过去大约 200 毫秒（Nagle 算法）。
+如果您想发送一系列较小的消息，但已将他们合并成一个数据包，这将非常有用。
+因为所有可靠的数据流都已排序，您可用 k_EP2PSendReliableWithBuffering 发送几个小消息，然后用普通的 k_EP2PSendReliable 强制发送所有已缓冲的数据。
+
+== 读取P2P数据包大小
+
+[source,rust]
+----
+pub fn is_p2p_packet_available(&self) -> Option<usize>
+----
+
+返回队列中是否有数据包可以读取。
+
+如果有队列中的数据包，则返回其大小。否则返回 None
+
+== 读取P2P数据包
+
+[source,rust]
+----
+pub fn read_p2p_packet(&self, buf: &mut [u8]) -> Option<(SteamId, usize)>
+----
+
+尝试将排队的数据包读取到缓冲区中（如果有的话）。
+
+返回发送者的 Steam ID 和数据包的大小。

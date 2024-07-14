@@ -111,7 +111,7 @@ pub fn matchmaking(&self) -> Matchmaking<Manager>
 pub fn networking(&self) -> Networking<Manager>
 ----
 
-返回一个访问 Steam 网络接口的访问器。
+返回一个访问 Steam xref:networking.adoc[网络接口] 的访问器。
 
 == 获取好友接口
 
