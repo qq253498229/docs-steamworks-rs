@@ -133,7 +133,7 @@ pub fn get_motion_data(&self, input_handle: InputHandle_t) -> InputMotionData_t
 
 返回指定控制器的原始运动数据。
 
-== 关闭输入
+== 关闭输入接口
 
 [source,rust]
 ----
