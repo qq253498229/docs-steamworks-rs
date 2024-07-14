@@ -41,7 +41,7 @@ pub fn init() -> SIResult<(Client<ClientManager>, SingleClient<ClientManager>)>
 * 确定您在当前活跃的 Steam 帐户中拥有该 App ID 的许可。 您的游戏必须显示在您的 Steam 库中。
 * 您的 AppID 未完全设置，如 发行状态：不可用，或缺失默认程序包。
 
-== 指定AppId初始化应用
+== 根据AppId初始化应用
 
 [source,rust]
 ----
@@ -84,7 +84,7 @@ where
 pub fn apps(&self) -> Apps<Manager>
 ----
 
-返回一个访问 Steam 应用接口的访问器。
+返回一个访问 Steam xref:app.adoc[应用接口] 的访问器。
 
 == 获取工具接口
 
