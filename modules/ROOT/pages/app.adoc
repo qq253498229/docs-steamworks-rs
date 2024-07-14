@@ -9,20 +9,234 @@
 let apps: Apps<ClientManager> = client.apps();
 ----
 
-== 判断app是否已安装
+通过这段代码获取应用接口实例，`apps` 就是应用实例，接下来的所有方法都通过apps实例调用。
 
-返回用户当前是否安装了给定ID的应用程序。
-
-这并不意味着用户拥有游戏。
+== 判断是否安装了应用
 
 [source,rust]
 ----
 pub fn is_app_installed(&self, app_id: AppId) -> bool
 ----
 
-== 判断用户是否拥有并安装了指定的DLC
+检查某特定应用是否已安装。
+
+当前用户也许并不拥有此应用，只是通过免费周末等活动进行过安装。
+
+此函数只对基础应用程序有效，对可下载内容（DLC） 无效。 针对 DLC 请使用 <<is_dlc_installed>> 。
+
+*返回*： bool
+
+* *true* 表明指定 AppID 已安装；否则返回 *false*。
+
+[#is_dlc_installed]
+== 判断是否安装了DLC
 
 [source,rust]
 ----
 pub fn is_dlc_installed(&self, app_id: AppId) -> bool
 ----
+
+检查用户是否拥有特定 DLC 且该 DLC 已安装。
+
+*返回：* bool
+
+* *true* 表明该用户拥有 DLC 且已安装；否则返回 *false*。
+
+*注意：* 应只用于简单的客户端检查，不能用于授予游戏中物品。
+
+== 判断是否订阅了该应用
+
+[source,rust]
+----
+pub fn is_subscribed_app(&self, app_id: AppId) -> bool
+----
+
+检查活跃用户是否订阅了特定 AppId。
+
+只有在需要检查与您游戏有关的另一个游戏（如试用版）的所有权时，才使用此函数。
+
+*返回：* bool
+
+* *true* 表明该活跃用户订阅了特定 App ID；否则返回 *false*。
+
+== 判断是否是通过免费周末订阅
+
+[source,rust]
+----
+pub fn is_subscribed_from_free_weekend(&self) -> bool
+----
+
+检查该用户是否通过免费周末订阅了当前 appID。
+
+在使用此函数前请通过 Steamworks 讨论板联系 Valve 技术客户经理，来为免费周末活动制作相应程序包，确保活动能顺利开展。
+
+*返回：* bool
+
+* *true* 表明该活跃用户通过免费周末订阅了当前 App Id；如果为其他任何类型的许可，则返回 *false* 。
+
+== 判断用户是否被永久封禁
+
+[source,rust]
+----
+pub fn is_vac_banned(&self) -> bool
+----
+
+检查用户帐户是否受到 VAC 封禁。
+
+*返回：* bool
+
+* *true* 表明该用户帐户受到 VAC (Valve Anti-Cheat，Valve反作弊系统) 封禁；否则返回 *false*。
+
+== 判断应用是否是网吧许可
+
+[source,rust]
+----
+pub fn is_cybercafe(&self) -> bool
+----
+
+检查当前 AppID 是否供网吧使用。
+
+*返回：* bool
+
+* *true* 表明此许可用于网吧；否则返回 *false*。
+
+IMPORTANT: 已弃用 - 不再使用。
+
+== 判断是否提供低暴力版本
+
+[source,rust]
+----
+pub fn is_low_violence(&self) -> bool
+----
+
+检查用户拥有的许可是否提供低暴力 depot。
+
+在对内容有限制的国家，低暴力 depot 有利于游戏销售。
+
+*返回：* bool
+
+* *true* 表明用户拥有的许可提供低暴力 depot；否则返回 *false*。
+
+*另见：* https://partner.steamgames.com/doc/store/application/depots#depot_mounting_rules[Depot 装载规则]
+
+== 判断用户是否订阅了当前应用
+
+[source,rust]
+----
+pub fn is_subscribed(&self) -> bool
+----
+
+检查活跃用户是否订阅了当前 App ID。
+
+*注意：* 如果您使用 Steam DRM 或调用 SteamAPI_RestartAppIfNecessary，此函数将始终返回 *true*。
+
+*返回：* bool
+
+* *true* 表明该活跃用户拥有当前 AppId；否则返回 *false*。
+
+== 获取应用构建id
+
+[source,rust]
+----
+pub fn app_build_id(&self) -> i32
+----
+
+获取此应用的构建id，可能根据游戏的后端更新而随时改变。
+
+*返回：* i32
+
+此应用的当前 Build Id。如您未运行从 Steam 下载的生成版本，则默认为 0。
+
+== 获取应用安装目录
+
+[source,rust]
+----
+pub fn app_install_dir(&self, app_id: AppId) -> String
+----
+
+获取特定 AppID 的安装文件夹。
+
+即使应用程序未安装，该函数仍可按游戏将在 Steam 库的默认安装位置进行调用。
+
+*返回：* String
+
+== 获取应用拥有者SteamId
+
+[source,rust]
+----
+pub fn app_owner(&self) -> SteamId
+----
+
+获取当前应用真正拥有者的 Steam ID。
+
+如当前用户是通过“家庭共享”访问的游戏，则与当前用户的不同。
+
+*返回：* SteamId
+
+当前应用的原拥有者。
+
+== 获取应用支持的语言列表
+
+[source,rust]
+----
+pub fn available_game_languages(&self) -> Vec<String>
+----
+
+获取当前应用支持的语言列表，以逗号分隔。
+
+参见本地化和语言，了解可能会返回的语言的完整列表。
+
+*返回：* Vec<String>
+
+*另见：* GetCurrentGameLanguage, ISteamUtils::GetSteamUILanguage
+
+== 获取应用当前语言
+
+[source,rust]
+----
+pub fn current_game_language(&self) -> String
+----
+
+获取用户当前设置的语言。
+
+如果用户未明确选择产品语言，则回退至 Steam UI 语言。
+
+参见支持的语言，查看完整语言列表。
+
+*返回：* String
+
+*另见：* GetAvailableGameLanguages, ISteamUtils::GetSteamUILanguage
+
+== 获取测试分支名称
+
+[source,rust]
+----
+pub fn current_beta_name(&self) -> Option<String>
+----
+
+检查用户是否从一个测试版分支运行。
+
+如是，获取测试版分支名称；否则返回 None。
+
+== 获取命令行参数
+
+[source,rust]
+----
+pub fn launch_command_line(&self) -> String
+----
+
+如果游戏通过 Steam URL 如 `steam://run/<appid>//<command line>/` 启动，获取命令行。
+
+此方法优于通过操作系统用命令行启动，后者可能存在安全隐患。
+
+为了使丰富状态加入能使用此方式，而不被置于操作系统命令行，您必须在您应用的“安装”>“通用安装”页面上启用“使用启动命令行”。
+
+*返回：* String
+
+*另见：* NewUrlLaunchParameters_t
+
+== 参考
+
+https://docs.rs/steamworks/0.11.0/steamworks/struct.Apps.html
+
+https://partner.steamgames.com/doc/api/ISteamApps
