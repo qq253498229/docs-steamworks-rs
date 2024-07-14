@@ -1,0 +1,365 @@
+= MatchMaking (匹配大厅)
+
+访问 Steam 匹配大厅相关接口
+
+== 获取大厅列表
+
+[source,rust]
+----
+pub fn request_lobby_list<F>(&self, cb: F)
+where
+    F: FnOnce(SResult<Vec<LobbyId>>) + 'static + Send,
+----
+
+获得过滤后的相关大厅列表。如何设置过滤器在后面有api。
+
+每次只能有一个活跃的大厅搜索。
+如果新请求被启动，旧请求将被取消。
+视用户与 Steam 后端的连接状况而定，此调用可能需要 300 毫秒至 5 秒完成，20 秒则超时。
+
+== 创建匹配大厅
+
+[source,rust]
+----
+pub fn create_lobby<F>(&self, ty: LobbyType, max_members: u32, cb: F)
+where
+    F: FnOnce(SResult<LobbyId>) + 'static + Send,
+----
+
+创建一个新的匹配大厅。
+
+参数LobbyType是大厅的可见性，max_members是大厅玩家的最大数量，不能超过250人。
+
+*LobbyType*
+
+* `Private` (0.只能通过邀请加入大厅)
+* `FriendsOnly` (1.好友和受邀者可加入，但不出现在大厅列表中)
+* `Public` (2.可以通过搜索返回并对好友可见)
+* `Invisible` (3.通过搜索返回，但不对好友可见。如果希望一个用户同时在两个大厅中，比如将组配到一起时很有用。 用户只能加入一个普通大厅，最多可加入两个不可见大厅。)
+
+*事件*
+
+* `LobbyEnter`
+* `LobbyCreated`
+
+== 加入匹配大厅
+
+[source,rust]
+----
+pub fn join_lobby<F>(&self, lobby: LobbyId, cb: F)
+where
+    F: FnOnce(Result<LobbyId, ()>) + 'static + Send,
+----
+
+根据指定id加入匹配大厅。
+
+== 获取大厅数据数量
+
+[source,rust]
+----
+pub fn lobby_data_count(&self, lobby: LobbyId) -> u32
+----
+
+获得指定大厅中设置的元数据键的数量。
+
+== 获取大厅数据
+
+[source,rust]
+----
+pub fn lobby_data(&self, lobby: LobbyId, key: &str) -> Option<&str>
+----
+
+获取与指定大厅中的指定键相关的元数据。
+
+== 通过索引获取大厅数据
+
+[source,rust]
+----
+pub fn lobby_data_by_index(
+    &self,
+    lobby: LobbyId,
+    idx: u32
+) -> Option<(String, String)>
+----
+
+通过索引获得一个大厅的元数据键/值对。
+
+== 设置大厅数据
+
+[source,rust]
+----
+pub fn set_lobby_data(&self, lobby: LobbyId, key: &str, value: &str) -> bool
+----
+
+在大厅元数据中设置键/值对。 此函数可用于设置大厅名称、当前地图、游戏模式等。
+
+*返回：* bool
+
+* *true*， 表示数据设置成功。 如果 LobbyId 为无效索引或键/值太长，则为 *false*。
+
+== 删除大厅数据
+
+[source,rust]
+----
+pub fn delete_lobby_data(&self, lobby: LobbyId, key: &str) -> bool
+----
+
+根据元数据键从大厅中移除元数据。
+
+此操作只能由大厅所有者完成。
+
+== 离开大厅
+
+[source,rust]
+----
+pub fn leave_lobby(&self, lobby: LobbyId)
+----
+
+离开指定大厅。
+
+== 获取玩家数量限制
+
+[source,rust]
+----
+pub fn lobby_member_limit(&self, lobby: LobbyId) -> Option<usize>
+----
+
+获取当前对于可以加入的玩家数量的限制。
+
+如果没有定义限制，返回 [None]。
+
+== 获取大厅所有者
+
+[source,rust]
+----
+pub fn lobby_owner(&self, lobby: LobbyId) -> SteamId
+----
+
+返回当前大厅所有者。
+
+== 获取大厅中的用户数量
+
+[source,rust]
+----
+pub fn lobby_member_count(&self, lobby: LobbyId) -> usize
+----
+
+获得一个大厅中的用户数。
+
+当你不再大厅中时常用。
+
+*注意：* 当前用户必须在大厅中才能获取该大厅中其他用户的 Steam ID。
+
+== 获取大厅中的用户
+
+[source,rust]
+----
+pub fn lobby_members(&self, lobby: LobbyId) -> Vec<SteamId>
+----
+
+获得一个大厅中的用户列表。
+
+== 设置大厅是否可加入
+
+[source,rust]
+----
+pub fn set_lobby_joinable(&self, lobby: LobbyId, joinable: bool) -> bool
+----
+
+设置一个大厅是否对其他玩家开放。 创建新的大厅后默认可以加入。
+
+如果禁止加入，那么没有玩家可以加入，即便他们是好友或已经接受了邀请。
+
+禁止加入的大厅将不会从大厅搜索中返回。
+
+*返回：* bool
+
+* *true*， 表示成功；否则，如果您不是大厅所有者，则返回 *false*。
+
+== 在大厅中发送广播消息
+
+[source,rust]
+----
+pub fn send_lobby_chat_message(
+    &self,
+    lobby: LobbyId,
+    msg: &[u8]
+) -> Result<(), SteamError>
+----
+
+向大厅内的所有用户广播一个聊天（文本或二进制数据）消息。
+
+*参数*
+
+* `lobby`: 要向其发送聊天消息的大厅的 Steam ID。
+* `msg`: 可以是文本或二进制数据，最大可达 4kb。
+
+*说明*
+
+大厅里的所有用户（包括本地用户）将在收到消息的同时收到一个 LobbyChatMsg_t 回调。
+
+如果您发送的是二进制数据，则应在消息前附加一个标头，以便将其视为自定义数据，而不是旧的纯文本消息。
+
+对于需要进行决断的通信（例如，让用户从一组字符中挑选，并确保只有一个用户选择了一个字符），
+您可以使用大厅所有者作为决断者。 GetLobbyOwner 返回当前大厅的所有者。
+确保始终只有一个并仅有唯一的大厅成员是所有者。
+至于选择一个字符的方案，选择字符的用户会发送二进制消息“我想成为Zoe”，
+大厅所有者会看到该消息，
+并决定是否可行，然后广播相应的结果（用户 X 是 Zoe）。
+
+这些消息是通过 Steam 后端发送的，因此可用带宽有限。
+对于较高的流量，如声音或游戏数据，您最好使用 Steam 网络 API。
+
+*返回*
+
+如果消息发送成功则返回Ok(())。
+如果消息太小或太大，或无法连接至 Steam导致了异常，则返回SteamError
+
+== 为大厅列表添加字符过滤器
+
+[source,rust]
+----
+pub fn add_request_lobby_list_string_filter(
+    &self,
+    StringFilter: StringFilter<'_>
+) -> &Self
+----
+
+向大厅列表请求添加字符串比较过滤器。
+
+此方法添加一个过滤器，将大厅中特定的字符串属性与提供的值进行比较。符合此条件的大厅将包含在结果中。
+
+*参数*
+
+* `key`: 要比较的key值。
+* `value`: 要比较的value值。
+
+== 为大厅列表添加数值过滤器
+
+[source,rust]
+----
+pub fn add_request_lobby_list_numerical_filter(
+    &self,
+    NumberFilter: NumberFilter<'_>
+) -> &Self
+----
+
+向大厅列表请求添加数值比较过滤器。
+
+此方法添加一个过滤器，将大厅中特定的数值属性与提供的值进行比较。符合此条件的大厅将包含在结果中。
+
+*参数*
+
+* `key`: 要比较的key值。
+* `value`: 要比较的value值。
+
+== 为大厅列表添加排序过滤器
+
+[source,rust]
+----
+pub fn add_request_lobby_list_near_value_filter(
+    &self,
+    NearFilter: NearFilter<'_>
+) -> &Self
+----
+
+排序出最接近指定值的结果。
+
+接近筛选器实际上并不筛选出值，而只是影响结果的排序方式。
+您可以指定多个接近筛选器，第一个接近筛选器影响最大，最后一个筛选器影响最小。
+
+*参数*
+
+* `key`: 要排序的key值。
+* `value`: 要排序的value值。
+
+== 为大厅列表添加空位过滤器
+
+[source,rust]
+----
+pub fn set_request_lobby_list_slots_available_filter(
+    &self,
+    open_slots: u8
+) -> &Self
+----
+
+向大厅列表请求添加可用空位过滤器。
+
+此方法添加一个过滤器，包含具有特定数量空位的大厅。
+
+*参数*
+
+* `open_slots`: 必需开放的空位数量。
+
+== 为大厅列表添加距离过滤器
+
+[source,rust]
+----
+    pub fn set_request_lobby_list_distance_filter(
+    &self,
+    distance: DistanceFilter
+) -> &Self
+----
+
+设置要寻找的大厅的物理距离，这基于用户 IP 地址和 Steam 后端的 IP 位置地图。
+
+*参数*
+
+* `distance`: 指定最远距离。
+
+== 为大厅列表添加数量限制
+
+[source,rust]
+----
+pub fn set_request_lobby_list_result_count_filter(&self, count: u64) -> &Self
+----
+
+设置要返回的大厅的最大数量。 数量越少，下载大厅结果与详情到客户端的速度越快。
+
+*参数*
+
+* `count`: 要返回的大厅的最大数量。
+
+== 设置大厅列表过滤器
+
+[source,rust]
+----
+pub fn set_lobby_list_filter(&self, filter: LobbyListFilter<'_>) -> &Self
+----
+
+设置从 request_lobby_list 返回的大厅的过滤器。
+
+此方法用于对大厅列表检索过程应用各种过滤器。在调用 request_lobby_list 之前调用此方法，以确保在获取可用大厅列表时考虑指定的过滤器。
+
+
+*参数*
+
+* `filter`:  一个包含要应用的过滤条件的 LobbyListFilter 结构体。
+
+*示例*
+
+[source,rust]
+----
+fn main() {
+    let (client, single) = Client::init().unwrap();
+    client.matchmaking().set_lobby_list_filter(
+        LobbyListFilter {
+            string: Some(vec![
+                StringFilter(
+                    LobbyKey::new("name"), "My Lobby", StringFilterKind::Include
+                ),
+                StringFilter(
+                    LobbyKey::new("gamemode"), "ffa", StringFilterKind::Include
+                ),
+            ]),
+            number: Some(vec![
+                NumberFilter("elo", 1500, ComparisonFilter::GreaterThan),
+                NumberFilter("elo", 2000, ComparisonFilter::LessThan)
+            ]),
+            ..Default::default()
+        }
+    ).request_lobby_list(|lobbies| {
+        println!("Lobbies: {:?}", lobbies);
+    });
+}
+----

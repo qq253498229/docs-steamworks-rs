@@ -102,7 +102,7 @@ pub fn utils(&self) -> Utils<Manager>
 pub fn matchmaking(&self) -> Matchmaking<Manager>
 ----
 
-返回一个访问 Steam 匹配大厅接口的访问器。
+返回一个访问 Steam xref:matchmaking.adoc[匹配大厅] 接口的访问器。
 
 == 获取网络接口
 
