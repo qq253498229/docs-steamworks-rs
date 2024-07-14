@@ -1,5 +1,5 @@
 site:
-  title: docs-steamworks-rs
+  title: steamworks-rs
   start_page: docs-steamworks-rs::index.adoc
 content:
   sources:

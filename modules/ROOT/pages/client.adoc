@@ -1,0 +1,204 @@
+= Client(客户端)
+
+访问steam客户端主入口点相关接口
+
+提供了客户端对steamworks所有可用的API。
+
+== 基本用法
+
+[source,rust]
+----
+use steamworks::{Client};
+
+let (client, single) = Client::init().unwrap();
+----
+
+通过这段代码获取客户端实例，`client` 就是客户端实例，接下来的所有方法都通过client实例调用。
+
+NOTE: 在程序运行的目录下，必须有 _steam_appid.txt_ 文件，里面保存了你所开发的steam应用id。如果你还没有申请，请使用 *480*。
+
+NOTE: 除了 _steam_appid.txt_ 文件外，steamworks-rs 库在程序运行的目录下还需要官方提供的api文件，路径为: _target\<release-type>\build\steamworks-sys-<hash>\out_
+
+== 初始化
+
+[source,rust]
+----
+pub fn init() -> SIResult<(Client<ClientManager>, SingleClient<ClientManager>)>
+----
+
+尝试初始化steamworks api，并返回一个客户端来访问其余api。
+
+每个程序应该只有一个实例。
+
+*异常*
+
+这些情况可能会发生异常:
+
+* Steam客户端未运行
+* 无法确定游戏的app ID。
+如果游戏没有通过steam运行，可以通过在当前工作目录中放置带有ID的 `steam_appid.txt` 来提供。或者，您可以使用 `Client::init_app(<app_id>)` 强制指定应用ID。
+* 游戏未在与 Steam 客户端相同的用户/级别上运行
+* 用户未拥有该游戏
+* 应用ID未完全设置完成
+
+== 初始化应用
+
+[source,rust]
+----
+pub fn init_app<ID: Into<AppId>>(
+    app_id: ID
+) -> SIResult<(Client<ClientManager>, SingleClient<ClientManager>)>
+----
+
+尝试使用指定的app ID初始化Steamworks API，并返回一个客户端来访问其余api。
+
+每个程序应该只有一个实例。
+
+*异常*
+
+这些情况可能会发生异常:
+
+- Steam客户端未运行
+- 游戏未在与 Steam 客户端相同的用户/级别上运行
+- 用户未拥有该游戏
+- 应用ID未完全设置完成
+
+== 注册回调
+
+[source,rust]
+----
+pub fn register_callback<C, F>(&self, f: F) -> CallbackHandle<Manager>
+where
+    C: Callback,
+    F: FnMut(C) + 'static + Send
+----
+
+注册传递的函数作为给定类型的回调。
+
+当接受到事件时，回调将在调用 `run_callbacks` 的线程上运行。
+
+== 获取应用接口
+
+[source,rust]
+----
+pub fn apps(&self) -> Apps<Manager>
+----
+
+返回一个访问 Steam 应用接口的访问器。
+
+== 获取工具接口
+
+[source,rust]
+----
+pub fn utils(&self) -> Utils<Manager>
+----
+
+返回一个访问 Steam 工具接口的访问器。
+
+== 获取匹配大厅接口
+
+[source,rust]
+----
+pub fn matchmaking(&self) -> Matchmaking<Manager>
+----
+
+返回一个访问 Steam 匹配大厅接口的访问器。
+
+== 获取网络接口
+
+[source,rust]
+----
+pub fn networking(&self) -> Networking<Manager>
+----
+
+返回一个访问 Steam 网络接口的访问器。
+
+== 获取好友接口
+
+[source,rust]
+----
+pub fn friends(&self) -> Friends<Manager>
+----
+
+返回一个访问 Steam 好友接口的访问器。
+
+== 获取输入接口
+
+[source,rust]
+----
+pub fn input(&self) -> Input<Manager>
+----
+
+返回一个访问 Steam 输入接口的访问器。
+
+== 获取用户接口
+
+[source,rust]
+----
+pub fn user(&self) -> User<Manager>
+----
+
+返回一个访问 Steam 用户接口的访问器。
+
+== 获取用户统计接口
+
+[source,rust]
+----
+pub fn user_stats(&self) -> UserStats<Manager>
+----
+
+返回一个访问 Steam 用户统计接口的访问器。
+
+== 获取远程畅玩接口
+
+[source,rust]
+----
+pub fn remote_play(&self) -> RemotePlay<Manager>
+----
+
+返回一个访问 Steam 远程畅玩接口的访问器。
+
+== 获取远程存储接口
+
+[source,rust]
+----
+pub fn remote_storage(&self) -> RemoteStorage<Manager>
+----
+
+返回一个访问 Steam 远程存储接口的访问器。
+
+== 获取创意工坊接口
+
+[source,rust]
+----
+pub fn ugc(&self) -> UGC<Manager>
+----
+
+返回一个访问 Steam UGC（Steam 创意工坊）接口的访问器。
+
+== 获取网络消息接口
+
+[source,rust]
+----
+pub fn networking_messages(&self) -> NetworkingMessages<Manager>
+----
+
+访问 Steam 网络消息接口。
+
+== 获取网络sockets接口
+
+[source,rust]
+----
+pub fn networking_sockets(&self) -> NetworkingSockets<Manager>
+----
+
+访问 Steam 网络sockets接口。
+
+== 获取网络工具接口
+
+[source,rust]
+----
+pub fn networking_utils(&self) -> NetworkingUtils<Manager>
+----
+
+访问 Steam 网络工具接口。

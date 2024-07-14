@@ -1,0 +1,28 @@
+= Apps (应用)
+
+访问steam应用相关接口
+
+== 基本用法
+
+[source,rust]
+----
+let apps: Apps<ClientManager> = client.apps();
+----
+
+== 判断app是否已安装
+
+返回用户当前是否安装了给定ID的应用程序。
+
+这并不意味着用户拥有游戏。
+
+[source,rust]
+----
+pub fn is_app_installed(&self, app_id: AppId) -> bool
+----
+
+== 判断用户是否拥有并安装了指定的DLC
+
+[source,rust]
+----
+pub fn is_dlc_installed(&self, app_id: AppId) -> bool
+----
