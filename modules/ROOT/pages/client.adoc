@@ -93,7 +93,7 @@ pub fn apps(&self) -> Apps<Manager>
 pub fn utils(&self) -> Utils<Manager>
 ----
 
-返回一个访问 Steam 工具接口的访问器。
+返回一个访问 Steam xref:utils.adoc[工具接口] 的访问器。
 
 == 获取匹配大厅接口
 
