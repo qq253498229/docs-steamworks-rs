@@ -1,5 +1,5 @@
 site:
-  title: steamworks-rs
+  title: Steamworks for Rust
   start_page: docs-steamworks-rs::index.adoc
 content:
   sources:

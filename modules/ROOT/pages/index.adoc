@@ -1,3 +1,5 @@
-= 主页
+= Steamworks for Rust
 
-这里是主页
+此 link:https://crates.io/crates/steamworks[crate] 提供 link:https://partner.steamgames.com/doc/sdk[Steamworks SDK] 的 Rust 调用API。
+
+源码地址: https://github.com/Noxime/steamworks-rs
