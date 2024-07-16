@@ -1,0 +1,222 @@
+= User (用户)
+
+访问并对 Steam 用户信息进行使用的函数。
+
+这部分内容有点绕，建议同时参考 https://partner.steamgames.com/doc/features/auth[Steamworks 文献库 - 用户验证与所有权]，更容易理解。
+
+== 获取SteamId
+
+[source,rust]
+----
+pub fn steam_id(&self) -> SteamId
+----
+
+获取当前登录至 Steam 客户端帐户的 Steam ID。 通常被称为“当前用户”，或“本地用户”。
+
+Steam ID 是 Steam 帐户、Steam 组、大厅和聊天室的唯一标识符，用于在 Steamworks API 各部分中区分用户。
+
+== 获取用户等级
+
+[source,rust]
+----
+pub fn level(&self) -> u32
+----
+
+返回当前用户的等级
+
+== 判断是否连接到Steam服务器
+
+[source,rust]
+----
+pub fn logged_on(&self) -> bool
+----
+
+检查是否当前用户的 Steam 客户端已连接至 Steam 服务器。
+
+如果未连接，则不会启用 Steamworks API 提供的任何实时服务。 Steam 客户端将尽量频繁地自动尝试重新连接。 当连接恢复时，将发送出一个 SteamServersConnected_t 回调。
+
+您通常不需要自己进行检查。 所有依赖于它的 API 调用将进行内部检查。 当用户失去访问权限时，强行禁用内容通常会给用户带来不好的体验，您可能会阻止他们访问不需要实时连接 Steam 的 API。
+
+*返回：* bool
+
+* *true*， 如果 Steam 客户端当前实时连接到 Steam 服务器；
+* 否则，如果由于在本地电脑上出现连接问题，或者由于 Steam 服务器停机/繁忙而没有可用的连接，返回 *false*。
+
+== 获取身份凭证-通过SteamId
+
+[source,rust]
+----
+pub fn authentication_session_ticket_with_steam_id(
+    &self,
+    steam_id: SteamId
+) -> (AuthTicket, Vec<u8>)
+----
+
+获取一个会话身份凭证，该凭证可以发送给希望验证您身份的其他人。
+
+该凭证不应该重复使用。
+
+在为 Web API 创建凭证时，您应等待 AuthSessionTicketResponse 事件后再尝试使用该凭证。
+
+当多人会话终止时，您必须调用 <<cancel_authentication_ticket>>。
+
+NOTE: 注意：此 API 不能用于创建供 Web API 使用的凭证。 请改用 <<authentication_session_ticket_for_webapi>> 调用。
+
+[[authentication_session_ticket]]
+== 获取身份凭证
+
+[source,rust]
+----
+pub fn authentication_session_ticket(
+    &self,
+    network_identity: NetworkingIdentity
+) -> (AuthTicket, Vec<u8>)
+----
+
+获取一个会话身份凭证，该凭证可以发送给希望验证您身份的其他人。
+
+NOTE: 注意：此 API 不能用于创建供 Web API 使用的凭证。 请改用 <<authentication_session_ticket_for_webapi>> 调用。
+
+[[cancel_authentication_ticket]]
+== 取消身份凭证
+
+[source,rust]
+----
+pub fn cancel_authentication_ticket(&self, ticket: AuthTicket)
+----
+
+取消从 <<authentication_session_ticket>> 接收到的会话身份凭证。
+
+当您不再与指定用户进行游戏时，应调用此函数。
+
+[[begin_authentication_session]]
+== 验证并开启会话
+
+[source,rust]
+pub fn begin_authentication_session(
+    &self,
+    user: SteamId,
+    ticket: &[u8]
+) -> Result<(), AuthSessionError>
+----
+
+验证SteamId和凭证，以确保其有效且未被重复使用。
+
+如果对方下线或取消了这个凭证，将触发 ValidateAuthTicketResponse 回调。
+
+当多人会话终止时，您必须调用 <<end_authentication_session>>。
+
+[[end_authentication_session]]
+== 结束会话
+
+[source,rust]
+----
+pub fn end_authentication_session(&self, user: SteamId)
+----
+
+结束一个由 <<begin_authentication_session>> 开始的认证会话。
+
+当您不再与指定用户进行游戏时，应调用此函数。
+
+[[authentication_session_ticket_for_webapi]]
+== 获取webapi使用的身份凭证
+
+[source,rust]
+----
+pub fn authentication_session_ticket_for_webapi(
+    &self,
+    identity: &str
+) -> AuthTicket
+----
+
+获取一个身份凭证并发送给希望通过 Web API 验证您身份的用户。
+
+调用应用程序必须等待由 API 调用生成的 TicketForWebApiResponse 回调，以访问凭证。
+
+最佳实践是为每个将使用凭证的服务使用一个身份字符串。
+
+NOTE: 此 API 不能用于创建由 <<begin_authentication_session>> 使用的凭证。 请改用 <<authentication_session_ticket>> API。
+
+== 一段测试代码，帮助理解身份steam凭证机制
+
+[source,rust]
+----
+use std::error::Error;
+use std::process;
+use steamworks::Client;
+
+fn bytes_to_hex(vec: Vec<u8>) -> String {
+    vec.iter().map(|b| format!("{:02X}", b)).collect()
+}
+fn hex_to_bytes(hex: String) -> Result<Vec<u8>, Box<dyn Error>> {
+    let bytes: Result<Vec<u8>, _> = (0..hex.len())
+        .step_by(2)
+        .map(|i| u8::from_str_radix(&hex[i..i + 2], 16))
+        .collect();
+
+    bytes.map_err(|e| e.into())
+}
+#[test]
+fn test1() {
+    //初始化客户端，没开启steam客户端会报错
+    let (client, _) = Client::init().unwrap();
+
+    //获取用户接口
+    let user = client.user();
+
+    //判断是否登录了steam
+    let logged_on = user.logged_on();
+    if !logged_on {
+        println!("没有登录steam");
+        process::exit(1);
+    }
+
+    //获取用户等级
+    let level = user.level();
+    println!("用户等级:{level}");
+
+    //根据steam_id获取身份凭证
+    let steam_id = user.steam_id();
+    let (auth_ticket, vec) = user.authentication_session_ticket_with_steam_id(steam_id);
+
+    //测试凭证转hex_string
+    let hex = bytes_to_hex(vec);
+    println!("获取凭证的hex_string:{hex}");
+
+    //测试hex_string转会字节，为之后的验证做准备
+    let bytes = hex_to_bytes(hex);
+    println!("凭证转字节是否成功:{}", bytes.is_ok());
+    let vec = bytes.unwrap();
+
+    //验证凭证并开启会话
+    let result = user.begin_authentication_session(steam_id, &vec);
+    println!("验证凭证并开启会话结果:{}", result.is_ok());
+
+    //结束会话
+    user.end_authentication_session(steam_id);
+
+    //再次开次会话
+    let result = user.begin_authentication_session(steam_id, &vec);
+    println!("重新验证凭证并开启会话结果:{}", result.is_ok());
+
+    //主动将凭证作废
+    user.cancel_authentication_ticket(auth_ticket);
+
+    //再次验证凭证并开启会话
+    let result = user.begin_authentication_session(steam_id, &vec);
+    println!("作废后验证凭证并开启会话结果:{}", result.is_ok());
+}
+----
+
+== 流程概括
+
+- 用户A申请凭证(authentication_session_ticket_with_steam_id)，并将凭证发送给B
+- 用户B验证该凭证，并开启会话(begin_authentication_session)
+- 用户B不想玩了，主动结束会话(end_authentication_session)。
+- 用户A将身份凭证作废(cancel_authentication_ticket)
+
+== 参考
+
+https://docs.rs/steamworks/latest/steamworks/struct.User.html
+
+https://partner.steamgames.com/doc/api/ISteamUser
