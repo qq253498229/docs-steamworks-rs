@@ -1,0 +1,314 @@
+= UserStats (用户状态)
+
+提供访问以及提交统计、成就与排行榜的函数。
+
+== 查询排行榜
+
+[source,rust]
+----
+pub fn find_leaderboard<F>(&self, name: &str, cb: F)
+where
+F: FnOnce(Result<Option<Leaderboard>, SteamError>) + 'static + Send,
+----
+
+通过名称查询排行榜。
+
+== 查询或创建排行榜
+
+[source,rust]
+----
+pub fn find_or_create_leaderboard<F>(
+    &self,
+    name: &str,
+    sort_method: LeaderboardSortMethod,
+    display_type: LeaderboardDisplayType,
+    cb: F
+)
+where
+    F: FnOnce(Result<Option<Leaderboard>, SteamError>) + 'static + Send,
+----
+
+通过名称获取排行榜。若该排行榜尚未创建，该函数将创建一个。
+
+*LeaderboardSortMethod*:
+
+* *None*: 0 只在排行榜无效时使用。绝不应自己设置此值。
+* *Ascending*: 1 最高分为最小的数字。
+* *Descending*: 2 最高分为最大的数字。
+
+*LeaderboardDisplayType*:
+
+* *None*: 0 此值只能在排行榜无效时使用。您绝不能自己设置此值。
+* *Numeric*: 1 得分只是简单的数字值。
+* *TimeSeconds*: 2 得分代表秒数表示的时间。
+* *TimeMilliSeconds*: 3 得分代表毫秒表示的时间。
+
+== 向排行榜上传用户得分
+
+[source,rust]
+----
+pub fn upload_leaderboard_score<F>(
+    &self,
+    leaderboard: &Leaderboard,
+    method: UploadScoreMethod,
+    score: i32,
+    details: &[i32],
+    cb: F
+)
+where
+    F: FnOnce(Result<Option<LeaderboardScoreUploaded>, SteamError>) + 'static + Send,
+----
+
+向指定的排行榜上传用户得分。
+
+*UploadScoreMethod*:
+
+* *KeepBest*: 1 排行榜将保存用户的最高分。
+* *ForceUpdate*: 2 排行榜将总是替换入指定得分。
+
+*LeaderboardScoreUploaded*:
+
+* *score: i32*: 尝试设置的得分。
+* *was_changed: bool*: 如果排行榜上的得分更改，为 true；否则，如果既有得分更高，则为 false。
+* *global_rank_new: i32*: 用户在此排行榜上的新全局排名。
+* *global_rank_previous: i32*: 用户在此排行榜上的上次全局排名。如果用户在排行榜上无既有条目，则为 0。
+
+== 下载排行榜详情
+
+[source,rust]
+----
+pub fn download_leaderboard_entries<F>(
+    &self,
+    leaderboard: &Leaderboard,
+    request: LeaderboardDataRequest,
+    start: usize,
+    end: usize,
+    max_details_len: usize,
+    cb: F
+)
+where
+    F: FnOnce(Result<Vec<LeaderboardEntry>, SteamError>) + 'static + Send,
+----
+
+为指定排行榜获取一系列排行榜条目。
+
+*LeaderboardDataRequest*:
+
+* *Global*: 0 用于按排行榜排名查询排行榜条目的连续范围。 开始参数与结束参数控制请求的范围。 例如，您可以设置开始为 1，结束为 10，显示排行榜上的前 10 名。
+* *GlobalAroundUser*: 1 用于获取相对一个用户条目的排行榜条目。 开始参数为要获取的在当前用户条目之前的条目数量，结束参数为在当前用户条目之后的条目数量。 当前用户条目总是包含在内。 例如，如果当前用户在排行榜上排第 5 名，设置开始为 -2，结束为 2，则将返回 5 项，第 3 名至第 7 名。 如果在用户条目前面或后面没有足够条目，Steam 将调整范围，尝试返回请求的条目数量。 例如，如果用户在排行榜上排第 1 位，将开始设置为 -2，结束设置为 2，Steam 将返回排行榜上的前 5 位。
+* *Friends*: 2 用于获得当前用户的好友的所有排行榜项目。 忽略开始参数与结束参数。
+
+*LeaderboardEntry*:
+
+* *user: SteamId*: 此条目所属的用户。
+* *global_rank: i32*: 以 [1..N] 为范围的此条目的全局排名，其中 N 为在排行榜中有条目的用户数量。
+* *score: i32*: 排行榜中设置的原始得分。
+* *details: Vec<i32>*: 此条目拥有的详情数量。
+
+== 获取排行榜句柄类型
+
+[source,rust]
+----
+pub fn get_leaderboard_display_type(
+    &self,
+    leaderboard: &Leaderboard
+) -> Option<LeaderboardDisplayType>
+----
+
+返回一个排行榜句柄的显示类型。 如果排行榜句柄无效，则返回 None。
+
+*LeaderboardDisplayType*:
+
+* *None*: 0 此值只能在排行榜无效时使用。您绝不能自己设置此值。
+* *Numeric*: 1 得分只是简单的数字值。
+* *TimeSeconds*: 2 得分代表秒数表示的时间。
+* *TimeMilliSeconds*: 3 得分代表毫秒表示的时间。
+
+== 获取排行榜排序方式
+
+[source,rust]
+----
+pub fn get_leaderboard_sort_method(
+    &self,
+    leaderboard: &Leaderboard
+) -> Option<LeaderboardSortMethod>
+----
+
+返回排行榜句柄的排序顺序。 如果排行榜句柄无效，则返回 None。
+
+*LeaderboardSortMethod*:
+
+* *None*: 0 只在排行榜无效时使用。绝不应自己设置此值。
+* *Ascending*: 1 最高分为最小的数字。
+* *Descending*: 2 最高分为最大的数字。
+
+== 获取排行榜句柄名称
+
+[source,rust]
+----
+pub fn get_leaderboard_name(&self, leaderboard: &Leaderboard) -> String
+----
+
+返回排行榜句柄名称。 如果排行榜句柄无效，则返回空字符串。
+
+== 获取排行榜详情数量
+
+[source,rust]
+----
+pub fn get_leaderboard_entry_count(&self, leaderboard: &Leaderboard) -> i32
+----
+
+返回一个排行榜中的条目总数。 如果排行榜句柄无效，则返回0。
+
+== 请求用户当前状态和成就
+
+[source,rust]
+----
+pub fn request_current_stats(&self)
+----
+
+向服务器异步请求用户的当前统计与成就。
+
+触发一个UserStatsReceived回调函数。
+
+== 获取全部成就百分比数据
+
+[source,rust]
+----
+pub fn request_global_achievement_percentages<F>(&self, cb: F)
+where
+    F: FnOnce(Result<GameId, SteamError>) + 'static + Send,
+----
+
+异步获取全球获得该游戏各个成就的玩家百分比数据。
+
+您必须先调用 request_current_stats()，且须通过其回调返回成功之后，才能调用此函数。
+
+NOTE: 不确定这是否适用，因为其他需要调用 `request_current_stats()` 的成就功能并不需要专门调用该函数就可以成功完成。 也许它通过 `Client::init()/init_app()` 以某种方式自动运行？
+
+== 保存状态
+
+[source,rust]
+----
+pub fn store_stats(&self) -> Result<(), ()>
+----
+
+将变动的统计与成就数据发送至服务器进行持久保存。
+
+若失败，则不会发送任何数据至服务器。 建议不断重试，直至调用成功。
+
+此调用会受到速率限制。 调用频率应该以分钟计，而非秒计。 您应只在重大状态更改时调用此函数，比如回合结束、地图更改或用户离开服务器时。
+
+如果在您的应用程序进程结束时，您在本地保存有统计或成就，且尚未使用此函数上传，那么此函数将自动调用。
+
+您可以在 *%steam_install%\logs\stats_log.txt* 文件中找到更多调试信息。
+
+如果成功则会触发UserStatsStored回调函数。 如果成就已经解锁则会触发UserAchievementStored回调函数。 需要先调用 request_current_stats() 并成功处理 UserStatsReceived 的回调。
+
+== 重置全部状态
+
+[source,rust]
+----
+pub fn reset_all_stats(&self, achievements_too: bool) -> Result<(), ()>
+----
+
+重置当前用户的全部状态，且可选择是否重置成就。
+
+== 获取状态(i32类型)
+
+[source,rust]
+----
+pub fn get_stat_i32(&self, name: &str) -> Result<i32, ()>
+----
+
+获取当前用户的当前统计值。
+
+指定的统计数据必须存在并与 Steamworks 应用管理网站上设置的类型匹配。
+
+需要先调用 `request_current_stats()` 并且成功处理 `UserStatsReceived` 回调。
+
+== 设置状态(i32类型)
+
+[source,rust]
+----
+pub fn set_stat_i32(&self, name: &str, stat: i32) -> Result<(), ()>
+----
+
+为当前用户设置/更新给定统计的值。
+
+此调用只修改 Steam 的内存状态，因此开销较小。 这样做使 Steam 在游戏崩溃或意外关闭时能存留更改。 要将统计提交至服务器，必须调用 `store_stats()`。
+
+指定的统计数据必须存在并与 Steamworks 应用管理网站上设置的类型匹配。
+
+需要先调用 `request_current_stats()` 并且成功处理 `UserStatsReceived` 回调。
+
+== 获取状态(f32类型)
+
+[source,rust]
+----
+pub fn get_stat_f32(&self, name: &str) -> Result<f32, ()>
+----
+
+获取当前用户的当前统计值。
+
+指定的统计数据必须存在并与 Steamworks 应用管理网站上设置的类型匹配。
+
+需要先调用 `request_current_stats()` 并且成功处理 `UserStatsReceived` 回调。
+
+== 设置状态(f32类型)
+
+[source,rust]
+----
+pub fn set_stat_f32(&self, name: &str, stat: f32) -> Result<(), ()>
+----
+
+为当前用户设置/更新给定统计的值。
+
+此调用只修改 Steam 的内存状态，因此开销较小。 这样做使 Steam 在游戏崩溃或意外关闭时能存留更改。 要将统计提交至服务器，必须调用 `store_stats()`。
+
+指定的统计数据必须存在并与 Steamworks 应用管理网站上设置的类型匹配。
+
+需要先调用 `request_current_stats()` 并且成功处理 `UserStatsReceived` 回调。
+
+== 获取成就的解锁状态
+
+[source,rust]
+----
+pub fn achievement(&self, name: &str) -> AchievementHelper<'_, Manager>
+----
+
+访问给定成就的成就 API，成就的“API 名称”。
+
+需要先调用 `request_current_stats()` 并且成功处理 `UserStatsReceived` 回调。
+
+== 获取全部成就的数量
+
+[source,rust]
+----
+pub fn get_num_achievements(&self) -> Result<u32, ()>
+----
+
+获取在 Steamworks 网站的“应用管理员”中定义的成就数量。
+
+这用于遍历 `GetAchievementName` 的所有成就。
+
+如果当前应用 ID 无成就，则返回 0。
+
+NOTE: 对于应用 ID 480（Spacewar），会返回错误！
+
+== 获取应用所有成就名
+
+[source,rust]
+----
+pub fn get_achievement_names(&self) -> Option<Vec<String>>
+----
+
+返回当前应用 ID 的所有成就名称列表。
+
+如果 `iAchievement` 不是有效索引，则成就名称返回为空字符串，并且当前应用 ID 必须有成就。
+
+== 参考
+
+https://docs.rs/steamworks/latest/steamworks/struct.UserStats.html
+
+https://partner.steamgames.com/doc/api/ISteamUserStats
