@@ -28,7 +28,6 @@ pub fn ip_country(&self) -> String
 
 返回客户端正在运行的 2 位 ISO 3166-1-alpha-2 格式的国家代码。
 
-
 == 获取UI语言
 
 [source,rust]

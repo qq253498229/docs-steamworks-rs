@@ -9,9 +9,7 @@ Steam 输入 API 是一个基于操作的灵活 API，支持所有主要控制�
 pub fn init(&self, explicitly_call_run_frame: bool)
 ----
 
-在开始使用此接口时必须调用 `Init`。
-如果调用了 `explicitly_call_run_frame`，则需要在每一帧手动调用 `RunFrame`，
-否则在调用 `SteamAPI_RunCallbacks()` 时会更新 Steam Input。
+在开始使用此接口时必须调用 `Init`。 如果调用了 `explicitly_call_run_frame`，则需要在每一帧手动调用 `RunFrame`， 否则在调用 `SteamAPI_RunCallbacks()` 时会更新 Steam Input。
 
 == 刷新当前帧
 

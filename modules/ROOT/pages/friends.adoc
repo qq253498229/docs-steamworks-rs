@@ -104,9 +104,9 @@ pub fn activate_game_overlay_to_store(
 
 *参数*
 
-* `None`:	0 无。
-* `AddToCart`:	1 已弃用，现在与 k_eOverlayTostoreflag_addToCartandShow 的工作原理相同。
-* `AddToCartAndShow`:	2 将指定的 AppID 加入用户的购物车并显示商店页面。
+* `None`: 0 无。
+* `AddToCart`: 1 已弃用，现在与 k_eOverlayTostoreflag_addToCartandShow 的工作原理相同。
+* `AddToCartAndShow`: 2 将指定的 AppID 加入用户的购物车并显示商店页面。
 
 == 激活游戏叠加界面用户对话框
 
@@ -176,9 +176,7 @@ pub fn get_user_restrictions(&self) -> UserRestriction
 
 检查当前用户是否被禁止聊天。
 
-如果被禁止，则无法发送或接收任何文字/语音聊天消息，也无法看到自定义的头像。
-被禁止聊天的用户无法添加好友或加入任何组。
-被禁止的用户依然可以在线，并发送/接收游戏邀请。
+如果被禁止，则无法发送或接收任何文字/语音聊天消息，也无法看到自定义的头像。 被禁止聊天的用户无法添加好友或加入任何组。 被禁止的用户依然可以在线，并发送/接收游戏邀请。
 
 == 参考
 
