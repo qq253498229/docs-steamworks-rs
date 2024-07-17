@@ -1,0 +1,71 @@
+= NetworkingUtils (网络工具)
+
+用于检查本地网络环境并对 ping 进行估测的杂项网络实用工具。
+
+== 分配并初始化消息
+
+[source,rust]
+----
+pub fn allocate_message(&self, buffer_size: usize) -> NetworkingMessage<Manager>
+----
+
+分配并初始化消息对象。 调用此函数的通常原因是将其传递至 ISteamNetworkingSockets::SendMessages。 返回的对象中所有相关字段都会清零。
+
+您还可以申请此系统分配空间以容纳有效负载本身。 如果 cbAllocateBuffer 为非零的值，系统将分配内存以容纳至少 cbAllocateBuffer 字节的有效负载。 m_pData 将会指向被分配的缓冲区，m_cbSize 将会设为其大小，m_pfnFreeData 将会设为合适的函数以清空缓冲区。
+
+如果 cbAllocateBuffer=0，则没有分配缓冲区。 m_pData 将为 NULL，m_cbSize 将为零，m_pfnFreeData 将为 NULL。 您将需要为每一个都进行设置。
+
+== 初始化与状态检查
+
+[source,rust]
+----
+pub fn init_relay_network_access(&self)
+----
+
+如果您知道您将会使用中继网路（比如您预期会进行 P2P 连接），调用此函数以初始化中继网络。 如果您不调用此函数，初始化将会被推迟，直到您首次看到需要访问中继网络的功能，而这会推迟首次访问。
+
+如果之前的尝试失败，您也可以调用此函数以强制进行重试。 执行任何要求访问中继网络的操作也将会触发一次重试，因此从不严格要求调用此函数， 但如果预期会访问中继网络，那么在启动程序时调用可能会有帮助。
+
+使用 GetRelayNetworkStatus 或侦听 SteamRelayNetworkStatus_t 调用，以了解初始化何时完成。 初始化一般在几秒内完成。
+
+NOTE: 托管于已知数据中心的专用服务器无需调用此函数，因为这些服务器不会做出路由决定。 然而，如果专用服务器将会使用 P2P 功能，那么它将会作为“客户端”，应该调用此函数。
+
+== 获取网络状态
+
+[source,rust]
+----
+pub fn relay_network_status(&self) -> NetworkingAvailabilityResult
+----
+
+获取中继网络的当前状态。
+
+如果你想获得更多详细信息，请使用 detailed_relay_network_status 替换
+
+== 获取网络状态详情
+
+[source,rust]
+----
+pub fn detailed_relay_network_status(&self) -> RelayNetworkStatus
+----
+
+获取中继网络的当前详细状态。
+
+== 网络状态回调
+
+[source,rust]
+----
+pub fn relay_network_status_callback(
+    &self,
+    callback: impl FnMut(RelayNetworkStatus) + Send + 'static
+)
+----
+
+注册用于中继网络状态更新的回调函数。
+
+多次调用此函数将替换之前的回调函数。
+
+== 参考
+
+https://docs.rs/steamworks/latest/steamworks/networking_utils/struct.NetworkingUtils.html
+
+https://partner.steamgames.com/doc/api/ISteamNetworkingUtils
