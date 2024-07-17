@@ -1,0 +1,60 @@
+= RemoteStorage (远程存储)
+
+提供函数以读取、写入、访问能远程存储在 Steam 云上的文件。
+
+== 切换云服务开启状态
+
+[source,rust]
+----
+pub fn set_cloud_enabled_for_app(&self, enabled: bool)
+----
+
+让您的应用程序在启用或禁用 Steam 云间切换。
+
+== 判断应用是否启用了云服务
+
+[source,rust]
+----
+pub fn is_cloud_enabled_for_app(&self) -> bool
+----
+
+查看是否此用户启用了按游戏设置的 Steam 云，或在“游戏属性”->“更新”对话框中禁用了 Steam 云。
+
+NOTE: 这个选项与账号设置中的设置相独立
+
+== 判断账号是否启用了云服务
+
+[source,rust]
+----
+pub fn is_cloud_enabled_for_account(&self) -> bool
+----
+
+检查是否此用户帐户中的所有 Steam 云设置都已启用，或者是否用户在“设置”->“云”对话框禁用了 Steam 云。
+
+NOTE: 这个选项与应用设置中的设置相独立
+
+== 获取全部云文件信息
+
+[source,rust]
+----
+pub fn files(&self) -> Vec<SteamFileInfo>
+----
+
+返回云存储上的全部文件信息。
+
+== 获取steam云文件
+
+[source,rust]
+----
+pub fn file(&self, name: &str) -> SteamFile<Manager>
+----
+
+返回一个steam云文件的句柄。
+
+文件不是必须存在。
+
+== 参考
+
+https://docs.rs/steamworks/latest/steamworks/struct.RemoteStorage.html
+
+https://partner.steamgames.com/doc/api/ISteamRemoteStorage
