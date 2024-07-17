@@ -1,0 +1,199 @@
+= NetworkingSockets (网络连接)
+
+== 创建连接监听-ip
+
+[source,rust]
+----
+pub fn create_listen_socket_ip(
+    &self,
+    local_address: SocketAddr,
+    options: impl IntoIterator<Item = NetworkingConfigEntry>
+) -> Result<ListenSocket<Manager>, InvalidHandle>
+----
+
+通过普通 UDP（IPv4 或 IPv6）调用 ConnectByIPAddress，创建"服务器"连接，以侦听要连接的客户端。
+
+您必须选择一个要侦听的特定本地端口，并将其设置为本地地址的端口字段。
+
+通常您会将地址的 IP 部分设置为零，（SteamNetworkingIPAddr::Clear())。 这意味着您将不会绑定至任何特定的本地接口（即和简单连接代码中的 INADDR_ANY 一样的接口）。 此外，如果可能，连接将绑定在“dual stack”模式，这意味着它可以同时接受 IPv4 和 IPv6 客户端连接。 如果您非常希望绑定特定接口，则可将本地地址设置为适当的 IPv4 或 IPv6 IP。
+
+如果您需要设置任何初始配置选项，请在此传入。 若要进一步了解为什么这么做要好于在创建后“立即”设置选项，请参见 SteamNetworkingConfigValue_t。
+
+当客户端尝试连接时，将会发布 SteamNetConnectionStatusChangedCallback_t。 连接将处于 k_ESteamNetworkingConnectionState_Connecting 状态。
+
+== 通过ip地址进行连接
+
+[source,rust]
+----
+pub fn connect_by_ip_address(
+    &self,
+    address: SocketAddr,
+    options: impl IntoIterator<Item = NetworkingConfigEntry>
+) -> Result<NetConnection<Manager>, InvalidHandle>
+----
+
+创建连接并通过 UDP 在给定 IPv4 或 IPv6 地址与“服务器”交谈。 远程主机必须在指定端口上对 CreateListenSocketIP 进行相应的调用以进行侦听。
+
+在我们开始连接时将会触发一个 SteamNetConnectionStatusChangedCallback_t 回调，在超时或连接成功时会触发另一个。
+
+如果服务器没有配置任何身份，那么其网络地址将会是唯一使用的身份。 或者，网络主机可能会提供一个平台专属的身份，可能会有能验证身份的有效证书，也可能没有。 ( 这些细节将包含在 SteamNetConnectionStatusChangedCallback_t 中。) 由您的应用程序决定是否允许该连接。
+
+默认情况下，所有连接将获得足够防止随意窃听的基本加密。 但请注意，没有证书（或通过其他带外机制分发的共享密钥）， 您无法知道另一端是谁，因此容易受到中间人攻击。
+
+如果您需要设置任何初始配置选项，请在此传入。 若要进一步了解为什么这么做要好于在创建后“立即”设置选项，请参见 SteamNetworkingConfigValue_t。
+
+== 创建连接监听-p2p
+
+[source,rust]
+----
+pub fn create_listen_socket_p2p(
+    &self,
+    local_virtual_port: i32,
+    options: impl IntoIterator<Item = NetworkingConfigEntry>
+) -> Result<ListenSocket<Manager>, InvalidHandle>
+----
+
+和 CreateListenSocketIP 相似，但客户端会使用 ConnectP2P 进行连接。 连接将通过 Valve 网络中继。
+
+nLocalVirtualPort 会指明客户端将如何通过 ConnectP2P 连接至此套接字。 应用程序仅使用一个侦听套接字是很常见的；在这种情况下，使用“0”。 如果您需要开启多个侦听套接字，并让客户端能够连接至其中一个， 那么 nLocalVirtualPort 应当是一个较小的整数（<1000），且您创建的每个侦听套接字都有独一无二的一个。
+
+如果您使用此方法，最好在应用初始化时调用 ISteamNetworkingUtils::InitRelayNetworkAccess()。
+
+如果您正在已知数据中心的专用服务器上侦听，就可以使用此函数而不是 CreateHostedDedicatedServerListenSocket，这样客户端无需票证就可连接。 任何拥有该应用程序并登录 Steam 的用户都可以尝试连接到您的服务器。 此外，连接尝试可能需要客户端连接到 Steam，这是另一个可能会失败的组成部分。 使用票证时，一旦获得票证，即使客户端与 Steam 断开连接或 Steam 离线，也可以连接到您的服务器。
+
+如果您需要设置任何初始配置选项，请在此传入。 若要进一步了解为什么这么做要好于在创建后“立即”设置选项，请参见 SteamNetworkingConfigValue_t。
+
+== 进行p2p连接
+
+[source,rust]
+----
+pub fn connect_p2p(
+    &self,
+    identity_remote: NetworkingIdentity,
+    remote_virtual_port: i32,
+    options: impl IntoIterator<Item = NetworkingConfigEntry>
+) -> Result<NetConnection<Manager>, InvalidHandle>
+----
+
+开始连接通过平台专属识别符而识别的对等端。 这将会使用默认的对接服务，取决于平台和库配置。 （如，在 Steam 上，将会通过 Steam 后端。）流量会通过 Steam 数据报中继网络中继。
+
+如果您需要设置任何初始配置选项，请在此传入。 若要进一步了解为什么这么做要好于在创建后“立即”设置选项，请参见 SteamNetworkingConfigValue_t。
+
+要使用您自己的信号服务，请参见：
+
+* *ConnectP2PCustomSignaling*
+* *k_ESteamNetworkingConfig_Callback_CreateConnectionSignaling*
+
+== 创建专用托管服务器连接监听
+
+[source,rust]
+----
+pub fn create_hosted_dedicated_server_listen_socket(
+    &self,
+    local_virtual_port: u32,
+    options: impl IntoIterator<Item = NetworkingConfigEntry>
+) -> Result<ListenSocket<Manager>, InvalidHandle>
+----
+
+在指定的虚拟端口上创建一个侦听套接字。 使用的物理 UDP 端口将由 SDR_LISTEN_PORT 环境变量决定。 如果未配置 UDP 端口，则此调用将失败。
+
+请注意，此调用必须通过 SteamGameServerNetworkingSockets() 接口进行。
+
+当您使用票证生成器库来签发自己的票证时，应使用此函数。 连接到此虚拟端口上的服务器的客户端将需要拥有票证，且必须使用 ConnectToHostedDedicatedServer 进行连接。
+
+如果您需要设置任何初始配置选项，请在此传入。 若要进一步了解为什么这么做要好于在创建后“立即”设置选项，请参见 SteamNetworkingConfigValue_t。
+
+== 初始化身份验证
+
+[source,rust]
+----
+pub fn init_authentication(
+    &self
+) -> Result<NetworkingAvailability, NetworkingAvailabilityError>
+----
+
+表明我们准备好参与经过验证的通信的意愿。 如果我们目前还没有准备好，那么要采取步骤，以获取必要的证书。 （这包括给我们的证书，以及对等端身份验证所需的所有 CA 证书。）
+
+如果您知道自己将要建立经过验证的连接，则可以在程序初始化时进行调用，这样在尝试进行这些连接时我们将立即准备就绪。 （请注意，除使用 k_ESteamNetworkingConfig_IP_AllowWithoutAuth 禁用身份验证的普通 UDP 连接外，基本上所有连接都需要身份验证。） 如果您不调用此函数，我们将等到需要利用这些资源的功能触发。
+
+如果发生故障，您也可以调用此函数强制重试。 若尝试失败，我们将不会自动重试。 在这方面，尝试并失败之后的系统行为与第一次尝试之前的行为相同： 尝试通过验证的通信或调用此函数将调用系统以尝试获取必要的资源。
+
+您可以使用 GetAuthenticationStatus 或侦听 SteamNetAuthenticationStatus_t 来监视状态。
+
+返回将从 GetAuthenticationStatus 返回的当前值。
+
+== 创建轮询组
+
+[source,rust]
+----
+pub fn create_poll_group(&self) -> NetPollGroup<Manager>
+----
+
+创建一个新的轮询组。
+
+使用 DestroyPollGroup 完成操作后，应该销毁轮询组。
+
+== 获取身份验证状态
+
+[source,rust]
+----
+pub fn get_authentication_status(
+    &self
+) -> Result<NetworkingAvailability, NetworkingAvailabilityError>
+----
+
+== 获取连接信息
+
+[source,rust]
+----
+pub fn get_connection_info(
+    &self,
+    connection: &NetConnection<Manager>
+) -> Result<NetConnectionInfo, bool>
+----
+
+返回有关连接的高级状态的基本信息。
+
+如果连接句柄无效，则返回 false。
+
+== 获取实时连接状态
+
+[source,rust]
+----
+pub fn get_realtime_connection_status(
+    &self,
+    connection: &NetConnection<Manager>,
+    lanes: i32
+) -> Result<(NetConnectionRealTimeInfo, Vec<NetConnectionRealTimeLaneStatus>), SteamError>
+----
+
+返回有关实时连接状态和每个通道的队列状态的一小组信息。
+
+在输入时，nLanes 会指定 pLanes 数组的长度。 如果您不希望接收任何通道数据，则该值可为 0。 该值可以小于配置的通道总数。
+
+pLanes 指向将接收某通道专用的信息的数组。 如果不需要，可为 NULL。
+
+[source,rust]
+----
+pub fn configure_connection_lanes(
+    &self,
+    connection: &NetConnection<Manager>,
+    num_lanes: i32,
+    lane_priorities: &[i32],
+    lane_weights: &[u16]
+) -> Result<(), SteamError>
+----
+
+在连接上配置多个出站消息流（“lanes通道”），并控制它们之间的队头阻塞。 给定通道内的消息始终按照其队列顺序发送，但来自不同通道的消息可能会乱序发送。 每个通道都有其自己的消息编号序列。 每个通道上发送的第一条消息将被分配编号 1。
+
+每个通道都有一个“优先级”。 仅当所有较高优先级通道都为空时，才会处理优先级低的通道。 此处仅考虑优先级值的顺序，而非其大小。 较高的数值优先于较低的数值。
+
+每个通道还配有一个权重，该权重控制该通道相对于同一优先级的其他通道消耗的带宽的大致比例。 （这是假设通道保持繁忙的情况。 空闲通道不会累积“credits积分”以在消息排队后使用。） 该值仅是相对于具有同一优先级的其他通道的比例。 对于具有不同优先级的通道，将以严格的优先级顺序为准，它们彼此之间的权重也互不相关。 也就是说，如果某通道具有唯一的优先级值，则该通道的权重值为何是无所谓的。
+
+示例：3 个通道，优先级分别为 { 0, 10, 10 }，权重为 { (NA), 20, 5 }。 第一个通道上发送的消息将始终先发送，其他两个通道中的消息将在之后发送。 因为没有其他优先级为 0 的通道，因此第一个通道的权重值是无关紧要的。 第二个和第三个通道将共享带宽，使用带宽的比例大约为 4:1。 （权重 { NA, 4, 1 } 是等效的。）
+
+== 参考
+
+https://docs.rs/steamworks/latest/steamworks/networking_sockets/struct.NetworkingSockets.html
+
+https://partner.steamgames.com/doc/api/ISteamNetworkingSockets
