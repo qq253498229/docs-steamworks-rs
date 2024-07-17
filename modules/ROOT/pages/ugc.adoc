@@ -1,0 +1,203 @@
+= UGC (创意工坊)
+
+创建、使用 Steam 创意工坊并与之互动的函数。
+
+== 暂停/继续下载
+
+[source,rust]
+----
+pub fn suspend_downloads(&self, suspend: bool)
+----
+
+暂停或者是继续恢复所有创意工坊的下载。
+
+== 创建物品
+
+[source,rust]
+----
+pub fn create_item<F>(&self, app_id: AppId, file_type: FileType, cb: F)
+where
+    F: FnOnce(Result<(PublishedFileId, bool), SteamError>) + 'static + Send,
+----
+
+创建一个尚无附加内容的新创意工坊物品。
+
+== 开始物品更新
+
+[source,rust]
+----
+pub fn start_item_update(
+    &self,
+    app_id: AppId,
+    file_id: PublishedFileId
+) -> UpdateHandle<Manager>
+----
+
+开始物品更新过程。
+
+== 订阅物品
+
+[source,rust]
+----
+pub fn subscribe_item<F>(&self, published_file_id: PublishedFileId, cb: F)
+where
+    F: FnOnce(Result<(), SteamError>) + 'static + Send,
+----
+
+订阅创意工坊物品。 会尽快下载并安装该物品。
+
+== 取消订阅物品
+
+[source,rust]
+----
+pub fn unsubscribe_item<F>(&self, published_file_id: PublishedFileId, cb: F)
+where
+    F: FnOnce(Result<(), SteamError>) + 'static + Send,
+----
+
+取消来自创意工坊物品的订阅。 退出游戏后会移除该物品。
+
+== 获取订阅物品列表
+
+[source,rust]
+----
+pub fn subscribed_items(&self) -> Vec<PublishedFileId>
+----
+
+获得当前游戏中，当前用户所订阅的所有物品的清单。
+
+== 获取物品状态
+
+[source,rust]
+----
+pub fn item_state(&self, item: PublishedFileId) -> ItemState
+----
+
+获取此客户端上创意工坊物品的当前状态。
+
+== 获取物品下载状态信息
+
+[source,rust]
+----
+pub fn item_download_info(&self, item: PublishedFileId) -> Option<(u64, u64)>
+----
+
+获取的创意工坊物品的下载状态信息。
+
+* *u64*: 返回当前已下载的字节
+* *u64*: 返回总字节数。 仅在下载开始后有效。
+
+== 获取物品安装状态信息
+
+[source,rust]
+----
+pub fn item_install_info(&self, item: PublishedFileId) -> Option<InstallInfo>
+----
+
+获取的创意工坊物品的安装状态信息。
+
+*InstallInfo*:
+
+* *folder: String*: 通过复制返回包含内容的文件夹的绝对路径。
+* *size_on_disk: u64*: 返回创意工坊物品的字节大小。
+* *timestamp: u32*: 返回创意工坊物品上次更新的时间。
+
+== 下载物品
+
+[source,rust]
+----
+pub fn download_item(&self, item: PublishedFileId, high_priority: bool) -> bool
+----
+
+下载或更新创意工坊物品。
+
+如果 *PublishedFileId* 无效或者是用户尚未登录，则返回 *false*
+
+*high_priority*: 以高优先级模式开始下载，暂停所有其他正在进行的 Steam 下载并立即开始下载此创意工坊物品。
+
+== 分页查询物品
+
+[source,rust]
+----
+pub fn query_all(
+    &self,
+    query_type: UGCQueryType,
+    item_type: UGCType,
+    appids: AppIDs,
+    page: u32
+) -> Result<QueryHandle<Manager>, CreateQueryError>
+----
+
+查询所有匹配的创意工坊物品分页列表。
+
+== 分页查询物品-根据用户
+
+[source,rust]
+----
+pub fn query_user(
+    &self,
+    account: AccountId,
+    list_type: UserList,
+    item_type: UGCType,
+    sort_order: UserListOrder,
+    appids: AppIDs,
+    page: u32
+) -> Result<QueryHandle<Manager>, CreateQueryError>
+----
+
+查询和用户相关的（例如，用户的订阅、收藏、点赞等）创意工坊物品分页列表。
+
+== 查询物品-根据id列表
+
+[source,rust]
+----
+pub fn query_items(
+    &self,
+    items: Vec<PublishedFileId>
+) -> Result<QueryHandle<Manager>, CreateQueryError>
+----
+
+== 查询物品-根据id
+
+[source,rust]
+----
+pub fn query_item(
+    &self,
+    item: PublishedFileId
+) -> Result<QueryHandle<Manager>, CreateQueryError>
+----
+
+== 删除物品
+
+[source,rust]
+----
+pub fn delete_item<F>(&self, published_file_id: PublishedFileId, cb: F)
+where
+    F: FnOnce(Result<(), SteamError>) + 'static + Send,
+----
+
+从Steam创意工坊中删除某个物品。
+
+== 为游戏服务器初始化文件夹
+
+[source,rust]
+----
+pub fn init_for_game_server(
+    &self,
+    workshop_depot: DepotId_t,
+    folder: &str
+) -> bool
+----
+
+初始化此UGC接口以用于Steam游戏服务器。
+
+* *workshop_depot*: 游戏服务器的 depot ID，您可以在SteamDB上找到。通常这只是应用程序ID。
+* *folder*: 存储创意工坊内容的绝对路径。
+
+成功时返回 *true*；如果调用用户不是游戏服务器，或者创意工坊当前正在更新其内容，则返回 *false*。
+
+== 参考
+
+https://docs.rs/steamworks/latest/steamworks/struct.UGC.html
+
+https://partner.steamgames.com/doc/api/ISteamUGC
