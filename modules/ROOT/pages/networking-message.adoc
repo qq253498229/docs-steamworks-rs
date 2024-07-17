@@ -1,0 +1,127 @@
+= NetworkingMessages (网络消息)
+
+网络 API 旨在使移植非面向连接的代码变得更简便，从而对 P2P 的连接性与 Steam 数据报中继 加以利用。
+
+== 向指定用户发送消息
+
+[source,rust]
+----
+pub fn send_message_to_user(
+    &self,
+    user: NetworkingIdentity,
+    send_type: SendFlags,
+    data: &[u8],
+    channel: u32
+) -> Result<(), SteamError>
+----
+
+给指定主机发送消息。
+
+如果我们尚未和该用户建立会话，则将会隐式建立会话。 我们开始发送消息数据之前可能需要几次握手。 如果握手失败，我们无法接通，错误会通过 `SteamNetworkingMessagesSessionFailed_t` 回调发布。 如果成功的话不会有提示。 （因此，应该让对方发送回复消息。）
+
+向主机发送消息会隐式接受任何来自主机的连接。
+
+`channel` 是能用来将消息传送到不同系统的路由编号。 为了从另一端获取数据，需要用同一频道号来调用 `ReceiveMessagesOnChannel()`。
+
+使用不同频道与同一用户通话仍旧会使用同一基础连接，以节省资源。 如果不需要这项功能，请用 0。 否则的话用小整数效率最高。
+
+将会保证发送至相同频道相同主机的可靠信息会被远程主机接收（如果有接收到的话）正好一次，并且会按照发送顺序接收。
+
+其他顺序一概没有保证！ 具体而言，不可靠的消息可能会被丢弃，或者乱序（相对于彼此及相对于可靠消息）传递，或多次接收。 在不同频道上的消息 *不* 保证会按发送顺序接收。
+
+若熟悉 TCP/IP 端口，或熟悉如何转换打开了多个套接字的现有基本代码，则需要注意： 您可能会注意到只有一个频道，用 TCP/IP 的话每个端点都有一个端口号。 可以把频道号想成目的地端口。 如果您需要让每条消息都包含源端口（以便接收方传送回复）的话，只要将其附在消息中即可。 这基本上就是 UDP 的运行方式！
+
+*返回：*
+
+* 如果成功，则返回 *k_EREsultOK*
+* 如果会话失败或者对等端关闭了会话，并且 k_nSteamNetworkingSend_AutoRestartBrokenSession 未被使用则返回 *k_EResultNoConnection* 。 （您可以使用 GetSessionConnectionInfo 获取详细信息。） 为了确认已知道会话中断并开始新的会话，您必须调用 CloseSessionWithUser。
+* 请参见 ISteamNetworkingSockets::SendMessageToConnection 查看更多可能返回的值。
+
+== 在指定频道接受消息
+
+[source,rust]
+----
+pub fn receive_messages_on_channel(
+    &self,
+    channel: u32,
+    batch_size: usize
+) -> Vec<NetworkingMessage<Manager>>
+----
+
+读取其他用户在某个频道发送的消息。
+
+`batch_size` 是一次最多可以接收的消息数量。
+
+*示例：*
+
+[source,rust]
+----
+let (client, single) = Client::init().unwrap();
+
+// run_callbacks must be called regularly, or no incoming connections can be received
+let callback_loop = std::thread::spawn(move || loop {
+    single.run_callbacks();
+    std::thread::sleep(Duration::from_millis(10));
+});
+let networking_messages = client.networking_messages();
+
+// Accept all new connections
+networking_messages.session_request_callback(|request| request.accept());
+
+let _received = networking_messages.receive_messages_on_channel(0, 10);
+----
+
+== 会话请求回调函数
+
+[source,rust]
+----
+pub fn session_request_callback(
+    &self,
+    callback: impl FnMut(SessionRequest<Manager>) + Send + 'static
+)
+----
+
+注册一个回调函数，每当一个对等方请求连接时将调用此回调。
+
+使用 `SessionRequest` 接受或拒绝连接。
+
+需要定期调用 `SingleClient.run_callbacks()`。多次调用此函数将替换之前的回调函数。
+
+*示例：*
+
+[source,rust]
+----
+let (client, single) = Client::init().unwrap();
+
+// run_callbacks must be called regularly, or no incoming connections can be received
+let callback_loop = std::thread::spawn(move || loop {
+    single.run_callbacks();
+    std::thread::sleep(Duration::from_millis(10));
+});
+let messages = client.networking_messages();
+
+// Accept all incoming connections
+messages.session_request_callback(|request| {
+    request.accept();
+});
+----
+
+== 会话失败回调函数
+
+[source,rust]
+----
+pub fn session_failed_callback(
+    &self,
+    callback: impl FnMut(NetConnectionInfo) + Send + 'static
+)
+----
+
+注册一个回调函数，每当连接未能建立时将调用此回调。
+
+需要定期调用 SingleClient.run_callbacks()。多次调用此函数将替换之前的回调函数。
+
+== 参考
+
+https://docs.rs/steamworks/latest/steamworks/networking_messages/struct.NetworkingMessages.html
+
+https://partner.steamgames.com/doc/api/ISteamNetworkingMessages#SteamNetworkingMessagesSessionRequest_t
