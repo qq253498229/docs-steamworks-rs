@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>UGC (创意工坊) :: Steamworks for Rust</title>
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../..">Steamworks for Rust</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs-steamworks-rs" data-version="0.11.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Steamworks for Rust</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="client.html">Client (客户端)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="app.html">Apps (应用)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="utils.html">Utils (工具)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="matchmaking.html">MatchMaking (匹配大厅)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking.html">Networking (网络)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="friends.html">Friends (好友)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="input.html">Input (输入)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user.html">User (用户)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user-stats.html">UserStats (用户状态)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-play.html">RemotePlay (远程畅玩)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-storage.html">RemoteStorage (远程存储)</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="ugc.html">UGC (创意工坊)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-message.html">NetworkingMessages (网络消息)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-sockets.html">NetworkingSockets (网络连接)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-utils.html">NetworkingUtils (网络工具)</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Steamworks for Rust</span>
+    <span class="version">0.11.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Steamworks for Rust</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">0.11.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Steamworks for Rust</a></li>
+    <li><a href="ugc.html">UGC (创意工坊)</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/qq253498229/docs-steamworks-rs/edit/master/modules/ROOT/pages/ugc.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="目录" data-levels="3">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">UGC (创意工坊)</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>创建、使用 Steam 创意工坊并与之互动的函数。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_暂停继续下载"><a class="anchor" href="#_暂停继续下载"></a>1. 暂停/继续下载</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn suspend_downloads(&amp;self, suspend: bool)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>暂停或者是继续恢复所有创意工坊的下载。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_创建物品"><a class="anchor" href="#_创建物品"></a>2. 创建物品</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn create_item&lt;F&gt;(&amp;self, app_id: AppId, file_type: FileType, cb: F)
+where
+    F: FnOnce(Result&lt;(PublishedFileId, bool), SteamError&gt;) + 'static + Send,</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>创建一个尚无附加内容的新创意工坊物品。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_开始物品更新"><a class="anchor" href="#_开始物品更新"></a>3. 开始物品更新</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn start_item_update(
+    &amp;self,
+    app_id: AppId,
+    file_id: PublishedFileId
+) -&gt; UpdateHandle&lt;Manager&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>开始物品更新过程。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_订阅物品"><a class="anchor" href="#_订阅物品"></a>4. 订阅物品</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn subscribe_item&lt;F&gt;(&amp;self, published_file_id: PublishedFileId, cb: F)
+where
+    F: FnOnce(Result&lt;(), SteamError&gt;) + 'static + Send,</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>订阅创意工坊物品。 会尽快下载并安装该物品。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_取消订阅物品"><a class="anchor" href="#_取消订阅物品"></a>5. 取消订阅物品</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn unsubscribe_item&lt;F&gt;(&amp;self, published_file_id: PublishedFileId, cb: F)
+where
+    F: FnOnce(Result&lt;(), SteamError&gt;) + 'static + Send,</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>取消来自创意工坊物品的订阅。 退出游戏后会移除该物品。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取订阅物品列表"><a class="anchor" href="#_获取订阅物品列表"></a>6. 获取订阅物品列表</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn subscribed_items(&amp;self) -&gt; Vec&lt;PublishedFileId&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获得当前游戏中，当前用户所订阅的所有物品的清单。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取物品状态"><a class="anchor" href="#_获取物品状态"></a>7. 获取物品状态</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn item_state(&amp;self, item: PublishedFileId) -&gt; ItemState</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获取此客户端上创意工坊物品的当前状态。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取物品下载状态信息"><a class="anchor" href="#_获取物品下载状态信息"></a>8. 获取物品下载状态信息</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn item_download_info(&amp;self, item: PublishedFileId) -&gt; Option&lt;(u64, u64)&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获取的创意工坊物品的下载状态信息。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>u64</strong>: 返回当前已下载的字节</p>
+</li>
+<li>
+<p><strong>u64</strong>: 返回总字节数。 仅在下载开始后有效。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取物品安装状态信息"><a class="anchor" href="#_获取物品安装状态信息"></a>9. 获取物品安装状态信息</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn item_install_info(&amp;self, item: PublishedFileId) -&gt; Option&lt;InstallInfo&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获取的创意工坊物品的安装状态信息。</p>
+</div>
+<div class="paragraph">
+<p><strong>InstallInfo</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>folder: String</strong>: 通过复制返回包含内容的文件夹的绝对路径。</p>
+</li>
+<li>
+<p><strong>size_on_disk: u64</strong>: 返回创意工坊物品的字节大小。</p>
+</li>
+<li>
+<p><strong>timestamp: u32</strong>: 返回创意工坊物品上次更新的时间。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_下载物品"><a class="anchor" href="#_下载物品"></a>10. 下载物品</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn download_item(&amp;self, item: PublishedFileId, high_priority: bool) -&gt; bool</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>下载或更新创意工坊物品。</p>
+</div>
+<div class="paragraph">
+<p>如果 <strong>PublishedFileId</strong> 无效或者是用户尚未登录，则返回 <strong>false</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>high_priority</strong>: 以高优先级模式开始下载，暂停所有其他正在进行的 Steam 下载并立即开始下载此创意工坊物品。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_分页查询物品"><a class="anchor" href="#_分页查询物品"></a>11. 分页查询物品</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn query_all(
+    &amp;self,
+    query_type: UGCQueryType,
+    item_type: UGCType,
+    appids: AppIDs,
+    page: u32
+) -&gt; Result&lt;QueryHandle&lt;Manager&gt;, CreateQueryError&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>查询所有匹配的创意工坊物品分页列表。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_分页查询物品_根据用户"><a class="anchor" href="#_分页查询物品_根据用户"></a>12. 分页查询物品-根据用户</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn query_user(
+    &amp;self,
+    account: AccountId,
+    list_type: UserList,
+    item_type: UGCType,
+    sort_order: UserListOrder,
+    appids: AppIDs,
+    page: u32
+) -&gt; Result&lt;QueryHandle&lt;Manager&gt;, CreateQueryError&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>查询和用户相关的（例如，用户的订阅、收藏、点赞等）创意工坊物品分页列表。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_查询物品_根据id列表"><a class="anchor" href="#_查询物品_根据id列表"></a>13. 查询物品-根据id列表</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn query_items(
+    &amp;self,
+    items: Vec&lt;PublishedFileId&gt;
+) -&gt; Result&lt;QueryHandle&lt;Manager&gt;, CreateQueryError&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_查询物品_根据id"><a class="anchor" href="#_查询物品_根据id"></a>14. 查询物品-根据id</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn query_item(
+    &amp;self,
+    item: PublishedFileId
+) -&gt; Result&lt;QueryHandle&lt;Manager&gt;, CreateQueryError&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_删除物品"><a class="anchor" href="#_删除物品"></a>15. 删除物品</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn delete_item&lt;F&gt;(&amp;self, published_file_id: PublishedFileId, cb: F)
+where
+    F: FnOnce(Result&lt;(), SteamError&gt;) + 'static + Send,</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>从Steam创意工坊中删除某个物品。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_为游戏服务器初始化文件夹"><a class="anchor" href="#_为游戏服务器初始化文件夹"></a>16. 为游戏服务器初始化文件夹</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn init_for_game_server(
+    &amp;self,
+    workshop_depot: DepotId_t,
+    folder: &amp;str
+) -&gt; bool</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>初始化此UGC接口以用于Steam游戏服务器。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>workshop_depot</strong>: 游戏服务器的 depot ID，您可以在SteamDB上找到。通常这只是应用程序ID。</p>
+</li>
+<li>
+<p><strong>folder</strong>: 存储创意工坊内容的绝对路径。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>成功时返回 <strong>true</strong>；如果调用用户不是游戏服务器，或者创意工坊当前正在更新其内容，则返回 <strong>false</strong>。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_参考"><a class="anchor" href="#_参考"></a>17. 参考</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://docs.rs/steamworks/latest/steamworks/struct.UGC.html" class="bare">https://docs.rs/steamworks/latest/steamworks/struct.UGC.html</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://partner.steamgames.com/doc/api/ISteamUGC" class="bare">https://partner.steamgames.com/doc/api/ISteamUGC</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

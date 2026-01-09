@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Friends (好友) :: Steamworks for Rust</title>
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../..">Steamworks for Rust</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs-steamworks-rs" data-version="0.11.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Steamworks for Rust</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="client.html">Client (客户端)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="app.html">Apps (应用)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="utils.html">Utils (工具)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="matchmaking.html">MatchMaking (匹配大厅)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking.html">Networking (网络)</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="friends.html">Friends (好友)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="input.html">Input (输入)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user.html">User (用户)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user-stats.html">UserStats (用户状态)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-play.html">RemotePlay (远程畅玩)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-storage.html">RemoteStorage (远程存储)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ugc.html">UGC (创意工坊)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-message.html">NetworkingMessages (网络消息)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-sockets.html">NetworkingSockets (网络连接)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-utils.html">NetworkingUtils (网络工具)</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Steamworks for Rust</span>
+    <span class="version">0.11.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Steamworks for Rust</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">0.11.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Steamworks for Rust</a></li>
+    <li><a href="friends.html">Friends (好友)</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/qq253498229/docs-steamworks-rs/edit/master/modules/ROOT/pages/friends.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="目录" data-levels="3">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Friends (好友)</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>此接口用于访问每个用户信息，并与 Steam 叠加界面 互动。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取当前用户名称"><a class="anchor" href="#_获取当前用户名称"></a>1. 获取当前用户名称</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn name(&amp;self) -&gt; String</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回当前用户的（显示）名称。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取好友列表"><a class="anchor" href="#_获取好友列表"></a>2. 获取好友列表</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_friends(&amp;self, flags: FriendFlags) -&gt; Vec&lt;Friend&lt;Manager&gt;&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>根据好友标识位获取好友列表</p>
+</div>
+<div class="paragraph">
+<p><strong>FriendFlags</strong>: 好友标识位。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>None</code>: (0.无)</p>
+</li>
+<li>
+<p><code>Blocked</code>: (1.当前用户已经忽略的用户)</p>
+</li>
+<li>
+<p><code>FriendshipRequested</code>: (2.已经向当前用户发送好友申请的用户)</p>
+</li>
+<li>
+<p><code>Immediate</code>: (4.当前用户的"常规"好友)</p>
+</li>
+<li>
+<p><code>ClanMember</code>: (8.与当前用户同属于一个Steam小组的用户)</p>
+</li>
+<li>
+<p><code>OnGameServer</code>: (16.与当前用户在同一个游戏服务器上的好友;通过 设置和谁一起玩过 设置)</p>
+</li>
+<li>
+<p><code>RequestingFriendship</code>: (128.当前用户已经向其发送好友申请的用户)</p>
+</li>
+<li>
+<p><code>RequestingInfo</code>: (256.在调用 请求用户信息 后正在发送自己额外信息的用户)</p>
+</li>
+<li>
+<p><code>Ignored</code>: (512.当前用户已经屏蔽与他们联系的用户)</p>
+</li>
+<li>
+<p><code>IgnoredFriend</code>: (1024.屏蔽当前用户的用户;但是当前用户仍然知道他们)</p>
+</li>
+<li>
+<p><code>ChatMember</code>: (4096.在同一个聊天中的用户)</p>
+</li>
+<li>
+<p><code>All</code>: (65535.返回所有好友的标识位)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取最近一起游玩的玩家"><a class="anchor" href="#_获取最近一起游玩的玩家"></a>3. 获取最近一起游玩的玩家</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_coplay_friends(&amp;self) -&gt; Vec&lt;Friend&lt;Manager&gt;&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回最近一起游玩的玩家列表。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取好友详情"><a class="anchor" href="#_获取好友详情"></a>4. 获取好友详情</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_friend(&amp;self, friend: SteamId) -&gt; Friend&lt;Manager&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获取好友详情，包括SteamId、名称、当前正玩的游戏等。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_请求用户信息"><a class="anchor" href="#_请求用户信息"></a>5. 请求用户信息</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn request_user_information(&amp;self, user: SteamId, name_only: bool) -&gt; bool</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>请求指定用户的昵称及头像（可选）。</p>
+</div>
+<div class="paragraph">
+<p>注意： 下载头像相当缓慢，并且会改动本地缓存，所以如果不需要头像，请勿发出请求。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong> bool</p>
+</div>
+<div class="paragraph">
+<p>触发一个 PersonaStateChange_t 回调。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>true</code>: 表示已请求数据，收到数据时将会发布 PersonaStateChange_t 回调。</p>
+</li>
+<li>
+<p><code>false</code>: 表示已经有了该用户的详细数据，需要这些信息的函数可立即使用。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_激活游戏叠加界面"><a class="anchor" href="#_激活游戏叠加界面"></a>6. 激活游戏叠加界面</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn activate_game_overlay(&amp;self, dialog: &amp;str)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>激活 Steam 叠加界面，打开指定的对话框。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_激活游戏叠加界面web页面"><a class="anchor" href="#_激活游戏叠加界面web页面"></a>7. 激活游戏叠加界面web页面</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn activate_game_overlay_to_web_page(&amp;self, url: &amp;str)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>激活 Steam 叠加界面网页浏览器，直接前往指定的 URL。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_激活游戏叠加界面商店页面"><a class="anchor" href="#_激活游戏叠加界面商店页面"></a>8. 激活游戏叠加界面商店页面</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn activate_game_overlay_to_store(
+    &amp;self,
+    app_id: AppId,
+    overlay_to_store_flag: OverlayToStoreFlag
+)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>激活 Steam 叠加界面，打开所提供应用的 Steam 商店页面。</p>
+</div>
+<div class="paragraph">
+<p><strong>参数</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>None</code>: 0 无。</p>
+</li>
+<li>
+<p><code>AddToCart</code>: 1 已弃用，现在与 k_eOverlayTostoreflag_addToCartandShow 的工作原理相同。</p>
+</li>
+<li>
+<p><code>AddToCartAndShow</code>: 2 将指定的 AppID 加入用户的购物车并显示商店页面。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_激活游戏叠加界面用户对话框"><a class="anchor" href="#_激活游戏叠加界面用户对话框"></a>9. 激活游戏叠加界面用户对话框</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn activate_game_overlay_to_user(&amp;self, dialog: &amp;str, user: SteamId)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>激活 Steam 叠加界面，打开指定的对话框。</p>
+</div>
+<div class="paragraph">
+<p><strong>dialog:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>steamid</code>: - 打开界面网页浏览器，前往指定的用户或组资料。</p>
+</li>
+<li>
+<p><code>chat</code>: - 打开与指定用户的聊天窗口，或加入组聊天。</p>
+</li>
+<li>
+<p><code>jointrade</code>: - 打开以 ISteamEconomy/StartTrade Web API 开始的 Steam 交易会话窗口。</p>
+</li>
+<li>
+<p><code>stats</code>: - 打开界面网页浏览器，前往指定用户的统计。</p>
+</li>
+<li>
+<p><code>achievements</code>: - 打开界面网页浏览器，前往指定用户的成就。</p>
+</li>
+<li>
+<p><code>friendadd</code>: - 以最小模式打开界面，提示用户将目标用户加为好友。</p>
+</li>
+<li>
+<p><code>friendremove</code>: - 以最小模式打开界面，提示用户移除目标好友。</p>
+</li>
+<li>
+<p><code>friendrequestaccept</code>: - 以最小模式打开界面，提示用户接受传入的好友邀请。</p>
+</li>
+<li>
+<p><code>friendrequestignore</code>: - 以最小模式打开界面，提示用户忽略传入的好友邀请。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_激活匹配大厅邀请对话框"><a class="anchor" href="#_激活匹配大厅邀请对话框"></a>10. 激活匹配大厅邀请对话框</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn activate_invite_dialog(&amp;self, lobby: LobbyId)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>为指定的匹配大厅打开邀请对话框。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_设置当前用户的富状态键值"><a class="anchor" href="#_设置当前用户的富状态键值"></a>11. 设置当前用户的富状态键/值</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn set_rich_presence(&amp;self, key: &amp;str, value: Option&lt;&amp;str&gt;) -&gt; bool</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>设置用户的富状态。如果值为 None 或为空，则取消设置富状态。参见 <a href="https://partner.steamgames.com/doc/api/ISteamFriends#SetRichPresence">Steam API</a>。</p>
+</div>
+<div class="paragraph">
+<p>对于查看/加入游戏，有两个特殊键：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>status</code>：UTF-8 字符串，将在 Steam 好友列表中“查看游戏信息”对话框显示。</p>
+</li>
+<li>
+<p><code>connect</code>：UTF-8 字符串，包含好友如何能连接至游戏的命令行。 这将启用“查看游戏信息”对话框中的“加入游戏”按钮，在右键点击 Steam 好友列表出现的菜单以及玩家的 Steam 社区个人资料中。 确保您的应用实现了 ISteamApps::GetLaunchCommandLine ，以便您可以在通过命令行启动时禁用弹出警告。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>新 Steam 聊天另有三个特殊键：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>steam_display</code>：命名一个丰富状态本地化标记，该标记将在 Steam 客户端 UI 中以用户选定的语言显示。 参见 Rich Presence Localization 了解更多信息，包括测试此丰富状态数据的页面链接。 如果 steam_display 未设置为有效本地化标签，则丰富状态将不会显示在 Steam 客户端中。</p>
+</li>
+<li>
+<p><code>steam_player_group</code>：设置时，对 Steam 客户端指明玩家为特定组成员。 属于同一组的玩家可以在 Steam UI 各处组织在一起。 此字符串能识别队伍、服务器或与您游戏相关的其他群组。 字符串本身不显示给用户。</p>
+</li>
+<li>
+<p><code>steam_player_group_size</code>：设置时，指明在 steam_player_group 中的玩家总人数。 若并非一个组的所有成员都在用户的好友列表中，，Steam 客户端可以使用此数字显示关于该组的附加信息 （例如，“鲍勃、彼特及其他 4 人”）</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_清除当前用户的富状态键值"><a class="anchor" href="#_清除当前用户的富状态键值"></a>12. 清除当前用户的富状态键/值</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn clear_rich_presence(&amp;self)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>清除当前用户所有的丰富状态（Rich Presence）键/值。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取用户封禁状态"><a class="anchor" href="#_获取用户封禁状态"></a>13. 获取用户封禁状态</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_user_restrictions(&amp;self) -&gt; UserRestriction</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>检查当前用户是否被禁止聊天。</p>
+</div>
+<div class="paragraph">
+<p>如果被禁止，则无法发送或接收任何文字/语音聊天消息，也无法看到自定义的头像。 被禁止聊天的用户无法添加好友或加入任何组。 被禁止的用户依然可以在线，并发送/接收游戏邀请。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_参考"><a class="anchor" href="#_参考"></a>14. 参考</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://docs.rs/steamworks/0.11.0/steamworks/struct.Friends.html" class="bare">https://docs.rs/steamworks/0.11.0/steamworks/struct.Friends.html</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://partner.steamgames.com/doc/api/ISteamFriends" class="bare">https://partner.steamgames.com/doc/api/ISteamFriends</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

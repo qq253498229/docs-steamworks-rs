@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Apps (应用) :: Steamworks for Rust</title>
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../..">Steamworks for Rust</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs-steamworks-rs" data-version="0.11.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Steamworks for Rust</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="client.html">Client (客户端)</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="app.html">Apps (应用)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="utils.html">Utils (工具)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="matchmaking.html">MatchMaking (匹配大厅)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking.html">Networking (网络)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="friends.html">Friends (好友)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="input.html">Input (输入)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user.html">User (用户)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user-stats.html">UserStats (用户状态)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-play.html">RemotePlay (远程畅玩)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-storage.html">RemoteStorage (远程存储)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ugc.html">UGC (创意工坊)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-message.html">NetworkingMessages (网络消息)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-sockets.html">NetworkingSockets (网络连接)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-utils.html">NetworkingUtils (网络工具)</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Steamworks for Rust</span>
+    <span class="version">0.11.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Steamworks for Rust</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">0.11.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Steamworks for Rust</a></li>
+    <li><a href="app.html">Apps (应用)</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/qq253498229/docs-steamworks-rs/edit/master/modules/ROOT/pages/app.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="目录" data-levels="3">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Apps (应用)</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>访问steam应用相关接口</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_基本用法"><a class="anchor" href="#_基本用法"></a>1. 基本用法</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">let apps: Apps&lt;ClientManager&gt; = client.apps();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>通过这段代码获取应用接口实例，<code>apps</code> 就是应用实例，接下来的所有方法都通过apps实例调用。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_判断是否安装了应用"><a class="anchor" href="#_判断是否安装了应用"></a>2. 判断是否安装了应用</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn is_app_installed(&amp;self, app_id: AppId) -&gt; bool</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>检查某特定应用是否已安装。</p>
+</div>
+<div class="paragraph">
+<p>当前用户也许并不拥有此应用，只是通过免费周末等活动进行过安装。</p>
+</div>
+<div class="paragraph">
+<p>此函数只对基础应用程序有效，对可下载内容（DLC） 无效。 针对 DLC 请使用 <a href="#is_dlc_installed">判断是否安装了DLC</a> 。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回</strong>： bool</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>true</strong> 表明指定 AppID 已安装；否则返回 <strong>false</strong>。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="is_dlc_installed"><a class="anchor" href="#is_dlc_installed"></a>3. 判断是否安装了DLC</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn is_dlc_installed(&amp;self, app_id: AppId) -&gt; bool</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>检查用户是否拥有特定 DLC 且该 DLC 已安装。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong> bool</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>true</strong> 表明该用户拥有 DLC 且已安装；否则返回 <strong>false</strong>。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>注意：</strong> 应只用于简单的客户端检查，不能用于授予游戏中物品。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_判断是否订阅了该应用"><a class="anchor" href="#_判断是否订阅了该应用"></a>4. 判断是否订阅了该应用</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn is_subscribed_app(&amp;self, app_id: AppId) -&gt; bool</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>检查活跃用户是否订阅了特定 AppId。</p>
+</div>
+<div class="paragraph">
+<p>只有在需要检查与您游戏有关的另一个游戏（如试用版）的所有权时，才使用此函数。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong> bool</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>true</strong> 表明该活跃用户订阅了特定 App ID；否则返回 <strong>false</strong>。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_判断是否是通过免费周末订阅"><a class="anchor" href="#_判断是否是通过免费周末订阅"></a>5. 判断是否是通过免费周末订阅</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn is_subscribed_from_free_weekend(&amp;self) -&gt; bool</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>检查该用户是否通过免费周末订阅了当前 appID。</p>
+</div>
+<div class="paragraph">
+<p>在使用此函数前请通过 Steamworks 讨论板联系 Valve 技术客户经理，来为免费周末活动制作相应程序包，确保活动能顺利开展。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong> bool</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>true</strong> 表明该活跃用户通过免费周末订阅了当前 App Id；如果为其他任何类型的许可，则返回 <strong>false</strong> 。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_判断用户是否被永久封禁"><a class="anchor" href="#_判断用户是否被永久封禁"></a>6. 判断用户是否被永久封禁</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn is_vac_banned(&amp;self) -&gt; bool</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>检查用户帐户是否受到 VAC 封禁。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong> bool</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>true</strong> 表明该用户帐户受到 VAC (Valve Anti-Cheat，Valve反作弊系统) 封禁；否则返回 <strong>false</strong>。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_判断应用是否是网吧许可"><a class="anchor" href="#_判断应用是否是网吧许可"></a>7. 判断应用是否是网吧许可</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn is_cybercafe(&amp;self) -&gt; bool</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>检查当前 AppID 是否供网吧使用。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong> bool</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>true</strong> 表明此许可用于网吧；否则返回 <strong>false</strong>。</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+已弃用 - 不再使用。
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_判断是否提供低暴力版本"><a class="anchor" href="#_判断是否提供低暴力版本"></a>8. 判断是否提供低暴力版本</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn is_low_violence(&amp;self) -&gt; bool</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>检查用户拥有的许可是否提供低暴力 depot。</p>
+</div>
+<div class="paragraph">
+<p>在对内容有限制的国家，低暴力 depot 有利于游戏销售。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong> bool</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>true</strong> 表明用户拥有的许可提供低暴力 depot；否则返回 <strong>false</strong>。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>另见：</strong> <a href="https://partner.steamgames.com/doc/store/application/depots#depot_mounting_rules">Depot 装载规则</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_判断用户是否订阅了当前应用"><a class="anchor" href="#_判断用户是否订阅了当前应用"></a>9. 判断用户是否订阅了当前应用</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn is_subscribed(&amp;self) -&gt; bool</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>检查活跃用户是否订阅了当前 App ID。</p>
+</div>
+<div class="paragraph">
+<p><strong>注意：</strong> 如果您使用 Steam DRM 或调用 SteamAPI_RestartAppIfNecessary，此函数将始终返回 <strong>true</strong>。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong> bool</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>true</strong> 表明该活跃用户拥有当前 AppId；否则返回 <strong>false</strong>。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取应用构建id"><a class="anchor" href="#_获取应用构建id"></a>10. 获取应用构建id</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn app_build_id(&amp;self) -&gt; i32</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获取此应用的构建id，可能根据游戏的后端更新而随时改变。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong> i32</p>
+</div>
+<div class="paragraph">
+<p>此应用的当前 Build Id。如您未运行从 Steam 下载的生成版本，则默认为 0。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取应用安装目录"><a class="anchor" href="#_获取应用安装目录"></a>11. 获取应用安装目录</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn app_install_dir(&amp;self, app_id: AppId) -&gt; String</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获取特定 AppID 的安装文件夹。</p>
+</div>
+<div class="paragraph">
+<p>即使应用程序未安装，该函数仍可按游戏将在 Steam 库的默认安装位置进行调用。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong> String</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取应用拥有者steamid"><a class="anchor" href="#_获取应用拥有者steamid"></a>12. 获取应用拥有者SteamId</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn app_owner(&amp;self) -&gt; SteamId</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获取当前应用真正拥有者的 Steam ID。</p>
+</div>
+<div class="paragraph">
+<p>如当前用户是通过“家庭共享”访问的游戏，则与当前用户的不同。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong> SteamId</p>
+</div>
+<div class="paragraph">
+<p>当前应用的原拥有者。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取应用支持的语言列表"><a class="anchor" href="#_获取应用支持的语言列表"></a>13. 获取应用支持的语言列表</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn available_game_languages(&amp;self) -&gt; Vec&lt;String&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获取当前应用支持的语言列表，以逗号分隔。</p>
+</div>
+<div class="paragraph">
+<p>参见本地化和语言，了解可能会返回的语言的完整列表。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong> Vec&lt;String&gt;</p>
+</div>
+<div class="paragraph">
+<p><strong>另见：</strong> GetCurrentGameLanguage, ISteamUtils::GetSteamUILanguage</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取应用当前语言"><a class="anchor" href="#_获取应用当前语言"></a>14. 获取应用当前语言</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn current_game_language(&amp;self) -&gt; String</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获取用户当前设置的语言。</p>
+</div>
+<div class="paragraph">
+<p>如果用户未明确选择产品语言，则回退至 Steam UI 语言。</p>
+</div>
+<div class="paragraph">
+<p>参见支持的语言，查看完整语言列表。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong> String</p>
+</div>
+<div class="paragraph">
+<p><strong>另见：</strong> GetAvailableGameLanguages, ISteamUtils::GetSteamUILanguage</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取测试分支名称"><a class="anchor" href="#_获取测试分支名称"></a>15. 获取测试分支名称</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn current_beta_name(&amp;self) -&gt; Option&lt;String&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>检查用户是否从一个测试版分支运行。</p>
+</div>
+<div class="paragraph">
+<p>如是，获取测试版分支名称；否则返回 None。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取命令行参数"><a class="anchor" href="#_获取命令行参数"></a>16. 获取命令行参数</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn launch_command_line(&amp;self) -&gt; String</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果游戏通过 Steam URL 如 <code>steam://run/&lt;appid&gt;//&lt;command line&gt;/</code> 启动，获取命令行。</p>
+</div>
+<div class="paragraph">
+<p>此方法优于通过操作系统用命令行启动，后者可能存在安全隐患。</p>
+</div>
+<div class="paragraph">
+<p>为了使丰富状态加入能使用此方式，而不被置于操作系统命令行，您必须在您应用的“安装”&gt;“通用安装”页面上启用“使用启动命令行”。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong> String</p>
+</div>
+<div class="paragraph">
+<p><strong>另见：</strong> NewUrlLaunchParameters_t</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_参考"><a class="anchor" href="#_参考"></a>17. 参考</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://docs.rs/steamworks/0.11.0/steamworks/struct.Apps.html" class="bare">https://docs.rs/steamworks/0.11.0/steamworks/struct.Apps.html</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://partner.steamgames.com/doc/api/ISteamApps" class="bare">https://partner.steamgames.com/doc/api/ISteamApps</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

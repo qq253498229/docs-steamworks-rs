@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>NetworkingSockets (网络连接) :: Steamworks for Rust</title>
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../..">Steamworks for Rust</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs-steamworks-rs" data-version="0.11.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Steamworks for Rust</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="client.html">Client (客户端)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="app.html">Apps (应用)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="utils.html">Utils (工具)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="matchmaking.html">MatchMaking (匹配大厅)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking.html">Networking (网络)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="friends.html">Friends (好友)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="input.html">Input (输入)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user.html">User (用户)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user-stats.html">UserStats (用户状态)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-play.html">RemotePlay (远程畅玩)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-storage.html">RemoteStorage (远程存储)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ugc.html">UGC (创意工坊)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-message.html">NetworkingMessages (网络消息)</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="networking-sockets.html">NetworkingSockets (网络连接)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-utils.html">NetworkingUtils (网络工具)</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Steamworks for Rust</span>
+    <span class="version">0.11.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Steamworks for Rust</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">0.11.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Steamworks for Rust</a></li>
+    <li><a href="networking-sockets.html">NetworkingSockets (网络连接)</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/qq253498229/docs-steamworks-rs/edit/master/modules/ROOT/pages/networking-sockets.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="目录" data-levels="3">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">NetworkingSockets (网络连接)</h1>
+<div class="sect1">
+<h2 id="_创建连接监听_ip"><a class="anchor" href="#_创建连接监听_ip"></a>1. 创建连接监听-ip</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn create_listen_socket_ip(
+    &amp;self,
+    local_address: SocketAddr,
+    options: impl IntoIterator&lt;Item = NetworkingConfigEntry&gt;
+) -&gt; Result&lt;ListenSocket&lt;Manager&gt;, InvalidHandle&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>通过普通 UDP（IPv4 或 IPv6）调用 ConnectByIPAddress，创建"服务器"连接，以侦听要连接的客户端。</p>
+</div>
+<div class="paragraph">
+<p>您必须选择一个要侦听的特定本地端口，并将其设置为本地地址的端口字段。</p>
+</div>
+<div class="paragraph">
+<p>通常您会将地址的 IP 部分设置为零，（SteamNetworkingIPAddr::Clear())。 这意味着您将不会绑定至任何特定的本地接口（即和简单连接代码中的 INADDR_ANY 一样的接口）。 此外，如果可能，连接将绑定在“dual stack”模式，这意味着它可以同时接受 IPv4 和 IPv6 客户端连接。 如果您非常希望绑定特定接口，则可将本地地址设置为适当的 IPv4 或 IPv6 IP。</p>
+</div>
+<div class="paragraph">
+<p>如果您需要设置任何初始配置选项，请在此传入。 若要进一步了解为什么这么做要好于在创建后“立即”设置选项，请参见 SteamNetworkingConfigValue_t。</p>
+</div>
+<div class="paragraph">
+<p>当客户端尝试连接时，将会发布 SteamNetConnectionStatusChangedCallback_t。 连接将处于 k_ESteamNetworkingConnectionState_Connecting 状态。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_通过ip地址进行连接"><a class="anchor" href="#_通过ip地址进行连接"></a>2. 通过ip地址进行连接</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn connect_by_ip_address(
+    &amp;self,
+    address: SocketAddr,
+    options: impl IntoIterator&lt;Item = NetworkingConfigEntry&gt;
+) -&gt; Result&lt;NetConnection&lt;Manager&gt;, InvalidHandle&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>创建连接并通过 UDP 在给定 IPv4 或 IPv6 地址与“服务器”交谈。 远程主机必须在指定端口上对 CreateListenSocketIP 进行相应的调用以进行侦听。</p>
+</div>
+<div class="paragraph">
+<p>在我们开始连接时将会触发一个 SteamNetConnectionStatusChangedCallback_t 回调，在超时或连接成功时会触发另一个。</p>
+</div>
+<div class="paragraph">
+<p>如果服务器没有配置任何身份，那么其网络地址将会是唯一使用的身份。 或者，网络主机可能会提供一个平台专属的身份，可能会有能验证身份的有效证书，也可能没有。 ( 这些细节将包含在 SteamNetConnectionStatusChangedCallback_t 中。) 由您的应用程序决定是否允许该连接。</p>
+</div>
+<div class="paragraph">
+<p>默认情况下，所有连接将获得足够防止随意窃听的基本加密。 但请注意，没有证书（或通过其他带外机制分发的共享密钥）， 您无法知道另一端是谁，因此容易受到中间人攻击。</p>
+</div>
+<div class="paragraph">
+<p>如果您需要设置任何初始配置选项，请在此传入。 若要进一步了解为什么这么做要好于在创建后“立即”设置选项，请参见 SteamNetworkingConfigValue_t。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_创建连接监听_p2p"><a class="anchor" href="#_创建连接监听_p2p"></a>3. 创建连接监听-p2p</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn create_listen_socket_p2p(
+    &amp;self,
+    local_virtual_port: i32,
+    options: impl IntoIterator&lt;Item = NetworkingConfigEntry&gt;
+) -&gt; Result&lt;ListenSocket&lt;Manager&gt;, InvalidHandle&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>和 CreateListenSocketIP 相似，但客户端会使用 ConnectP2P 进行连接。 连接将通过 Valve 网络中继。</p>
+</div>
+<div class="paragraph">
+<p>nLocalVirtualPort 会指明客户端将如何通过 ConnectP2P 连接至此套接字。 应用程序仅使用一个侦听套接字是很常见的；在这种情况下，使用“0”。 如果您需要开启多个侦听套接字，并让客户端能够连接至其中一个， 那么 nLocalVirtualPort 应当是一个较小的整数（&lt;1000），且您创建的每个侦听套接字都有独一无二的一个。</p>
+</div>
+<div class="paragraph">
+<p>如果您使用此方法，最好在应用初始化时调用 ISteamNetworkingUtils::InitRelayNetworkAccess()。</p>
+</div>
+<div class="paragraph">
+<p>如果您正在已知数据中心的专用服务器上侦听，就可以使用此函数而不是 CreateHostedDedicatedServerListenSocket，这样客户端无需票证就可连接。 任何拥有该应用程序并登录 Steam 的用户都可以尝试连接到您的服务器。 此外，连接尝试可能需要客户端连接到 Steam，这是另一个可能会失败的组成部分。 使用票证时，一旦获得票证，即使客户端与 Steam 断开连接或 Steam 离线，也可以连接到您的服务器。</p>
+</div>
+<div class="paragraph">
+<p>如果您需要设置任何初始配置选项，请在此传入。 若要进一步了解为什么这么做要好于在创建后“立即”设置选项，请参见 SteamNetworkingConfigValue_t。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_进行p2p连接"><a class="anchor" href="#_进行p2p连接"></a>4. 进行p2p连接</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn connect_p2p(
+    &amp;self,
+    identity_remote: NetworkingIdentity,
+    remote_virtual_port: i32,
+    options: impl IntoIterator&lt;Item = NetworkingConfigEntry&gt;
+) -&gt; Result&lt;NetConnection&lt;Manager&gt;, InvalidHandle&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>开始连接通过平台专属识别符而识别的对等端。 这将会使用默认的对接服务，取决于平台和库配置。 （如，在 Steam 上，将会通过 Steam 后端。）流量会通过 Steam 数据报中继网络中继。</p>
+</div>
+<div class="paragraph">
+<p>如果您需要设置任何初始配置选项，请在此传入。 若要进一步了解为什么这么做要好于在创建后“立即”设置选项，请参见 SteamNetworkingConfigValue_t。</p>
+</div>
+<div class="paragraph">
+<p>要使用您自己的信号服务，请参见：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>ConnectP2PCustomSignaling</strong></p>
+</li>
+<li>
+<p><strong>k_ESteamNetworkingConfig_Callback_CreateConnectionSignaling</strong></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_创建专用托管服务器连接监听"><a class="anchor" href="#_创建专用托管服务器连接监听"></a>5. 创建专用托管服务器连接监听</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn create_hosted_dedicated_server_listen_socket(
+    &amp;self,
+    local_virtual_port: u32,
+    options: impl IntoIterator&lt;Item = NetworkingConfigEntry&gt;
+) -&gt; Result&lt;ListenSocket&lt;Manager&gt;, InvalidHandle&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>在指定的虚拟端口上创建一个侦听套接字。 使用的物理 UDP 端口将由 SDR_LISTEN_PORT 环境变量决定。 如果未配置 UDP 端口，则此调用将失败。</p>
+</div>
+<div class="paragraph">
+<p>请注意，此调用必须通过 SteamGameServerNetworkingSockets() 接口进行。</p>
+</div>
+<div class="paragraph">
+<p>当您使用票证生成器库来签发自己的票证时，应使用此函数。 连接到此虚拟端口上的服务器的客户端将需要拥有票证，且必须使用 ConnectToHostedDedicatedServer 进行连接。</p>
+</div>
+<div class="paragraph">
+<p>如果您需要设置任何初始配置选项，请在此传入。 若要进一步了解为什么这么做要好于在创建后“立即”设置选项，请参见 SteamNetworkingConfigValue_t。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_初始化身份验证"><a class="anchor" href="#_初始化身份验证"></a>6. 初始化身份验证</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn init_authentication(
+    &amp;self
+) -&gt; Result&lt;NetworkingAvailability, NetworkingAvailabilityError&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>表明我们准备好参与经过验证的通信的意愿。 如果我们目前还没有准备好，那么要采取步骤，以获取必要的证书。 （这包括给我们的证书，以及对等端身份验证所需的所有 CA 证书。）</p>
+</div>
+<div class="paragraph">
+<p>如果您知道自己将要建立经过验证的连接，则可以在程序初始化时进行调用，这样在尝试进行这些连接时我们将立即准备就绪。 （请注意，除使用 k_ESteamNetworkingConfig_IP_AllowWithoutAuth 禁用身份验证的普通 UDP 连接外，基本上所有连接都需要身份验证。） 如果您不调用此函数，我们将等到需要利用这些资源的功能触发。</p>
+</div>
+<div class="paragraph">
+<p>如果发生故障，您也可以调用此函数强制重试。 若尝试失败，我们将不会自动重试。 在这方面，尝试并失败之后的系统行为与第一次尝试之前的行为相同： 尝试通过验证的通信或调用此函数将调用系统以尝试获取必要的资源。</p>
+</div>
+<div class="paragraph">
+<p>您可以使用 GetAuthenticationStatus 或侦听 SteamNetAuthenticationStatus_t 来监视状态。</p>
+</div>
+<div class="paragraph">
+<p>返回将从 GetAuthenticationStatus 返回的当前值。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_创建轮询组"><a class="anchor" href="#_创建轮询组"></a>7. 创建轮询组</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn create_poll_group(&amp;self) -&gt; NetPollGroup&lt;Manager&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>创建一个新的轮询组。</p>
+</div>
+<div class="paragraph">
+<p>使用 DestroyPollGroup 完成操作后，应该销毁轮询组。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取身份验证状态"><a class="anchor" href="#_获取身份验证状态"></a>8. 获取身份验证状态</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_authentication_status(
+    &amp;self
+) -&gt; Result&lt;NetworkingAvailability, NetworkingAvailabilityError&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取连接信息"><a class="anchor" href="#_获取连接信息"></a>9. 获取连接信息</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_connection_info(
+    &amp;self,
+    connection: &amp;NetConnection&lt;Manager&gt;
+) -&gt; Result&lt;NetConnectionInfo, bool&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回有关连接的高级状态的基本信息。</p>
+</div>
+<div class="paragraph">
+<p>如果连接句柄无效，则返回 false。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取实时连接状态"><a class="anchor" href="#_获取实时连接状态"></a>10. 获取实时连接状态</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_realtime_connection_status(
+    &amp;self,
+    connection: &amp;NetConnection&lt;Manager&gt;,
+    lanes: i32
+) -&gt; Result&lt;(NetConnectionRealTimeInfo, Vec&lt;NetConnectionRealTimeLaneStatus&gt;), SteamError&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回有关实时连接状态和每个通道的队列状态的一小组信息。</p>
+</div>
+<div class="paragraph">
+<p>在输入时，nLanes 会指定 pLanes 数组的长度。 如果您不希望接收任何通道数据，则该值可为 0。 该值可以小于配置的通道总数。</p>
+</div>
+<div class="paragraph">
+<p>pLanes 指向将接收某通道专用的信息的数组。 如果不需要，可为 NULL。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn configure_connection_lanes(
+    &amp;self,
+    connection: &amp;NetConnection&lt;Manager&gt;,
+    num_lanes: i32,
+    lane_priorities: &amp;[i32],
+    lane_weights: &amp;[u16]
+) -&gt; Result&lt;(), SteamError&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>在连接上配置多个出站消息流（“lanes通道”），并控制它们之间的队头阻塞。 给定通道内的消息始终按照其队列顺序发送，但来自不同通道的消息可能会乱序发送。 每个通道都有其自己的消息编号序列。 每个通道上发送的第一条消息将被分配编号 1。</p>
+</div>
+<div class="paragraph">
+<p>每个通道都有一个“优先级”。 仅当所有较高优先级通道都为空时，才会处理优先级低的通道。 此处仅考虑优先级值的顺序，而非其大小。 较高的数值优先于较低的数值。</p>
+</div>
+<div class="paragraph">
+<p>每个通道还配有一个权重，该权重控制该通道相对于同一优先级的其他通道消耗的带宽的大致比例。 （这是假设通道保持繁忙的情况。 空闲通道不会累积“credits积分”以在消息排队后使用。） 该值仅是相对于具有同一优先级的其他通道的比例。 对于具有不同优先级的通道，将以严格的优先级顺序为准，它们彼此之间的权重也互不相关。 也就是说，如果某通道具有唯一的优先级值，则该通道的权重值为何是无所谓的。</p>
+</div>
+<div class="paragraph">
+<p>示例：3 个通道，优先级分别为 { 0, 10, 10 }，权重为 { (NA), 20, 5 }。 第一个通道上发送的消息将始终先发送，其他两个通道中的消息将在之后发送。 因为没有其他优先级为 0 的通道，因此第一个通道的权重值是无关紧要的。 第二个和第三个通道将共享带宽，使用带宽的比例大约为 4:1。 （权重 { NA, 4, 1 } 是等效的。）</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_参考"><a class="anchor" href="#_参考"></a>11. 参考</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://docs.rs/steamworks/latest/steamworks/networking_sockets/struct.NetworkingSockets.html" class="bare">https://docs.rs/steamworks/latest/steamworks/networking_sockets/struct.NetworkingSockets.html</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://partner.steamgames.com/doc/api/ISteamNetworkingSockets" class="bare">https://partner.steamgames.com/doc/api/ISteamNetworkingSockets</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

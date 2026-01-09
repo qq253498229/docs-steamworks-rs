@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MatchMaking (匹配大厅) :: Steamworks for Rust</title>
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../..">Steamworks for Rust</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs-steamworks-rs" data-version="0.11.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Steamworks for Rust</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="client.html">Client (客户端)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="app.html">Apps (应用)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="utils.html">Utils (工具)</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="matchmaking.html">MatchMaking (匹配大厅)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking.html">Networking (网络)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="friends.html">Friends (好友)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="input.html">Input (输入)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user.html">User (用户)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user-stats.html">UserStats (用户状态)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-play.html">RemotePlay (远程畅玩)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-storage.html">RemoteStorage (远程存储)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ugc.html">UGC (创意工坊)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-message.html">NetworkingMessages (网络消息)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-sockets.html">NetworkingSockets (网络连接)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-utils.html">NetworkingUtils (网络工具)</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Steamworks for Rust</span>
+    <span class="version">0.11.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Steamworks for Rust</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">0.11.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Steamworks for Rust</a></li>
+    <li><a href="matchmaking.html">MatchMaking (匹配大厅)</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/qq253498229/docs-steamworks-rs/edit/master/modules/ROOT/pages/matchmaking.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="目录" data-levels="3">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">MatchMaking (匹配大厅)</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>为客户端提供匹配服务、访问收藏夹以及在游戏大厅中进行操作的函数。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取大厅列表"><a class="anchor" href="#_获取大厅列表"></a>1. 获取大厅列表</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn request_lobby_list&lt;F&gt;(&amp;self, cb: F)
+where
+    F: FnOnce(SResult&lt;Vec&lt;LobbyId&gt;&gt;) + 'static + Send,</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获得过滤后的相关大厅列表。如何设置过滤器在后面有api。</p>
+</div>
+<div class="paragraph">
+<p>每次只能有一个活跃的大厅搜索。 如果新请求被启动，旧请求将被取消。 视用户与 Steam 后端的连接状况而定，此调用可能需要 300 毫秒至 5 秒完成，20 秒则超时。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_创建匹配大厅"><a class="anchor" href="#_创建匹配大厅"></a>2. 创建匹配大厅</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn create_lobby&lt;F&gt;(&amp;self, ty: LobbyType, max_members: u32, cb: F)
+where
+    F: FnOnce(SResult&lt;LobbyId&gt;) + 'static + Send,</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>创建一个新的匹配大厅。</p>
+</div>
+<div class="paragraph">
+<p>参数LobbyType是大厅的可见性，max_members是大厅玩家的最大数量，不能超过250人。</p>
+</div>
+<div class="paragraph">
+<p><strong>LobbyType</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Private</code> (0.只能通过邀请加入大厅)</p>
+</li>
+<li>
+<p><code>FriendsOnly</code> (1.好友和受邀者可加入，但不出现在大厅列表中)</p>
+</li>
+<li>
+<p><code>Public</code> (2.可以通过搜索返回并对好友可见)</p>
+</li>
+<li>
+<p><code>Invisible</code> (3.通过搜索返回，但不对好友可见。如果希望一个用户同时在两个大厅中，比如将组配到一起时很有用。 用户只能加入一个普通大厅，最多可加入两个不可见大厅。)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>事件</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>LobbyEnter</code></p>
+</li>
+<li>
+<p><code>LobbyCreated</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_加入匹配大厅"><a class="anchor" href="#_加入匹配大厅"></a>3. 加入匹配大厅</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn join_lobby&lt;F&gt;(&amp;self, lobby: LobbyId, cb: F)
+where
+    F: FnOnce(Result&lt;LobbyId, ()&gt;) + 'static + Send,</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>根据指定id加入匹配大厅。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取大厅数据数量"><a class="anchor" href="#_获取大厅数据数量"></a>4. 获取大厅数据数量</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn lobby_data_count(&amp;self, lobby: LobbyId) -&gt; u32</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获得指定大厅中设置的元数据键的数量。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取大厅数据"><a class="anchor" href="#_获取大厅数据"></a>5. 获取大厅数据</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn lobby_data(&amp;self, lobby: LobbyId, key: &amp;str) -&gt; Option&lt;&amp;str&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获取与指定大厅中的指定键相关的元数据。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_通过索引获取大厅数据"><a class="anchor" href="#_通过索引获取大厅数据"></a>6. 通过索引获取大厅数据</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn lobby_data_by_index(
+    &amp;self,
+    lobby: LobbyId,
+    idx: u32
+) -&gt; Option&lt;(String, String)&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>通过索引获得一个大厅的元数据键/值对。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_设置大厅数据"><a class="anchor" href="#_设置大厅数据"></a>7. 设置大厅数据</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn set_lobby_data(&amp;self, lobby: LobbyId, key: &amp;str, value: &amp;str) -&gt; bool</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>在大厅元数据中设置键/值对。 此函数可用于设置大厅名称、当前地图、游戏模式等。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong> bool</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>true</strong>， 表示数据设置成功。 如果 LobbyId 为无效索引或键/值太长，则为 <strong>false</strong>。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_删除大厅数据"><a class="anchor" href="#_删除大厅数据"></a>8. 删除大厅数据</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn delete_lobby_data(&amp;self, lobby: LobbyId, key: &amp;str) -&gt; bool</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>根据元数据键从大厅中移除元数据。</p>
+</div>
+<div class="paragraph">
+<p>此操作只能由大厅所有者完成。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_离开大厅"><a class="anchor" href="#_离开大厅"></a>9. 离开大厅</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn leave_lobby(&amp;self, lobby: LobbyId)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>离开指定大厅。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取玩家数量限制"><a class="anchor" href="#_获取玩家数量限制"></a>10. 获取玩家数量限制</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn lobby_member_limit(&amp;self, lobby: LobbyId) -&gt; Option&lt;usize&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获取当前对于可以加入的玩家数量的限制。</p>
+</div>
+<div class="paragraph">
+<p>如果没有定义限制，返回 [None]。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取大厅所有者"><a class="anchor" href="#_获取大厅所有者"></a>11. 获取大厅所有者</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn lobby_owner(&amp;self, lobby: LobbyId) -&gt; SteamId</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回当前大厅所有者。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取大厅中的用户数量"><a class="anchor" href="#_获取大厅中的用户数量"></a>12. 获取大厅中的用户数量</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn lobby_member_count(&amp;self, lobby: LobbyId) -&gt; usize</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获得一个大厅中的用户数。</p>
+</div>
+<div class="paragraph">
+<p>当你不再大厅中时常用。</p>
+</div>
+<div class="paragraph">
+<p><strong>注意：</strong> 当前用户必须在大厅中才能获取该大厅中其他用户的 Steam ID。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取大厅中的用户"><a class="anchor" href="#_获取大厅中的用户"></a>13. 获取大厅中的用户</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn lobby_members(&amp;self, lobby: LobbyId) -&gt; Vec&lt;SteamId&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获得一个大厅中的用户列表。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_设置大厅是否可加入"><a class="anchor" href="#_设置大厅是否可加入"></a>14. 设置大厅是否可加入</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn set_lobby_joinable(&amp;self, lobby: LobbyId, joinable: bool) -&gt; bool</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>设置一个大厅是否对其他玩家开放。 创建新的大厅后默认可以加入。</p>
+</div>
+<div class="paragraph">
+<p>如果禁止加入，那么没有玩家可以加入，即便他们是好友或已经接受了邀请。</p>
+</div>
+<div class="paragraph">
+<p>禁止加入的大厅将不会从大厅搜索中返回。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong> bool</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>true</strong>， 表示成功；否则，如果您不是大厅所有者，则返回 <strong>false</strong>。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_在大厅中发送广播消息"><a class="anchor" href="#_在大厅中发送广播消息"></a>15. 在大厅中发送广播消息</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn send_lobby_chat_message(
+    &amp;self,
+    lobby: LobbyId,
+    msg: &amp;[u8]
+) -&gt; Result&lt;(), SteamError&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>向大厅内的所有用户广播一个聊天（文本或二进制数据）消息。</p>
+</div>
+<div class="paragraph">
+<p><strong>参数</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>lobby</code>: 要向其发送聊天消息的大厅的 Steam ID。</p>
+</li>
+<li>
+<p><code>msg</code>: 可以是文本或二进制数据，最大可达 4kb。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>说明</strong></p>
+</div>
+<div class="paragraph">
+<p>大厅里的所有用户（包括本地用户）将在收到消息的同时收到一个 LobbyChatMsg_t 回调。</p>
+</div>
+<div class="paragraph">
+<p>如果您发送的是二进制数据，则应在消息前附加一个标头，以便将其视为自定义数据，而不是旧的纯文本消息。</p>
+</div>
+<div class="paragraph">
+<p>对于需要进行决断的通信（例如，让用户从一组字符中挑选，并确保只有一个用户选择了一个字符）， 您可以使用大厅所有者作为决断者。 GetLobbyOwner 返回当前大厅的所有者。 确保始终只有一个并仅有唯一的大厅成员是所有者。 至于选择一个字符的方案，选择字符的用户会发送二进制消息“我想成为Zoe”， 大厅所有者会看到该消息， 并决定是否可行，然后广播相应的结果（用户 X 是 Zoe）。</p>
+</div>
+<div class="paragraph">
+<p>这些消息是通过 Steam 后端发送的，因此可用带宽有限。 对于较高的流量，如声音或游戏数据，您最好使用 Steam 网络 API。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回</strong></p>
+</div>
+<div class="paragraph">
+<p>如果消息发送成功则返回Ok(())。 如果消息太小或太大，或无法连接至 Steam导致了异常，则返回SteamError</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_为大厅列表添加字符过滤器"><a class="anchor" href="#_为大厅列表添加字符过滤器"></a>16. 为大厅列表添加字符过滤器</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn add_request_lobby_list_string_filter(
+    &amp;self,
+    StringFilter: StringFilter&lt;'_&gt;
+) -&gt; &amp;Self</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>向大厅列表请求添加字符串比较过滤器。</p>
+</div>
+<div class="paragraph">
+<p>此方法添加一个过滤器，将大厅中特定的字符串属性与提供的值进行比较。符合此条件的大厅将包含在结果中。</p>
+</div>
+<div class="paragraph">
+<p><strong>参数</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>key</code>: 要比较的key值。</p>
+</li>
+<li>
+<p><code>value</code>: 要比较的value值。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_为大厅列表添加数值过滤器"><a class="anchor" href="#_为大厅列表添加数值过滤器"></a>17. 为大厅列表添加数值过滤器</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn add_request_lobby_list_numerical_filter(
+    &amp;self,
+    NumberFilter: NumberFilter&lt;'_&gt;
+) -&gt; &amp;Self</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>向大厅列表请求添加数值比较过滤器。</p>
+</div>
+<div class="paragraph">
+<p>此方法添加一个过滤器，将大厅中特定的数值属性与提供的值进行比较。符合此条件的大厅将包含在结果中。</p>
+</div>
+<div class="paragraph">
+<p><strong>参数</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>key</code>: 要比较的key值。</p>
+</li>
+<li>
+<p><code>value</code>: 要比较的value值。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_为大厅列表添加排序过滤器"><a class="anchor" href="#_为大厅列表添加排序过滤器"></a>18. 为大厅列表添加排序过滤器</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn add_request_lobby_list_near_value_filter(
+    &amp;self,
+    NearFilter: NearFilter&lt;'_&gt;
+) -&gt; &amp;Self</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>排序出最接近指定值的结果。</p>
+</div>
+<div class="paragraph">
+<p>接近筛选器实际上并不筛选出值，而只是影响结果的排序方式。 您可以指定多个接近筛选器，第一个接近筛选器影响最大，最后一个筛选器影响最小。</p>
+</div>
+<div class="paragraph">
+<p><strong>参数</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>key</code>: 要排序的key值。</p>
+</li>
+<li>
+<p><code>value</code>: 要排序的value值。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_为大厅列表添加空位过滤器"><a class="anchor" href="#_为大厅列表添加空位过滤器"></a>19. 为大厅列表添加空位过滤器</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn set_request_lobby_list_slots_available_filter(
+    &amp;self,
+    open_slots: u8
+) -&gt; &amp;Self</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>向大厅列表请求添加可用空位过滤器。</p>
+</div>
+<div class="paragraph">
+<p>此方法添加一个过滤器，包含具有特定数量空位的大厅。</p>
+</div>
+<div class="paragraph">
+<p><strong>参数</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>open_slots</code>: 必需开放的空位数量。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_为大厅列表添加距离过滤器"><a class="anchor" href="#_为大厅列表添加距离过滤器"></a>20. 为大厅列表添加距离过滤器</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">    pub fn set_request_lobby_list_distance_filter(
+    &amp;self,
+    distance: DistanceFilter
+) -&gt; &amp;Self</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>设置要寻找的大厅的物理距离，这基于用户 IP 地址和 Steam 后端的 IP 位置地图。</p>
+</div>
+<div class="paragraph">
+<p><strong>参数</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>distance</code>: 指定最远距离。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_为大厅列表添加数量限制"><a class="anchor" href="#_为大厅列表添加数量限制"></a>21. 为大厅列表添加数量限制</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn set_request_lobby_list_result_count_filter(&amp;self, count: u64) -&gt; &amp;Self</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>设置要返回的大厅的最大数量。 数量越少，下载大厅结果与详情到客户端的速度越快。</p>
+</div>
+<div class="paragraph">
+<p><strong>参数</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>count</code>: 要返回的大厅的最大数量。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_设置大厅列表过滤器"><a class="anchor" href="#_设置大厅列表过滤器"></a>22. 设置大厅列表过滤器</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn set_lobby_list_filter(&amp;self, filter: LobbyListFilter&lt;'_&gt;) -&gt; &amp;Self</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>设置从 request_lobby_list 返回的大厅的过滤器。</p>
+</div>
+<div class="paragraph">
+<p>此方法用于对大厅列表检索过程应用各种过滤器。在调用 request_lobby_list 之前调用此方法，以确保在获取可用大厅列表时考虑指定的过滤器。</p>
+</div>
+<div class="paragraph">
+<p><strong>参数</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>filter</code>: 一个包含要应用的过滤条件的 LobbyListFilter 结构体。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>示例</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">fn main() {
+    let (client, single) = Client::init().unwrap();
+    client.matchmaking().set_lobby_list_filter(
+        LobbyListFilter {
+            string: Some(vec![
+                StringFilter(
+                    LobbyKey::new("name"), "My Lobby", StringFilterKind::Include
+                ),
+                StringFilter(
+                    LobbyKey::new("gamemode"), "ffa", StringFilterKind::Include
+                ),
+            ]),
+            number: Some(vec![
+                NumberFilter("elo", 1500, ComparisonFilter::GreaterThan),
+                NumberFilter("elo", 2000, ComparisonFilter::LessThan)
+            ]),
+            ..Default::default()
+        }
+    ).request_lobby_list(|lobbies| {
+        println!("Lobbies: {:?}", lobbies);
+    });
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_参考"><a class="anchor" href="#_参考"></a>23. 参考</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://docs.rs/steamworks/0.11.0/steamworks/struct.Matchmaking.html" class="bare">https://docs.rs/steamworks/0.11.0/steamworks/struct.Matchmaking.html</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://partner.steamgames.com/doc/api/ISteamMatchmaking" class="bare">https://partner.steamgames.com/doc/api/ISteamMatchmaking</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>UserStats (用户状态) :: Steamworks for Rust</title>
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../..">Steamworks for Rust</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs-steamworks-rs" data-version="0.11.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Steamworks for Rust</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="client.html">Client (客户端)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="app.html">Apps (应用)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="utils.html">Utils (工具)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="matchmaking.html">MatchMaking (匹配大厅)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking.html">Networking (网络)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="friends.html">Friends (好友)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="input.html">Input (输入)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user.html">User (用户)</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="user-stats.html">UserStats (用户状态)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-play.html">RemotePlay (远程畅玩)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-storage.html">RemoteStorage (远程存储)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ugc.html">UGC (创意工坊)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-message.html">NetworkingMessages (网络消息)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-sockets.html">NetworkingSockets (网络连接)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-utils.html">NetworkingUtils (网络工具)</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Steamworks for Rust</span>
+    <span class="version">0.11.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Steamworks for Rust</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">0.11.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Steamworks for Rust</a></li>
+    <li><a href="user-stats.html">UserStats (用户状态)</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/qq253498229/docs-steamworks-rs/edit/master/modules/ROOT/pages/user-stats.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="目录" data-levels="3">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">UserStats (用户状态)</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>提供访问以及提交统计、成就与排行榜的函数。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_查询排行榜"><a class="anchor" href="#_查询排行榜"></a>1. 查询排行榜</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn find_leaderboard&lt;F&gt;(&amp;self, name: &amp;str, cb: F)
+where
+F: FnOnce(Result&lt;Option&lt;Leaderboard&gt;, SteamError&gt;) + 'static + Send,</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>通过名称查询排行榜。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_查询或创建排行榜"><a class="anchor" href="#_查询或创建排行榜"></a>2. 查询或创建排行榜</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn find_or_create_leaderboard&lt;F&gt;(
+    &amp;self,
+    name: &amp;str,
+    sort_method: LeaderboardSortMethod,
+    display_type: LeaderboardDisplayType,
+    cb: F
+)
+where
+    F: FnOnce(Result&lt;Option&lt;Leaderboard&gt;, SteamError&gt;) + 'static + Send,</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>通过名称获取排行榜。若该排行榜尚未创建，该函数将创建一个。</p>
+</div>
+<div class="paragraph">
+<p><strong>LeaderboardSortMethod</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>None</strong>: 0 只在排行榜无效时使用。绝不应自己设置此值。</p>
+</li>
+<li>
+<p><strong>Ascending</strong>: 1 最高分为最小的数字。</p>
+</li>
+<li>
+<p><strong>Descending</strong>: 2 最高分为最大的数字。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>LeaderboardDisplayType</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>None</strong>: 0 此值只能在排行榜无效时使用。您绝不能自己设置此值。</p>
+</li>
+<li>
+<p><strong>Numeric</strong>: 1 得分只是简单的数字值。</p>
+</li>
+<li>
+<p><strong>TimeSeconds</strong>: 2 得分代表秒数表示的时间。</p>
+</li>
+<li>
+<p><strong>TimeMilliSeconds</strong>: 3 得分代表毫秒表示的时间。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_向排行榜上传用户得分"><a class="anchor" href="#_向排行榜上传用户得分"></a>3. 向排行榜上传用户得分</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn upload_leaderboard_score&lt;F&gt;(
+    &amp;self,
+    leaderboard: &amp;Leaderboard,
+    method: UploadScoreMethod,
+    score: i32,
+    details: &amp;[i32],
+    cb: F
+)
+where
+    F: FnOnce(Result&lt;Option&lt;LeaderboardScoreUploaded&gt;, SteamError&gt;) + 'static + Send,</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>向指定的排行榜上传用户得分。</p>
+</div>
+<div class="paragraph">
+<p><strong>UploadScoreMethod</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>KeepBest</strong>: 1 排行榜将保存用户的最高分。</p>
+</li>
+<li>
+<p><strong>ForceUpdate</strong>: 2 排行榜将总是替换入指定得分。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>LeaderboardScoreUploaded</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>score: i32</strong>: 尝试设置的得分。</p>
+</li>
+<li>
+<p><strong>was_changed: bool</strong>: 如果排行榜上的得分更改，为 true；否则，如果既有得分更高，则为 false。</p>
+</li>
+<li>
+<p><strong>global_rank_new: i32</strong>: 用户在此排行榜上的新全局排名。</p>
+</li>
+<li>
+<p><strong>global_rank_previous: i32</strong>: 用户在此排行榜上的上次全局排名。如果用户在排行榜上无既有条目，则为 0。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_下载排行榜详情"><a class="anchor" href="#_下载排行榜详情"></a>4. 下载排行榜详情</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn download_leaderboard_entries&lt;F&gt;(
+    &amp;self,
+    leaderboard: &amp;Leaderboard,
+    request: LeaderboardDataRequest,
+    start: usize,
+    end: usize,
+    max_details_len: usize,
+    cb: F
+)
+where
+    F: FnOnce(Result&lt;Vec&lt;LeaderboardEntry&gt;, SteamError&gt;) + 'static + Send,</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>为指定排行榜获取一系列排行榜条目。</p>
+</div>
+<div class="paragraph">
+<p><strong>LeaderboardDataRequest</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Global</strong>: 0 用于按排行榜排名查询排行榜条目的连续范围。 开始参数与结束参数控制请求的范围。 例如，您可以设置开始为 1，结束为 10，显示排行榜上的前 10 名。</p>
+</li>
+<li>
+<p><strong>GlobalAroundUser</strong>: 1 用于获取相对一个用户条目的排行榜条目。 开始参数为要获取的在当前用户条目之前的条目数量，结束参数为在当前用户条目之后的条目数量。 当前用户条目总是包含在内。 例如，如果当前用户在排行榜上排第 5 名，设置开始为 -2，结束为 2，则将返回 5 项，第 3 名至第 7 名。 如果在用户条目前面或后面没有足够条目，Steam 将调整范围，尝试返回请求的条目数量。 例如，如果用户在排行榜上排第 1 位，将开始设置为 -2，结束设置为 2，Steam 将返回排行榜上的前 5 位。</p>
+</li>
+<li>
+<p><strong>Friends</strong>: 2 用于获得当前用户的好友的所有排行榜项目。 忽略开始参数与结束参数。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>LeaderboardEntry</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>user: SteamId</strong>: 此条目所属的用户。</p>
+</li>
+<li>
+<p><strong>global_rank: i32</strong>: 以 [1..N] 为范围的此条目的全局排名，其中 N 为在排行榜中有条目的用户数量。</p>
+</li>
+<li>
+<p><strong>score: i32</strong>: 排行榜中设置的原始得分。</p>
+</li>
+<li>
+<p><strong>details: Vec&lt;i32&gt;</strong>: 此条目拥有的详情数量。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取排行榜句柄类型"><a class="anchor" href="#_获取排行榜句柄类型"></a>5. 获取排行榜句柄类型</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_leaderboard_display_type(
+    &amp;self,
+    leaderboard: &amp;Leaderboard
+) -&gt; Option&lt;LeaderboardDisplayType&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回一个排行榜句柄的显示类型。 如果排行榜句柄无效，则返回 None。</p>
+</div>
+<div class="paragraph">
+<p><strong>LeaderboardDisplayType</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>None</strong>: 0 此值只能在排行榜无效时使用。您绝不能自己设置此值。</p>
+</li>
+<li>
+<p><strong>Numeric</strong>: 1 得分只是简单的数字值。</p>
+</li>
+<li>
+<p><strong>TimeSeconds</strong>: 2 得分代表秒数表示的时间。</p>
+</li>
+<li>
+<p><strong>TimeMilliSeconds</strong>: 3 得分代表毫秒表示的时间。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取排行榜排序方式"><a class="anchor" href="#_获取排行榜排序方式"></a>6. 获取排行榜排序方式</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_leaderboard_sort_method(
+    &amp;self,
+    leaderboard: &amp;Leaderboard
+) -&gt; Option&lt;LeaderboardSortMethod&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回排行榜句柄的排序顺序。 如果排行榜句柄无效，则返回 None。</p>
+</div>
+<div class="paragraph">
+<p><strong>LeaderboardSortMethod</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>None</strong>: 0 只在排行榜无效时使用。绝不应自己设置此值。</p>
+</li>
+<li>
+<p><strong>Ascending</strong>: 1 最高分为最小的数字。</p>
+</li>
+<li>
+<p><strong>Descending</strong>: 2 最高分为最大的数字。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取排行榜句柄名称"><a class="anchor" href="#_获取排行榜句柄名称"></a>7. 获取排行榜句柄名称</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_leaderboard_name(&amp;self, leaderboard: &amp;Leaderboard) -&gt; String</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回排行榜句柄名称。 如果排行榜句柄无效，则返回空字符串。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取排行榜详情数量"><a class="anchor" href="#_获取排行榜详情数量"></a>8. 获取排行榜详情数量</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_leaderboard_entry_count(&amp;self, leaderboard: &amp;Leaderboard) -&gt; i32</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回一个排行榜中的条目总数。 如果排行榜句柄无效，则返回0。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_请求用户当前状态和成就"><a class="anchor" href="#_请求用户当前状态和成就"></a>9. 请求用户当前状态和成就</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn request_current_stats(&amp;self)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>向服务器异步请求用户的当前统计与成就。</p>
+</div>
+<div class="paragraph">
+<p>触发一个UserStatsReceived回调函数。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取全部成就百分比数据"><a class="anchor" href="#_获取全部成就百分比数据"></a>10. 获取全部成就百分比数据</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn request_global_achievement_percentages&lt;F&gt;(&amp;self, cb: F)
+where
+    F: FnOnce(Result&lt;GameId, SteamError&gt;) + 'static + Send,</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>异步获取全球获得该游戏各个成就的玩家百分比数据。</p>
+</div>
+<div class="paragraph">
+<p>您必须先调用 request_current_stats()，且须通过其回调返回成功之后，才能调用此函数。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+不确定这是否适用，因为其他需要调用 <code>request_current_stats()</code> 的成就功能并不需要专门调用该函数就可以成功完成。 也许它通过 <code>Client::init()/init_app()</code> 以某种方式自动运行？
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_保存状态"><a class="anchor" href="#_保存状态"></a>11. 保存状态</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn store_stats(&amp;self) -&gt; Result&lt;(), ()&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>将变动的统计与成就数据发送至服务器进行持久保存。</p>
+</div>
+<div class="paragraph">
+<p>若失败，则不会发送任何数据至服务器。 建议不断重试，直至调用成功。</p>
+</div>
+<div class="paragraph">
+<p>此调用会受到速率限制。 调用频率应该以分钟计，而非秒计。 您应只在重大状态更改时调用此函数，比如回合结束、地图更改或用户离开服务器时。</p>
+</div>
+<div class="paragraph">
+<p>如果在您的应用程序进程结束时，您在本地保存有统计或成就，且尚未使用此函数上传，那么此函数将自动调用。</p>
+</div>
+<div class="paragraph">
+<p>您可以在 <strong>%steam_install%\logs\stats_log.txt</strong> 文件中找到更多调试信息。</p>
+</div>
+<div class="paragraph">
+<p>如果成功则会触发UserStatsStored回调函数。 如果成就已经解锁则会触发UserAchievementStored回调函数。 需要先调用 request_current_stats() 并成功处理 UserStatsReceived 的回调。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_重置全部状态"><a class="anchor" href="#_重置全部状态"></a>12. 重置全部状态</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn reset_all_stats(&amp;self, achievements_too: bool) -&gt; Result&lt;(), ()&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>重置当前用户的全部状态，且可选择是否重置成就。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取状态i32类型"><a class="anchor" href="#_获取状态i32类型"></a>13. 获取状态(i32类型)</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_stat_i32(&amp;self, name: &amp;str) -&gt; Result&lt;i32, ()&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获取当前用户的当前统计值。</p>
+</div>
+<div class="paragraph">
+<p>指定的统计数据必须存在并与 Steamworks 应用管理网站上设置的类型匹配。</p>
+</div>
+<div class="paragraph">
+<p>需要先调用 <code>request_current_stats()</code> 并且成功处理 <code>UserStatsReceived</code> 回调。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_设置状态i32类型"><a class="anchor" href="#_设置状态i32类型"></a>14. 设置状态(i32类型)</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn set_stat_i32(&amp;self, name: &amp;str, stat: i32) -&gt; Result&lt;(), ()&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>为当前用户设置/更新给定统计的值。</p>
+</div>
+<div class="paragraph">
+<p>此调用只修改 Steam 的内存状态，因此开销较小。 这样做使 Steam 在游戏崩溃或意外关闭时能存留更改。 要将统计提交至服务器，必须调用 <code>store_stats()</code>。</p>
+</div>
+<div class="paragraph">
+<p>指定的统计数据必须存在并与 Steamworks 应用管理网站上设置的类型匹配。</p>
+</div>
+<div class="paragraph">
+<p>需要先调用 <code>request_current_stats()</code> 并且成功处理 <code>UserStatsReceived</code> 回调。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取状态f32类型"><a class="anchor" href="#_获取状态f32类型"></a>15. 获取状态(f32类型)</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_stat_f32(&amp;self, name: &amp;str) -&gt; Result&lt;f32, ()&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获取当前用户的当前统计值。</p>
+</div>
+<div class="paragraph">
+<p>指定的统计数据必须存在并与 Steamworks 应用管理网站上设置的类型匹配。</p>
+</div>
+<div class="paragraph">
+<p>需要先调用 <code>request_current_stats()</code> 并且成功处理 <code>UserStatsReceived</code> 回调。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_设置状态f32类型"><a class="anchor" href="#_设置状态f32类型"></a>16. 设置状态(f32类型)</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn set_stat_f32(&amp;self, name: &amp;str, stat: f32) -&gt; Result&lt;(), ()&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>为当前用户设置/更新给定统计的值。</p>
+</div>
+<div class="paragraph">
+<p>此调用只修改 Steam 的内存状态，因此开销较小。 这样做使 Steam 在游戏崩溃或意外关闭时能存留更改。 要将统计提交至服务器，必须调用 <code>store_stats()</code>。</p>
+</div>
+<div class="paragraph">
+<p>指定的统计数据必须存在并与 Steamworks 应用管理网站上设置的类型匹配。</p>
+</div>
+<div class="paragraph">
+<p>需要先调用 <code>request_current_stats()</code> 并且成功处理 <code>UserStatsReceived</code> 回调。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取成就的解锁状态"><a class="anchor" href="#_获取成就的解锁状态"></a>17. 获取成就的解锁状态</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn achievement(&amp;self, name: &amp;str) -&gt; AchievementHelper&lt;'_, Manager&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>访问给定成就的成就 API，成就的“API 名称”。</p>
+</div>
+<div class="paragraph">
+<p>需要先调用 <code>request_current_stats()</code> 并且成功处理 <code>UserStatsReceived</code> 回调。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取全部成就的数量"><a class="anchor" href="#_获取全部成就的数量"></a>18. 获取全部成就的数量</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_num_achievements(&amp;self) -&gt; Result&lt;u32, ()&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获取在 Steamworks 网站的“应用管理员”中定义的成就数量。</p>
+</div>
+<div class="paragraph">
+<p>这用于遍历 <code>GetAchievementName</code> 的所有成就。</p>
+</div>
+<div class="paragraph">
+<p>如果当前应用 ID 无成就，则返回 0。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+对于应用 ID 480（Spacewar），会返回错误！
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取应用所有成就名"><a class="anchor" href="#_获取应用所有成就名"></a>19. 获取应用所有成就名</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_achievement_names(&amp;self) -&gt; Option&lt;Vec&lt;String&gt;&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回当前应用 ID 的所有成就名称列表。</p>
+</div>
+<div class="paragraph">
+<p>如果 <code>iAchievement</code> 不是有效索引，则成就名称返回为空字符串，并且当前应用 ID 必须有成就。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_参考"><a class="anchor" href="#_参考"></a>20. 参考</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://docs.rs/steamworks/latest/steamworks/struct.UserStats.html" class="bare">https://docs.rs/steamworks/latest/steamworks/struct.UserStats.html</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://partner.steamgames.com/doc/api/ISteamUserStats" class="bare">https://partner.steamgames.com/doc/api/ISteamUserStats</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

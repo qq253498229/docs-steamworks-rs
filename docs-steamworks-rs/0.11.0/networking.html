@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Networking (网络) :: Steamworks for Rust</title>
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../..">Steamworks for Rust</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs-steamworks-rs" data-version="0.11.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Steamworks for Rust</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="client.html">Client (客户端)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="app.html">Apps (应用)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="utils.html">Utils (工具)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="matchmaking.html">MatchMaking (匹配大厅)</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="networking.html">Networking (网络)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="friends.html">Friends (好友)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="input.html">Input (输入)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user.html">User (用户)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user-stats.html">UserStats (用户状态)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-play.html">RemotePlay (远程畅玩)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-storage.html">RemoteStorage (远程存储)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ugc.html">UGC (创意工坊)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-message.html">NetworkingMessages (网络消息)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-sockets.html">NetworkingSockets (网络连接)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-utils.html">NetworkingUtils (网络工具)</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Steamworks for Rust</span>
+    <span class="version">0.11.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Steamworks for Rust</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">0.11.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Steamworks for Rust</a></li>
+    <li><a href="networking.html">Networking (网络)</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/qq253498229/docs-steamworks-rs/edit/master/modules/ROOT/pages/networking.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="目录" data-levels="3">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Networking (网络)</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>网络接口，用于在客户端之间建立连接并发送数据，可能时遍历 NAT。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_接受p2p会话"><a class="anchor" href="#_接受p2p会话"></a>1. 接受P2P会话</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn accept_p2p_session(&amp;self, user: SteamId)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>这允许游戏指定是否接受传入的数据包。 需要在与远程主机建立真正的连接之前调用，让游戏有机会决定是否允许远程用户访问。</p>
+</div>
+<div class="paragraph">
+<p><strong>注意，</strong>此函数只应在响应 P2PSessionRequest 回调时才能调用！</p>
+</div>
+<div class="paragraph">
+<p><strong>参数</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>user</code>: 向我们发送了初始数据包的用户的 Steam ID。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_关闭p2p会话"><a class="anchor" href="#_关闭p2p会话"></a>2. 关闭P2P会话</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn close_p2p_session(&amp;self, user: SteamId)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>关闭与指定用户之间的 P2P 连接。</p>
+</div>
+<div class="paragraph">
+<p>应在结束与用户通信后调用此函数，可以释放后台所有分配给连接的资源。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_发送p2p数据包"><a class="anchor" href="#_发送p2p数据包"></a>3. 发送P2P数据包</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn send_p2p_packet(
+    &amp;self,
+    remote: SteamId,
+    send_type: SendType,
+    data: &amp;[u8]
+) -&gt; bool</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果连接尚未启动，则向起始用户发送一个数据包以启动连接。</p>
+</div>
+<div class="paragraph">
+<p><strong>SendType:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Unreliable</code>: 0基础 UDP 发送。 数据包不能大于 1200 字节（MTU 的通常大小）。 可能会丢失，或顺序错乱（罕见）。 发送 API 确实对基础连接有一定了解，因此如果没有完成 NAT 遍历或在连接时发生已识别的调整，数据包将会被批处理，直至连接再次打开。</p>
+</li>
+<li>
+<p><code>UnreliableNoDelay</code>: 1同上，但如果基础 P2P 连接仍未建立，数据包会被丢弃。 这如果用于发送给远程主机的第一个数据包上，几乎可以肯定数据包会丢失。 这只对不应缓冲的数据类型有用，即语音有效负载数据包。</p>
+</li>
+<li>
+<p><code>Reliable</code>: 2可靠的消息发送。 每条消息可发送高达 1MB 的数据。 可在后台对消息进行碎片化或重组，以及用滑动窗口高效发送大型数据区块。</p>
+</li>
+<li>
+<p><code>ReliableWithBuffering</code>: 3同上，但使用 Nagle 算法发送，发送内容将累积，直至达到当前 MTU 大小（通常约 1200 字节，但可能会变化），或已过去大约 200 毫秒（Nagle 算法）。 如果您想发送一系列较小的消息，但已将他们合并成一个数据包，这将非常有用。 因为所有可靠的数据流都已排序，您可用 k_EP2PSendReliableWithBuffering 发送几个小消息，然后用普通的 k_EP2PSendReliable 强制发送所有已缓冲的数据。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_读取p2p数据包大小"><a class="anchor" href="#_读取p2p数据包大小"></a>4. 读取P2P数据包大小</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn is_p2p_packet_available(&amp;self) -&gt; Option&lt;usize&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回队列中是否有数据包可以读取。</p>
+</div>
+<div class="paragraph">
+<p>如果有队列中的数据包，则返回其大小。否则返回 None</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_读取p2p数据包"><a class="anchor" href="#_读取p2p数据包"></a>5. 读取P2P数据包</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn read_p2p_packet(&amp;self, buf: &amp;mut [u8]) -&gt; Option&lt;(SteamId, usize)&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>尝试将排队的数据包读取到缓冲区中（如果有的话）。</p>
+</div>
+<div class="paragraph">
+<p>返回发送者的 Steam ID 和数据包的大小。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_参考"><a class="anchor" href="#_参考"></a>6. 参考</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://docs.rs/steamworks/0.11.0/steamworks/struct.Networking.html" class="bare">https://docs.rs/steamworks/0.11.0/steamworks/struct.Networking.html</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://partner.steamgames.com/doc/api/ISteamNetworking" class="bare">https://partner.steamgames.com/doc/api/ISteamNetworking</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

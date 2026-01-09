@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>NetworkingUtils (网络工具) :: Steamworks for Rust</title>
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../..">Steamworks for Rust</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs-steamworks-rs" data-version="0.11.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Steamworks for Rust</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="client.html">Client (客户端)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="app.html">Apps (应用)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="utils.html">Utils (工具)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="matchmaking.html">MatchMaking (匹配大厅)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking.html">Networking (网络)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="friends.html">Friends (好友)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="input.html">Input (输入)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user.html">User (用户)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user-stats.html">UserStats (用户状态)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-play.html">RemotePlay (远程畅玩)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-storage.html">RemoteStorage (远程存储)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ugc.html">UGC (创意工坊)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-message.html">NetworkingMessages (网络消息)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-sockets.html">NetworkingSockets (网络连接)</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="networking-utils.html">NetworkingUtils (网络工具)</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Steamworks for Rust</span>
+    <span class="version">0.11.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Steamworks for Rust</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">0.11.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Steamworks for Rust</a></li>
+    <li><a href="networking-utils.html">NetworkingUtils (网络工具)</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/qq253498229/docs-steamworks-rs/edit/master/modules/ROOT/pages/networking-utils.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="目录" data-levels="3">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">NetworkingUtils (网络工具)</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>用于检查本地网络环境并对 ping 进行估测的杂项网络实用工具。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_分配并初始化消息"><a class="anchor" href="#_分配并初始化消息"></a>1. 分配并初始化消息</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn allocate_message(&amp;self, buffer_size: usize) -&gt; NetworkingMessage&lt;Manager&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>分配并初始化消息对象。 调用此函数的通常原因是将其传递至 ISteamNetworkingSockets::SendMessages。 返回的对象中所有相关字段都会清零。</p>
+</div>
+<div class="paragraph">
+<p>您还可以申请此系统分配空间以容纳有效负载本身。 如果 cbAllocateBuffer 为非零的值，系统将分配内存以容纳至少 cbAllocateBuffer 字节的有效负载。 m_pData 将会指向被分配的缓冲区，m_cbSize 将会设为其大小，m_pfnFreeData 将会设为合适的函数以清空缓冲区。</p>
+</div>
+<div class="paragraph">
+<p>如果 cbAllocateBuffer=0，则没有分配缓冲区。 m_pData 将为 NULL，m_cbSize 将为零，m_pfnFreeData 将为 NULL。 您将需要为每一个都进行设置。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_初始化与状态检查"><a class="anchor" href="#_初始化与状态检查"></a>2. 初始化与状态检查</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn init_relay_network_access(&amp;self)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果您知道您将会使用中继网路（比如您预期会进行 P2P 连接），调用此函数以初始化中继网络。 如果您不调用此函数，初始化将会被推迟，直到您首次看到需要访问中继网络的功能，而这会推迟首次访问。</p>
+</div>
+<div class="paragraph">
+<p>如果之前的尝试失败，您也可以调用此函数以强制进行重试。 执行任何要求访问中继网络的操作也将会触发一次重试，因此从不严格要求调用此函数， 但如果预期会访问中继网络，那么在启动程序时调用可能会有帮助。</p>
+</div>
+<div class="paragraph">
+<p>使用 GetRelayNetworkStatus 或侦听 SteamRelayNetworkStatus_t 调用，以了解初始化何时完成。 初始化一般在几秒内完成。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+托管于已知数据中心的专用服务器无需调用此函数，因为这些服务器不会做出路由决定。 然而，如果专用服务器将会使用 P2P 功能，那么它将会作为“客户端”，应该调用此函数。
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取网络状态"><a class="anchor" href="#_获取网络状态"></a>3. 获取网络状态</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn relay_network_status(&amp;self) -&gt; NetworkingAvailabilityResult</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获取中继网络的当前状态。</p>
+</div>
+<div class="paragraph">
+<p>如果你想获得更多详细信息，请使用 detailed_relay_network_status 替换</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取网络状态详情"><a class="anchor" href="#_获取网络状态详情"></a>4. 获取网络状态详情</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn detailed_relay_network_status(&amp;self) -&gt; RelayNetworkStatus</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获取中继网络的当前详细状态。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_网络状态回调"><a class="anchor" href="#_网络状态回调"></a>5. 网络状态回调</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn relay_network_status_callback(
+    &amp;self,
+    callback: impl FnMut(RelayNetworkStatus) + Send + 'static
+)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>注册用于中继网络状态更新的回调函数。</p>
+</div>
+<div class="paragraph">
+<p>多次调用此函数将替换之前的回调函数。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_参考"><a class="anchor" href="#_参考"></a>6. 参考</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://docs.rs/steamworks/latest/steamworks/networking_utils/struct.NetworkingUtils.html" class="bare">https://docs.rs/steamworks/latest/steamworks/networking_utils/struct.NetworkingUtils.html</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://partner.steamgames.com/doc/api/ISteamNetworkingUtils" class="bare">https://partner.steamgames.com/doc/api/ISteamNetworkingUtils</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

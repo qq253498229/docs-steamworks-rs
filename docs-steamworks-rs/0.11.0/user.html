@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>User (用户) :: Steamworks for Rust</title>
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../..">Steamworks for Rust</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs-steamworks-rs" data-version="0.11.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Steamworks for Rust</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="client.html">Client (客户端)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="app.html">Apps (应用)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="utils.html">Utils (工具)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="matchmaking.html">MatchMaking (匹配大厅)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking.html">Networking (网络)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="friends.html">Friends (好友)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="input.html">Input (输入)</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="user.html">User (用户)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user-stats.html">UserStats (用户状态)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-play.html">RemotePlay (远程畅玩)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-storage.html">RemoteStorage (远程存储)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ugc.html">UGC (创意工坊)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-message.html">NetworkingMessages (网络消息)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-sockets.html">NetworkingSockets (网络连接)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-utils.html">NetworkingUtils (网络工具)</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Steamworks for Rust</span>
+    <span class="version">0.11.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Steamworks for Rust</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">0.11.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Steamworks for Rust</a></li>
+    <li><a href="user.html">User (用户)</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/qq253498229/docs-steamworks-rs/edit/master/modules/ROOT/pages/user.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="目录" data-levels="3">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">User (用户)</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>访问并对 Steam 用户信息进行使用的函数。</p>
+</div>
+<div class="paragraph">
+<p>这部分内容有点绕，建议同时参考 <a href="https://partner.steamgames.com/doc/features/auth">Steamworks 文献库 - 用户验证与所有权</a>，更容易理解。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取steamid"><a class="anchor" href="#_获取steamid"></a>1. 获取SteamId</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn steam_id(&amp;self) -&gt; SteamId</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获取当前登录至 Steam 客户端帐户的 Steam ID。 通常被称为“当前用户”，或“本地用户”。</p>
+</div>
+<div class="paragraph">
+<p>Steam ID 是 Steam 帐户、Steam 组、大厅和聊天室的唯一标识符，用于在 Steamworks API 各部分中区分用户。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取用户等级"><a class="anchor" href="#_获取用户等级"></a>2. 获取用户等级</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn level(&amp;self) -&gt; u32</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回当前用户的等级</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_判断是否连接到steam服务器"><a class="anchor" href="#_判断是否连接到steam服务器"></a>3. 判断是否连接到Steam服务器</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn logged_on(&amp;self) -&gt; bool</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>检查是否当前用户的 Steam 客户端已连接至 Steam 服务器。</p>
+</div>
+<div class="paragraph">
+<p>如果未连接，则不会启用 Steamworks API 提供的任何实时服务。 Steam 客户端将尽量频繁地自动尝试重新连接。 当连接恢复时，将发送出一个 SteamServersConnected_t 回调。</p>
+</div>
+<div class="paragraph">
+<p>您通常不需要自己进行检查。 所有依赖于它的 API 调用将进行内部检查。 当用户失去访问权限时，强行禁用内容通常会给用户带来不好的体验，您可能会阻止他们访问不需要实时连接 Steam 的 API。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong> bool</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>true</strong>， 如果 Steam 客户端当前实时连接到 Steam 服务器；</p>
+</li>
+<li>
+<p>否则，如果由于在本地电脑上出现连接问题，或者由于 Steam 服务器停机/繁忙而没有可用的连接，返回 <strong>false</strong>。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取身份凭证_通过steamid"><a class="anchor" href="#_获取身份凭证_通过steamid"></a>4. 获取身份凭证-通过SteamId</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn authentication_session_ticket_with_steam_id(
+    &amp;self,
+    steam_id: SteamId
+) -&gt; (AuthTicket, Vec&lt;u8&gt;)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获取一个会话身份凭证，该凭证可以发送给希望验证您身份的其他人。</p>
+</div>
+<div class="paragraph">
+<p>该凭证不应该重复使用。</p>
+</div>
+<div class="paragraph">
+<p>在为 Web API 创建凭证时，您应等待 AuthSessionTicketResponse 事件后再尝试使用该凭证。</p>
+</div>
+<div class="paragraph">
+<p>当多人会话终止时，您必须调用 <a href="#cancel_authentication_ticket">取消身份凭证</a>。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+注意：此 API 不能用于创建供 Web API 使用的凭证。 请改用 <a href="#authentication_session_ticket_for_webapi">获取webapi使用的身份凭证</a> 调用。
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="authentication_session_ticket"><a class="anchor" href="#authentication_session_ticket"></a>5. 获取身份凭证</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn authentication_session_ticket(
+    &amp;self,
+    network_identity: NetworkingIdentity
+) -&gt; (AuthTicket, Vec&lt;u8&gt;)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获取一个会话身份凭证，该凭证可以发送给希望验证您身份的其他人。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+注意：此 API 不能用于创建供 Web API 使用的凭证。 请改用 <a href="#authentication_session_ticket_for_webapi">获取webapi使用的身份凭证</a> 调用。
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cancel_authentication_ticket"><a class="anchor" href="#cancel_authentication_ticket"></a>6. 取消身份凭证</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn cancel_authentication_ticket(&amp;self, ticket: AuthTicket)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>取消从 <a href="#authentication_session_ticket">获取身份凭证</a> 接收到的会话身份凭证。</p>
+</div>
+<div class="paragraph">
+<p>当您不再与指定用户进行游戏时，应调用此函数。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="begin_authentication_session"><a class="anchor" href="#begin_authentication_session"></a>7. 验证并开启会话</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn begin_authentication_session(
+    &amp;self,
+    user: SteamId,
+    ticket: &amp;[u8]
+) -&gt; Result&lt;(), AuthSessionError&gt;
+----</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>验证SteamId和凭证，以确保其有效且未被重复使用。</p>
+</div>
+<div class="paragraph">
+<p>如果对方下线或取消了这个凭证，将触发 ValidateAuthTicketResponse 回调。</p>
+</div>
+<div class="paragraph">
+<p>当多人会话终止时，您必须调用 <a href="#end_authentication_session">结束会话</a>。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="end_authentication_session"><a class="anchor" href="#end_authentication_session"></a>8. 结束会话</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn end_authentication_session(&amp;self, user: SteamId)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>结束一个由 <a href="#begin_authentication_session">验证并开启会话</a> 开始的认证会话。</p>
+</div>
+<div class="paragraph">
+<p>当您不再与指定用户进行游戏时，应调用此函数。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="authentication_session_ticket_for_webapi"><a class="anchor" href="#authentication_session_ticket_for_webapi"></a>9. 获取webapi使用的身份凭证</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn authentication_session_ticket_for_webapi(
+    &amp;self,
+    identity: &amp;str
+) -&gt; AuthTicket</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获取一个身份凭证并发送给希望通过 Web API 验证您身份的用户。</p>
+</div>
+<div class="paragraph">
+<p>调用应用程序必须等待由 API 调用生成的 TicketForWebApiResponse 回调，以访问凭证。</p>
+</div>
+<div class="paragraph">
+<p>最佳实践是为每个将使用凭证的服务使用一个身份字符串。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+此 API 不能用于创建由 <a href="#begin_authentication_session">验证并开启会话</a> 使用的凭证。 请改用 <a href="#authentication_session_ticket">获取身份凭证</a> API。
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_一段测试代码帮助理解身份steam凭证机制"><a class="anchor" href="#_一段测试代码帮助理解身份steam凭证机制"></a>10. 一段测试代码，帮助理解身份steam凭证机制</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">use std::error::Error;
+use std::process;
+use steamworks::Client;
+
+fn bytes_to_hex(vec: Vec&lt;u8&gt;) -&gt; String {
+    vec.iter().map(|b| format!("{:02X}", b)).collect()
+}
+fn hex_to_bytes(hex: String) -&gt; Result&lt;Vec&lt;u8&gt;, Box&lt;dyn Error&gt;&gt; {
+    let bytes: Result&lt;Vec&lt;u8&gt;, _&gt; = (0..hex.len())
+        .step_by(2)
+        .map(|i| u8::from_str_radix(&amp;hex[i..i + 2], 16))
+        .collect();
+
+    bytes.map_err(|e| e.into())
+}
+#[test]
+fn test1() {
+    //初始化客户端，没开启steam客户端会报错
+    let (client, _) = Client::init().unwrap();
+
+    //获取用户接口
+    let user = client.user();
+
+    //判断是否登录了steam
+    let logged_on = user.logged_on();
+    if !logged_on {
+        println!("没有登录steam");
+        process::exit(1);
+    }
+
+    //获取用户等级
+    let level = user.level();
+    println!("用户等级:{level}");
+
+    //根据steam_id获取身份凭证
+    let steam_id = user.steam_id();
+    let (auth_ticket, vec) = user.authentication_session_ticket_with_steam_id(steam_id);
+
+    //测试凭证转hex_string
+    let hex = bytes_to_hex(vec);
+    println!("获取凭证的hex_string:{hex}");
+
+    //测试hex_string转会字节，为之后的验证做准备
+    let bytes = hex_to_bytes(hex);
+    println!("凭证转字节是否成功:{}", bytes.is_ok());
+    let vec = bytes.unwrap();
+
+    //验证凭证并开启会话
+    let result = user.begin_authentication_session(steam_id, &amp;vec);
+    println!("验证凭证并开启会话结果:{}", result.is_ok());
+
+    //结束会话
+    user.end_authentication_session(steam_id);
+
+    //再次开次会话
+    let result = user.begin_authentication_session(steam_id, &amp;vec);
+    println!("重新验证凭证并开启会话结果:{}", result.is_ok());
+
+    //主动将凭证作废
+    user.cancel_authentication_ticket(auth_ticket);
+
+    //再次验证凭证并开启会话
+    let result = user.begin_authentication_session(steam_id, &amp;vec);
+    println!("作废后验证凭证并开启会话结果:{}", result.is_ok());
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_流程概括"><a class="anchor" href="#_流程概括"></a>11. 流程概括</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>用户A申请凭证(authentication_session_ticket_with_steam_id)，并将凭证发送给B</p>
+</li>
+<li>
+<p>用户B验证该凭证，并开启会话(begin_authentication_session)</p>
+</li>
+<li>
+<p>用户B不想玩了，主动结束会话(end_authentication_session)。</p>
+</li>
+<li>
+<p>用户A将身份凭证作废(cancel_authentication_ticket)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_参考"><a class="anchor" href="#_参考"></a>12. 参考</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://docs.rs/steamworks/latest/steamworks/struct.User.html" class="bare">https://docs.rs/steamworks/latest/steamworks/struct.User.html</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://partner.steamgames.com/doc/api/ISteamUser" class="bare">https://partner.steamgames.com/doc/api/ISteamUser</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

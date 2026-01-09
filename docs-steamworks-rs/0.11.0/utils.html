@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Utils (工具) :: Steamworks for Rust</title>
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../..">Steamworks for Rust</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs-steamworks-rs" data-version="0.11.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Steamworks for Rust</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="client.html">Client (客户端)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="app.html">Apps (应用)</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="utils.html">Utils (工具)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="matchmaking.html">MatchMaking (匹配大厅)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking.html">Networking (网络)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="friends.html">Friends (好友)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="input.html">Input (输入)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user.html">User (用户)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user-stats.html">UserStats (用户状态)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-play.html">RemotePlay (远程畅玩)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-storage.html">RemoteStorage (远程存储)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ugc.html">UGC (创意工坊)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-message.html">NetworkingMessages (网络消息)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-sockets.html">NetworkingSockets (网络连接)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-utils.html">NetworkingUtils (网络工具)</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Steamworks for Rust</span>
+    <span class="version">0.11.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Steamworks for Rust</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">0.11.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Steamworks for Rust</a></li>
+    <li><a href="utils.html">Utils (工具)</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/qq253498229/docs-steamworks-rs/edit/master/modules/ROOT/pages/utils.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="目录" data-levels="3">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Utils (工具)</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>访问一系列杂项工具函数的接口。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取appid"><a class="anchor" href="#_获取appid"></a>1. 获取AppId</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn app_id(&amp;self) -&gt; AppId</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获取当前进程的 App ID。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong> AppId</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取国家代码"><a class="anchor" href="#_获取国家代码"></a>2. 获取国家代码</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn ip_country(&amp;self) -&gt; String</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>根据用户的 IP 返回其所在国家的代码。 如“US”、“HK”或“UK”。</p>
+</div>
+<div class="paragraph">
+<p>通过 IP 地址位置数据库来查找。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong> String</p>
+</div>
+<div class="paragraph">
+<p>返回客户端正在运行的 2 位 ISO 3166-1-alpha-2 格式的国家代码。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取ui语言"><a class="anchor" href="#_获取ui语言"></a>3. 获取UI语言</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn ui_language(&amp;self) -&gt; String</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回 Steam 客户端正在运行的语言。</p>
+</div>
+<div class="paragraph">
+<p>此函数仅在少数特殊情况下使用。您也许需要转为调用 Apps::current_game_language。</p>
+</div>
+<div class="paragraph">
+<p>参见支持的语言，查看完整语言列表。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong> String</p>
+</div>
+<div class="paragraph">
+<p><strong>另见：</strong> ISteamApps::GetCurrentGameLanguage、ISteamApps::GetAvailableGameLanguages</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取服务器时间"><a class="anchor" href="#_获取服务器时间"></a>4. 获取服务器时间</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_server_real_time(&amp;self) -&gt; u32</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>以 Unix 时间戳格式返回 Steam 服务器时间。 （自 1970 年 1 月 1 日起的秒数）。</p>
+</div>
+<div class="paragraph">
+<p>返回： u32</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_设置通知浮层位置"><a class="anchor" href="#_设置通知浮层位置"></a>5. 设置通知浮层位置</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn set_overlay_notification_position(&amp;self, position: NotificationPosition)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>设置 Steam 覆盖层弹出窗口在屏幕上的显示位置。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_设置警告回调"><a class="anchor" href="#_设置警告回调"></a>6. 设置警告回调</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn set_warning_callback&lt;F&gt;(&amp;self, cb: F)
+where
+    F: Fn(i32, &amp;CStr) + Send + Sync + 'static</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>设置 Steam 警告回调，该回调用于发出警告消息。</p>
+</div>
+<div class="paragraph">
+<p>传入的函数接受两个参数：严重级别（0 = 信息，1 = 警告）和消息本身。</p>
+</div>
+<div class="paragraph">
+<p>有关更多信息，请参见 Steamworks 的 <a href="#https://partner.steamgames.com/doc/sdk/api/debugging">调试页面</a>。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取手柄文字输入"><a class="anchor" href="#_获取手柄文字输入"></a>7. 获取手柄文字输入</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_entered_gamepad_text_input(
+    &amp;self,
+    dismissed_data: &amp;GamepadTextInputDismissed
+) -&gt; Option&lt;String&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>从大屏幕浮层获取游戏手柄的文本输入。</p>
+</div>
+<div class="paragraph">
+<p>必须在 <code>show_gamepad_text_input</code> 回调内调用。如果用户提交了文本，则返回 <code>Some(String)</code>，否则返回 <code>None</code>。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_判断是否在steam_deck_设备上运行"><a class="anchor" href="#_判断是否在steam_deck_设备上运行"></a>8. 判断是否在Steam Deck 设备上运行</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn is_steam_running_on_steam_deck(&amp;self) -&gt; bool</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>检查 Steam 是否在 Steam Deck 设备上运行。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong> bool</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>true</strong>， 表示 Steam 本身在 Steam Deck 设备上运行，否则返回 <strong>false</strong>。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_激活手柄输入框"><a class="anchor" href="#_激活手柄输入框"></a>9. 激活手柄输入框</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn show_gamepad_text_input&lt;F&gt;(
+    &amp;self,
+    input_mode: GamepadTextInputMode,
+    input_line_mode: GamepadTextInputLineMode,
+    description: &amp;str,
+    max_characters: u32,
+    existing_text: Option&lt;&amp;str&gt;,
+    dismissed_cb: F
+) -&gt; bool
+where
+    F: FnMut(GamepadTextInputDismissed) + 'static + Send,</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>激活仅支持游戏手柄输入的大屏幕文本输入对话框。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong> bool</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>true</strong>， 表示大屏幕叠加界面正在运行；否则返回 <strong>false</strong>。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_打开浮动输入框"><a class="anchor" href="#_打开浮动输入框"></a>10. 打开浮动输入框</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn show_floating_gamepad_text_input&lt;F&gt;(
+    &amp;self,
+    keyboard_mode: FloatingGamepadTextInputMode,
+    x: i32,
+    y: i32,
+    width: i32,
+    height: i32,
+    dismissed_cb: F
+) -&gt; bool
+where
+    F: FnMut() + 'static + Send,</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>在游戏内容上打开一个浮动键盘并将操作系统键盘键直接发送到游戏。</p>
+</div>
+<div class="paragraph">
+<p>文本字段位置以相对于游戏窗口原点的像素距离为单位指定，用于以不覆盖文本字段的方式定位浮动键盘。</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong> bool</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>true</strong>， 表示已显示浮动键盘，否则返回 <strong>false</strong>。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_参考"><a class="anchor" href="#_参考"></a>11. 参考</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://docs.rs/steamworks/0.11.0/steamworks/struct.Utils.html" class="bare">https://docs.rs/steamworks/0.11.0/steamworks/struct.Utils.html</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://partner.steamgames.com/doc/api/ISteamUtils" class="bare">https://partner.steamgames.com/doc/api/ISteamUtils</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

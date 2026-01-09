@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>NetworkingMessages (网络消息) :: Steamworks for Rust</title>
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../..">Steamworks for Rust</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs-steamworks-rs" data-version="0.11.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Steamworks for Rust</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="client.html">Client (客户端)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="app.html">Apps (应用)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="utils.html">Utils (工具)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="matchmaking.html">MatchMaking (匹配大厅)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking.html">Networking (网络)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="friends.html">Friends (好友)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="input.html">Input (输入)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user.html">User (用户)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user-stats.html">UserStats (用户状态)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-play.html">RemotePlay (远程畅玩)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-storage.html">RemoteStorage (远程存储)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ugc.html">UGC (创意工坊)</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="networking-message.html">NetworkingMessages (网络消息)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-sockets.html">NetworkingSockets (网络连接)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-utils.html">NetworkingUtils (网络工具)</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Steamworks for Rust</span>
+    <span class="version">0.11.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Steamworks for Rust</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">0.11.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Steamworks for Rust</a></li>
+    <li><a href="networking-message.html">NetworkingMessages (网络消息)</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/qq253498229/docs-steamworks-rs/edit/master/modules/ROOT/pages/networking-message.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="目录" data-levels="3">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">NetworkingMessages (网络消息)</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>网络 API 旨在使移植非面向连接的代码变得更简便，从而对 P2P 的连接性与 Steam 数据报中继 加以利用。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_向指定用户发送消息"><a class="anchor" href="#_向指定用户发送消息"></a>1. 向指定用户发送消息</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn send_message_to_user(
+    &amp;self,
+    user: NetworkingIdentity,
+    send_type: SendFlags,
+    data: &amp;[u8],
+    channel: u32
+) -&gt; Result&lt;(), SteamError&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>给指定主机发送消息。</p>
+</div>
+<div class="paragraph">
+<p>如果我们尚未和该用户建立会话，则将会隐式建立会话。 我们开始发送消息数据之前可能需要几次握手。 如果握手失败，我们无法接通，错误会通过 <code>SteamNetworkingMessagesSessionFailed_t</code> 回调发布。 如果成功的话不会有提示。 （因此，应该让对方发送回复消息。）</p>
+</div>
+<div class="paragraph">
+<p>向主机发送消息会隐式接受任何来自主机的连接。</p>
+</div>
+<div class="paragraph">
+<p><code>channel</code> 是能用来将消息传送到不同系统的路由编号。 为了从另一端获取数据，需要用同一频道号来调用 <code>ReceiveMessagesOnChannel()</code>。</p>
+</div>
+<div class="paragraph">
+<p>使用不同频道与同一用户通话仍旧会使用同一基础连接，以节省资源。 如果不需要这项功能，请用 0。 否则的话用小整数效率最高。</p>
+</div>
+<div class="paragraph">
+<p>将会保证发送至相同频道相同主机的可靠信息会被远程主机接收（如果有接收到的话）正好一次，并且会按照发送顺序接收。</p>
+</div>
+<div class="paragraph">
+<p>其他顺序一概没有保证！ 具体而言，不可靠的消息可能会被丢弃，或者乱序（相对于彼此及相对于可靠消息）传递，或多次接收。 在不同频道上的消息 <strong>不</strong> 保证会按发送顺序接收。</p>
+</div>
+<div class="paragraph">
+<p>若熟悉 TCP/IP 端口，或熟悉如何转换打开了多个套接字的现有基本代码，则需要注意： 您可能会注意到只有一个频道，用 TCP/IP 的话每个端点都有一个端口号。 可以把频道号想成目的地端口。 如果您需要让每条消息都包含源端口（以便接收方传送回复）的话，只要将其附在消息中即可。 这基本上就是 UDP 的运行方式！</p>
+</div>
+<div class="paragraph">
+<p><strong>返回：</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>如果成功，则返回 <strong>k_EREsultOK</strong></p>
+</li>
+<li>
+<p>如果会话失败或者对等端关闭了会话，并且 k_nSteamNetworkingSend_AutoRestartBrokenSession 未被使用则返回 <strong>k_EResultNoConnection</strong> 。 （您可以使用 GetSessionConnectionInfo 获取详细信息。） 为了确认已知道会话中断并开始新的会话，您必须调用 CloseSessionWithUser。</p>
+</li>
+<li>
+<p>请参见 ISteamNetworkingSockets::SendMessageToConnection 查看更多可能返回的值。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_在指定频道接受消息"><a class="anchor" href="#_在指定频道接受消息"></a>2. 在指定频道接受消息</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn receive_messages_on_channel(
+    &amp;self,
+    channel: u32,
+    batch_size: usize
+) -&gt; Vec&lt;NetworkingMessage&lt;Manager&gt;&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>读取其他用户在某个频道发送的消息。</p>
+</div>
+<div class="paragraph">
+<p><code>batch_size</code> 是一次最多可以接收的消息数量。</p>
+</div>
+<div class="paragraph">
+<p><strong>示例：</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">let (client, single) = Client::init().unwrap();
+
+// run_callbacks must be called regularly, or no incoming connections can be received
+let callback_loop = std::thread::spawn(move || loop {
+    single.run_callbacks();
+    std::thread::sleep(Duration::from_millis(10));
+});
+let networking_messages = client.networking_messages();
+
+// Accept all new connections
+networking_messages.session_request_callback(|request| request.accept());
+
+let _received = networking_messages.receive_messages_on_channel(0, 10);</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_会话请求回调函数"><a class="anchor" href="#_会话请求回调函数"></a>3. 会话请求回调函数</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn session_request_callback(
+    &amp;self,
+    callback: impl FnMut(SessionRequest&lt;Manager&gt;) + Send + 'static
+)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>注册一个回调函数，每当一个对等方请求连接时将调用此回调。</p>
+</div>
+<div class="paragraph">
+<p>使用 <code>SessionRequest</code> 接受或拒绝连接。</p>
+</div>
+<div class="paragraph">
+<p>需要定期调用 <code>SingleClient.run_callbacks()</code>。多次调用此函数将替换之前的回调函数。</p>
+</div>
+<div class="paragraph">
+<p><strong>示例：</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">let (client, single) = Client::init().unwrap();
+
+// run_callbacks must be called regularly, or no incoming connections can be received
+let callback_loop = std::thread::spawn(move || loop {
+    single.run_callbacks();
+    std::thread::sleep(Duration::from_millis(10));
+});
+let messages = client.networking_messages();
+
+// Accept all incoming connections
+messages.session_request_callback(|request| {
+    request.accept();
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_会话失败回调函数"><a class="anchor" href="#_会话失败回调函数"></a>4. 会话失败回调函数</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn session_failed_callback(
+    &amp;self,
+    callback: impl FnMut(NetConnectionInfo) + Send + 'static
+)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>注册一个回调函数，每当连接未能建立时将调用此回调。</p>
+</div>
+<div class="paragraph">
+<p>需要定期调用 SingleClient.run_callbacks()。多次调用此函数将替换之前的回调函数。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_参考"><a class="anchor" href="#_参考"></a>5. 参考</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://docs.rs/steamworks/latest/steamworks/networking_messages/struct.NetworkingMessages.html" class="bare">https://docs.rs/steamworks/latest/steamworks/networking_messages/struct.NetworkingMessages.html</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://partner.steamgames.com/doc/api/ISteamNetworkingMessages" class="bare">https://partner.steamgames.com/doc/api/ISteamNetworkingMessages</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

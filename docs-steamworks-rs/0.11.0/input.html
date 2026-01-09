@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Input (输入) :: Steamworks for Rust</title>
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../..">Steamworks for Rust</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs-steamworks-rs" data-version="0.11.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Steamworks for Rust</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="client.html">Client (客户端)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="app.html">Apps (应用)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="utils.html">Utils (工具)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="matchmaking.html">MatchMaking (匹配大厅)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking.html">Networking (网络)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="friends.html">Friends (好友)</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="input.html">Input (输入)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user.html">User (用户)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user-stats.html">UserStats (用户状态)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-play.html">RemotePlay (远程畅玩)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-storage.html">RemoteStorage (远程存储)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ugc.html">UGC (创意工坊)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-message.html">NetworkingMessages (网络消息)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-sockets.html">NetworkingSockets (网络连接)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-utils.html">NetworkingUtils (网络工具)</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Steamworks for Rust</span>
+    <span class="version">0.11.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Steamworks for Rust</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">0.11.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Steamworks for Rust</a></li>
+    <li><a href="input.html">Input (输入)</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/qq253498229/docs-steamworks-rs/edit/master/modules/ROOT/pages/input.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="目录" data-levels="3">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Input (输入)</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Steam 输入 API 是一个基于操作的灵活 API，支持所有主要控制器类型——Xbox、PlayStation、Nintendo Switch Pro 和 Steam 控制器。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_初始化输入接口"><a class="anchor" href="#_初始化输入接口"></a>1. 初始化输入接口</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn init(&amp;self, explicitly_call_run_frame: bool)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>在开始使用此接口时必须调用 <code>Init</code>。 如果调用了 <code>explicitly_call_run_frame</code>，则需要在每一帧手动调用 <code>RunFrame</code>， 否则在调用 <code>SteamAPI_RunCallbacks()</code> 时会更新 Steam Input。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_刷新当前帧"><a class="anchor" href="#_刷新当前帧"></a>2. 刷新当前帧</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn run_frame(&amp;self)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>将 API 状态与可用的最新 Steam 控制器输入同步。</p>
+</div>
+<div class="paragraph">
+<p>由 SteamAPI_RunCallbacks 自动执行，但是您可以在读取控制器状态之前直接调用此函数，以获得可能的最低延迟。</p>
+</div>
+<div class="paragraph">
+<p>注意：必须在调用 <code>GetConnectedControllers</code> 以返回任何句柄之前调用此方法。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取已连接的控制器"><a class="anchor" href="#_获取已连接的控制器"></a>3. 获取已连接的控制器</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_connected_controllers(&amp;self) -&gt; Vec&lt;InputHandle_t&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回当前连接的控制器列表。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取已连接的控制器分片"><a class="anchor" href="#_获取已连接的控制器分片"></a>4. 获取已连接的控制器分片</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_connected_controllers_slice(
+    &amp;self,
+    controllers: impl AsMut&lt;[InputHandle_t]&gt;
+) -&gt; usize</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回当前连接的控制器列表及其数量，无需分配。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_查找操作集句柄"><a class="anchor" href="#_查找操作集句柄"></a>5. 查找操作集句柄</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_action_set_handle(
+    &amp;self,
+    action_set_name: &amp;str
+) -&gt; InputActionSetHandle_t</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回指定控制器的关联 ControllerActionSet 句柄。</p>
+</div>
+<div class="paragraph">
+<p>查找操作集句柄。 最好在启动时调用一次，并存储句柄供所有未来 API 调用使用。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_激活操作集句柄"><a class="anchor" href="#_激活操作集句柄"></a>6. 激活操作集句柄</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn activate_action_set_handle(
+    &amp;self,
+    input_handle: InputHandle_t,
+    action_set_handle: InputActionSetHandle_t
+)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>将控制器重新配置为使用指定的动作集。此操作开销低，可以安全地反复调用。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取数字操作句柄"><a class="anchor" href="#_获取数字操作句柄"></a>7. 获取数字操作句柄</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_digital_action_handle(
+    &amp;self,
+    action_name: &amp;str
+) -&gt; InputDigitalActionHandle_t</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获取指定的数字操作的句柄。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取模拟操作句柄"><a class="anchor" href="#_获取模拟操作句柄"></a>8. 获取模拟操作句柄</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_analog_action_handle(
+    &amp;self,
+    action_name: &amp;str
+) -&gt; InputAnalogActionHandle_t</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>获得指定的模拟操作的句柄。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取数字操作数据"><a class="anchor" href="#_获取数字操作数据"></a>9. 获取数字操作数据</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_digital_action_data(
+    &amp;self,
+    input_handle: InputHandle_t,
+    action_handle: InputDigitalActionHandle_t
+) -&gt; InputDigitalActionData_t</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回所提供的数字游戏操作的当前状态。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取模拟操作数据"><a class="anchor" href="#_获取模拟操作数据"></a>10. 获取模拟操作数据</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_analog_action_data(
+    &amp;self,
+    input_handle: InputHandle_t,
+    action_handle: InputAnalogActionHandle_t
+) -&gt; InputAnalogActionData_t</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回所提供的模拟游戏操作的当前状态。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取移动数据"><a class="anchor" href="#_获取移动数据"></a>11. 获取移动数据</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn get_motion_data(&amp;self, input_handle: InputHandle_t) -&gt; InputMotionData_t</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回指定控制器的原始运动数据。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_关闭输入接口"><a class="anchor" href="#_关闭输入接口"></a>12. 关闭输入接口</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn shutdown(&amp;self)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>在结束使用此接口时必须调用 <code>Shutdown</code>。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_参考"><a class="anchor" href="#_参考"></a>13. 参考</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://docs.rs/steamworks/0.11.0/steamworks/struct.Input.html" class="bare">https://docs.rs/steamworks/0.11.0/steamworks/struct.Input.html</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://partner.steamgames.com/doc/api/isteaminput" class="bare">https://partner.steamgames.com/doc/api/isteaminput</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

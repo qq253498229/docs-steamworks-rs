@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Client (客户端) :: Steamworks for Rust</title>
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../..">Steamworks for Rust</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs-steamworks-rs" data-version="0.11.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Steamworks for Rust</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="client.html">Client (客户端)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="app.html">Apps (应用)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="utils.html">Utils (工具)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="matchmaking.html">MatchMaking (匹配大厅)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking.html">Networking (网络)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="friends.html">Friends (好友)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="input.html">Input (输入)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user.html">User (用户)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user-stats.html">UserStats (用户状态)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-play.html">RemotePlay (远程畅玩)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="remote-storage.html">RemoteStorage (远程存储)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ugc.html">UGC (创意工坊)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-message.html">NetworkingMessages (网络消息)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-sockets.html">NetworkingSockets (网络连接)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="networking-utils.html">NetworkingUtils (网络工具)</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Steamworks for Rust</span>
+    <span class="version">0.11.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Steamworks for Rust</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">0.11.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Steamworks for Rust</a></li>
+    <li><a href="client.html">Client (客户端)</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/qq253498229/docs-steamworks-rs/edit/master/modules/ROOT/pages/client.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="目录" data-levels="3">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Client (客户端)</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>访问steam客户端主入口点相关接口</p>
+</div>
+<div class="paragraph">
+<p>提供了客户端对steamworks所有可用的API。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_基本用法"><a class="anchor" href="#_基本用法"></a>1. 基本用法</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">use steamworks::{Client};
+
+let (client, single) = Client::init().unwrap();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>通过这段代码获取客户端实例，<code>client</code> 就是客户端实例，接下来的所有方法都通过client实例调用。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+在程序运行的目录下，必须有 <em>steam_appid.txt</em> 文件，里面保存了你所开发的steam应用id。如果你还没有申请，请使用 <strong>480</strong>。
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+除了 <em>steam_appid.txt</em> 文件外，steamworks-rs 库在程序运行的目录下还需要官方提供的api文件，路径为: <em>target\&lt;release-type&gt;\build\steamworks-sys-&lt;hash&gt;\out</em>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_初始化"><a class="anchor" href="#_初始化"></a>2. 初始化</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn init() -&gt; SIResult&lt;(Client&lt;ClientManager&gt;, SingleClient&lt;ClientManager&gt;)&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>尝试初始化steamworks api，并返回一个客户端来访问其余api。</p>
+</div>
+<div class="paragraph">
+<p>每个程序应该只有一个实例。</p>
+</div>
+<div class="paragraph">
+<p><strong>异常</strong></p>
+</div>
+<div class="paragraph">
+<p>这些情况可能会发生异常:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Steam 客户端未运行。 需要有运行的 Steam 客户端才能提供各种 Steamworks 接口的实现。</p>
+</li>
+<li>
+<p>Steam 客户端无法判定游戏的 App ID。 如果游戏没有通过steam运行，可以通过在当前工作目录中放置带有ID的 <code>steam_appid.txt</code> 来提供。或者，您可以使用 <code>Client::init_app(&lt;app_id&gt;)</code> 强制指定应用ID。</p>
+</li>
+<li>
+<p>您的应用程序运行的 OS 用户上下文，与 Steam 客户端并不相同，比如用户或管理员访问权限级别不同。</p>
+</li>
+<li>
+<p>确定您在当前活跃的 Steam 帐户中拥有该 App ID 的许可。 您的游戏必须显示在您的 Steam 库中。</p>
+</li>
+<li>
+<p>您的 AppID 未完全设置，如 发行状态：不可用，或缺失默认程序包。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_根据appid初始化应用"><a class="anchor" href="#_根据appid初始化应用"></a>3. 根据AppId初始化应用</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn init_app&lt;ID: Into&lt;AppId&gt;&gt;(
+    app_id: ID
+) -&gt; SIResult&lt;(Client&lt;ClientManager&gt;, SingleClient&lt;ClientManager&gt;)&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>尝试使用指定的app ID初始化Steamworks API，并返回一个客户端来访问其余api。</p>
+</div>
+<div class="paragraph">
+<p>每个程序应该只有一个实例。</p>
+</div>
+<div class="paragraph">
+<p><strong>异常</strong></p>
+</div>
+<div class="paragraph">
+<p>这些情况可能会发生异常:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Steam 客户端未运行。 需要有运行的 Steam 客户端才能提供各种 Steamworks 接口的实现。</p>
+</li>
+<li>
+<p>您的应用程序运行的 OS 用户上下文，与 Steam 客户端并不相同，比如用户或管理员访问权限级别不同。</p>
+</li>
+<li>
+<p>确定您在当前活跃的 Steam 帐户中拥有该 App ID 的许可。 您的游戏必须显示在您的 Steam 库中。</p>
+</li>
+<li>
+<p>您的 AppID 未完全设置，如 发行状态：不可用，或缺失默认程序包。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_注册回调"><a class="anchor" href="#_注册回调"></a>4. 注册回调</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn register_callback&lt;C, F&gt;(&amp;self, f: F) -&gt; CallbackHandle&lt;Manager&gt;
+where
+    C: Callback,
+    F: FnMut(C) + 'static + Send</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>注册传递的函数作为给定类型的回调。</p>
+</div>
+<div class="paragraph">
+<p>当接受到事件时，回调将在调用 <code>run_callbacks</code> 的线程上运行。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取应用接口"><a class="anchor" href="#_获取应用接口"></a>5. 获取应用接口</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn apps(&amp;self) -&gt; Apps&lt;Manager&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回一个访问 Steam <a href="app.html" class="xref page">应用接口</a> 的访问器。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取工具接口"><a class="anchor" href="#_获取工具接口"></a>6. 获取工具接口</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn utils(&amp;self) -&gt; Utils&lt;Manager&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回一个访问 Steam <a href="utils.html" class="xref page">工具接口</a> 的访问器。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取匹配大厅接口"><a class="anchor" href="#_获取匹配大厅接口"></a>7. 获取匹配大厅接口</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn matchmaking(&amp;self) -&gt; Matchmaking&lt;Manager&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回一个访问 Steam <a href="matchmaking.html" class="xref page">匹配大厅</a> 接口的访问器。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取网络接口"><a class="anchor" href="#_获取网络接口"></a>8. 获取网络接口</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn networking(&amp;self) -&gt; Networking&lt;Manager&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回一个访问 Steam <a href="networking.html" class="xref page">网络接口</a> 的访问器。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取好友接口"><a class="anchor" href="#_获取好友接口"></a>9. 获取好友接口</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn friends(&amp;self) -&gt; Friends&lt;Manager&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回一个访问 Steam <a href="friends.html" class="xref page">好友接口</a> 的访问器。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取输入接口"><a class="anchor" href="#_获取输入接口"></a>10. 获取输入接口</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn input(&amp;self) -&gt; Input&lt;Manager&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回一个访问 Steam <a href="input.html" class="xref page">输入接口</a> 的访问器。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取用户接口"><a class="anchor" href="#_获取用户接口"></a>11. 获取用户接口</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn user(&amp;self) -&gt; User&lt;Manager&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回一个访问 Steam <a href="user.html" class="xref page">用户接口</a> 的访问器。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取用户统计接口"><a class="anchor" href="#_获取用户统计接口"></a>12. 获取用户统计接口</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn user_stats(&amp;self) -&gt; UserStats&lt;Manager&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回一个访问 Steam <a href="user-stats.html" class="xref page">用户统计接口</a> 的访问器。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取远程畅玩接口"><a class="anchor" href="#_获取远程畅玩接口"></a>13. 获取远程畅玩接口</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn remote_play(&amp;self) -&gt; RemotePlay&lt;Manager&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回一个访问 Steam <a href="remote-play.html" class="xref page">远程畅玩接口</a> 的访问器。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取远程存储接口"><a class="anchor" href="#_获取远程存储接口"></a>14. 获取远程存储接口</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn remote_storage(&amp;self) -&gt; RemoteStorage&lt;Manager&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回一个访问 Steam <a href="remote-storage.html" class="xref page">远程存储接口</a> 的访问器。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取创意工坊接口"><a class="anchor" href="#_获取创意工坊接口"></a>15. 获取创意工坊接口</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn ugc(&amp;self) -&gt; UGC&lt;Manager&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>返回一个访问 Steam <a href="ugc.html" class="xref page">UGC（Steam 创意工坊）接口</a> 的访问器。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取网络消息接口"><a class="anchor" href="#_获取网络消息接口"></a>16. 获取网络消息接口</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn networking_messages(&amp;self) -&gt; NetworkingMessages&lt;Manager&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>访问 Steam <a href="networking-message.html" class="xref page">网络消息接口</a>。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取网络sockets接口"><a class="anchor" href="#_获取网络sockets接口"></a>17. 获取网络sockets接口</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn networking_sockets(&amp;self) -&gt; NetworkingSockets&lt;Manager&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>访问 Steam <a href="networking-sockets.html" class="xref page">网络sockets接口</a>。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_获取网络工具接口"><a class="anchor" href="#_获取网络工具接口"></a>18. 获取网络工具接口</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-rust hljs" data-lang="rust">pub fn networking_utils(&amp;self) -&gt; NetworkingUtils&lt;Manager&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>访问 Steam <a href="networking-utils.html" class="xref page">网络工具接口</a>。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_参考"><a class="anchor" href="#_参考"></a>19. 参考</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://docs.rs/steamworks/0.11.0/steamworks/struct.Client.html" class="bare">https://docs.rs/steamworks/0.11.0/steamworks/struct.Client.html</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://partner.steamgames.com/doc/api/ISteamClient" class="bare">https://partner.steamgames.com/doc/api/ISteamClient</a></p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
